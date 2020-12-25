@@ -1,1 +1,1 @@
-npx sequelize model:generate --name UserFollow --attributes followerUserId:integer,targetUserId:integer,approved:boolean,viewed:boolean
+npx sequelize model:generate --name ProfilePicture --attributes userId:integer,imgUrl:string,current:boolean

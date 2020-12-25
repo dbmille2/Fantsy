@@ -74,6 +74,7 @@ module.exports = (sequelize, DataTypes) => {
       otherKey: "followerUserId",
       as: "Followers",
     });
+    User.hasMany(models.ProfilePicture, { foreignKey: "userId" });
   };
   User.prototype.toSafeObject = function () {
     // remember, this cannot be an arrow function
