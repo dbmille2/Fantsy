@@ -1,0 +1,1 @@
+npx sequelize model:generate --name UserFollow --attributes followerUserId:integer,targetUserId:integer,approved:boolean,viewed:boolean

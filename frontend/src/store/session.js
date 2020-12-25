@@ -1,41 +1,42 @@
-import { fetch } from './csrf.js';
+import { fetch } from "./csrf.js";
 
-const SET_USER = 'session/setUser';
-const REMOVE_USER = 'session/removeUser';
+const SET_USER = "session/setUser";
+const REMOVE_USER = "session/removeUser";
 
 const setUser = (user) => ({
   type: SET_USER,
-  payload: user
+  payload: user,
 });
 
 const removeUser = () => ({
-  type: REMOVE_USER
+  type: REMOVE_USER,
 });
 
 export const login = ({ credential, password }) => async (dispatch) => {
-  const res = await fetch('/api/session', {
-    method: 'POST',
-    body: JSON.stringify({ credential, password })
+  const res = await fetch("/api/session", {
+    method: "POST",
+    body: JSON.stringify({ credential, password }),
   });
   dispatch(setUser(res.data.user));
   return res;
 };
 
 export const restoreUser = () => async (dispatch) => {
-  const res = await fetch('/api/session');
+  const res = await fetch("/api/session");
   dispatch(setUser(res.data.user));
   return res;
 };
 
 export const signup = (user) => async (dispatch) => {
-  const { username, email, password } = user;
-  const response = await fetch('/api/users', {
-    method: 'POST',
+  const { username, email, displayName, password } = user;
+  const response = await fetch("/api/users", {
+    method: "POST",
     body: JSON.stringify({
       username,
       email,
-      password
-    })
+      displayName,
+      password,
+    }),
   });
 
   dispatch(setUser(response.data.user));
@@ -43,8 +44,8 @@ export const signup = (user) => async (dispatch) => {
 };
 
 export const logout = () => async (dispatch) => {
-  const response = await fetch('/api/session', {
-    method: 'DELETE'
+  const response = await fetch("/api/session", {
+    method: "DELETE",
   });
   dispatch(removeUser());
   return response;
