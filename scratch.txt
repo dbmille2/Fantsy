@@ -1,1 +1,1 @@
-npx sequelize model:generate --name ProfilePicture --attributes userId:integer,imgUrl:string,current:boolean
+npx sequelize model:generate --name PlayerFollow --attributes playerId:integer,userId:integer
