@@ -1,36 +1,33 @@
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import * as followActions from "../../store/follows";
-import * as playerActions from "../../store/players";
+import * as profileActions from "../../store/profile";
+import { Link } from "react-router-dom";
 
 function ProfilePage() {
   let { username } = useParams();
   const dispatch = useDispatch();
-  const follows = useSelector((state) => state.follows);
+  const profile = useSelector((state) => state.profile);
 
   useEffect(() => {
-    dispatch(followActions.fetchFollowers(username));
-    dispatch(followActions.fetchFollowing(username));
-    dispatch(playerActions.fetchFollowedPlayers(username));
+    dispatch(profileActions.fetchProfile(username));
   }, [dispatch, username]);
 
   return (
     <div>
-      <h1>Followers</h1>
-      <ul>
-        {follows.followers &&
-          follows.followers.map((follower) => (
-            <li key={follower.id}>{follower.displayName}</li>
-          ))}
-      </ul>
-      <h1>Following</h1>
-      <ul>
-        {follows.following &&
-          follows.following.map((follower) => (
-            <li key={follower.id}>{follower.displayName}</li>
-          ))}
-      </ul>
+      <p>Profile Pic</p>
+      <p>{profile.displayName}</p>
+      <p>@{profile.username}</p>
+      <span>
+        <Link to={`/${username}/following`}>
+          {profile.following && profile.following.length} Following
+        </Link>
+      </span>
+      <span>
+        <Link to={`/${username}/followers`}>
+          {profile.followers && profile.followers.length} Followers
+        </Link>
+      </span>
     </div>
   );
 }

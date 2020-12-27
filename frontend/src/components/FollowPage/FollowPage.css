@@ -1,0 +1,37 @@
+.follow-nav-container {
+  width: 560px;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* border-left: 1px solid rgb(235, 238, 240); */
+  /* border-right: 1px solid rgb(235, 238, 240); */
+  border-bottom: 2px solid rgb(235, 238, 240);
+  box-sizing: border-box;
+}
+
+.follow-nav-option {
+  text-decoration: none;
+  color: rgb(91, 136, 152);
+  font-size: 14px;
+  line-height: 50px;
+  width: 280px;
+  height: 50px;
+  text-align: center;
+  font-weight: bold;
+  box-sizing: border-box;
+  transition-property: background-color, color;
+  transition-duration: 0.2s;
+}
+
+.follow-active {
+  color: rgb(29, 161, 242);
+  border-bottom: 2px solid rgb(29, 161, 242);
+}
+
+.follow-nav-option:hover {
+  transition-property: background-color, color;
+  transition-duration: 0.2s;
+  color: rgb(29, 161, 242);
+  background-color: rgb(232, 245, 254);
+}

@@ -7,6 +7,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import PostInput from "./components/PostInput";
 import ProfilePage from "./components/ProfilePage";
+import FollowPage from "./components/FollowPage";
 // import * as followActions from "./store/follows";
 import * as playerActions from "./store/players";
 
@@ -17,32 +18,42 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
-    
     dispatch(playerActions.fetchAllPlayers());
-    
-    dispatch(playerActions.fetchPlayerFollowers("JoshAllen"));
   }, [dispatch]);
 
   return (
-    <>
-      <Navigation isLoaded={isLoaded} />
-      {isLoaded && (
-        <Switch>
-          {/* <Route path="/login" >
+    <div className="full-page">
+      <div className="left-nav">
+        <Navigation isLoaded={isLoaded} />
+      </div>
+      <div className="main-content">
+        {isLoaded && (
+          <Switch>
+            {/* <Route path="/login" >
             <LoginFormPage />
           </Route> */}
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
-          <Route path="/home">
-            <PostInput />
-          </Route>
-          <Route path="/:username">
-            <ProfilePage /> 
-          </Route>
-        </Switch>
-      )}
-    </>
+            <Route path="/signup">
+              <SignupFormPage />
+            </Route>
+            <Route path="/home">
+              <PostInput />
+            </Route>
+            <Route exact path="/:username">
+              <ProfilePage />
+            </Route>
+            <Route path="/:username/following">
+              <FollowPage fState={false} />
+            </Route>
+            <Route path="/:username/followers">
+              <FollowPage fState={true} />
+            </Route>
+          </Switch>
+        )}
+      </div>
+      <div className="right-nav">
+        <p>placeholder</p>
+      </div>
+    </div>
   );
 }
 

@@ -42,6 +42,31 @@ router.post(
 );
 
 router.get(
+  "/:username",
+  asyncHandler(async (req, res) => {
+    const username = req.params.username;
+    const user = await User.findOne({
+      where: { username },
+      include: [
+        {
+          model: User,
+          as: "Followers",
+        },
+        {
+          model: User,
+          as: "Following",
+        },
+        {
+          model: Player,
+          as: "FollowedPlayers",
+        },
+      ],
+    });
+    res.json({ user });
+  })
+);
+
+router.get(
   "/:username/followers",
   asyncHandler(async (req, res) => {
     const username = req.params.username;
