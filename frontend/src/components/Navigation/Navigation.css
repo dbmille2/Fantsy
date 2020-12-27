@@ -12,17 +12,19 @@
   list-style: none;
   padding-right: 30px;
   margin-top: 15px;
-  margin-bottom: 25px;
-  font-weight: bold;
+  margin-bottom: 15px;
+  font-weight: 640;
+  display: flex;
 }
-
 .left-nav-container i {
-  margin-right: 15px;
+  width: 20px;
+  margin-right: 10px;
 }
 
 .left-nav-option {
   text-decoration: none;
   color: rgb(15, 20, 25);
+  font-size: 18px;
   padding: 10px 15px 10px 10px;
 }
 

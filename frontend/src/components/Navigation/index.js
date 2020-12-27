@@ -25,7 +25,7 @@ function Navigation({ isLoaded }) {
             activeClassName="left-nav-active"
           >
             <i class="fas fa-home" />
-            Home
+            <span>Home</span>
           </NavLink>
         </li>
         <li>
@@ -36,7 +36,8 @@ function Navigation({ isLoaded }) {
             activeClassName="left-nav-active"
           >
             <i class="fas fa-hashtag" />
-            Explore
+
+            <span>Explore</span>
           </NavLink>
         </li>
         <li>
@@ -47,7 +48,8 @@ function Navigation({ isLoaded }) {
             activeClassName="left-nav-active"
           >
             <i class="fas fa-bell"></i>
-            Notifications
+
+            <span>Notifications</span>
           </NavLink>
         </li>
         <li>
@@ -58,7 +60,7 @@ function Navigation({ isLoaded }) {
             activeClassName="left-nav-active"
           >
             <i class="fas fa-bookmark"></i>
-            Saved
+            <span>Saved</span>
           </NavLink>
         </li>
         <li>
@@ -69,7 +71,7 @@ function Navigation({ isLoaded }) {
             activeClassName="left-nav-active"
           >
             <i class="fas fa-football-ball"></i>
-            My Team
+            <span>My Team</span>
           </NavLink>
         </li>
         <li>
@@ -80,7 +82,7 @@ function Navigation({ isLoaded }) {
             activeClassName="left-nav-active"
           >
             <i class="fas fa-user"></i>
-            Profile
+            <span>Profile</span>
           </NavLink>
         </li>
       </>
