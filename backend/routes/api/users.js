@@ -124,4 +124,34 @@ router.get(
   })
 );
 
+router.post(
+  "/:username/follow",
+  asyncHandler(async (req, res) => {
+    const { followerUserId, targetUserId } = req.body;
+    console.log(followerUserId, targetUserId);
+    await UserFollow.create({
+      followerUserId,
+      targetUserId,
+      approved: true,
+      viewed: false,
+    });
+    res.json({ message: "followed" });
+  })
+);
+
+router.post(
+  "/:username/unfollow",
+  asyncHandler(async (req, res) => {
+    const { followerUserId, targetUserId } = req.body;
+    const follow = await UserFollow.findOne({
+      where: {
+        followerUserId,
+        targetUserId,
+      },
+    });
+    await follow.destroy();
+    res.json({ message: "unfollowed" });
+  })
+);
+
 module.exports = router;

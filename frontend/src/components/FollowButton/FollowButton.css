@@ -1,0 +1,41 @@
+.unfollow-button {
+  width: 95px;
+  height: 36px;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: rgb(29, 161, 242);
+  transition-property: background-color;
+  transition-duration: 0.2s;
+  outline: none;
+}
+
+.unfollow-button:hover {
+  background-color: rgb(202, 32, 85);
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+
+.follow-button {
+  width: 95px;
+  height: 36px;
+  border: 1px solid rgb(29, 161, 242);
+  border-radius: 20px;
+  color: rgb(29, 161, 242);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: white;
+  transition-property: background-color;
+  transition-duration: 0.2s;
+  outline: none;
+}
+
+.follow-button:hover {
+  background-color: rgb(232, 245, 254);
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}

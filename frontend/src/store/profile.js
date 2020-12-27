@@ -1,6 +1,6 @@
+import { fetch } from "./csrf.js";
+
 const LOAD_PROFILE = "profile/loadProfile";
-const LOAD_FOLLOWERS = "profile/loadFollowers";
-const LOAD_FOLLOWING = "profile/loadFollowing";
 
 const loadProfile = (profile, currentUser) => ({
   type: LOAD_PROFILE,
@@ -10,32 +10,37 @@ const loadProfile = (profile, currentUser) => ({
   },
 });
 
-const loadFollowers = (followers) => ({
-  type: LOAD_FOLLOWERS,
-  payload: followers,
-});
+export const addFollower = (username, followerUserId, targetUserId) => async (
+  dispatch
+) => {
+  const body = { followerUserId, targetUserId };
+  const res = await fetch(`/api/users/${username}/follow`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+  dispatch(fetchProfile(username, followerUserId));
+};
 
-const loadFollowing = (following) => ({
-  type: LOAD_FOLLOWING,
-  payload: following,
-});
+export const removeFollower = (
+  username,
+  followerUserId,
+  targetUserId
+) => async (dispatch) => {
+  const body = { followerUserId, targetUserId };
+  const res = await fetch(`/api/users/${username}/unfollow`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+  dispatch(fetchProfile(username, followerUserId));
+};
 
 export const fetchProfile = (username, currentUser) => async (dispatch) => {
   const res = await fetch(`/api/users/${username}`);
-  const profile = await res.json();
+  const profile = res.data;
+  // const profile = await res.json();
   dispatch(loadProfile(profile, currentUser));
-};
-
-export const fetchFollowers = (username) => async (dispatch) => {
-  const res = await fetch(`/api/users/${username}/followers`);
-  const followers = await res.json();
-  dispatch(loadFollowers(followers.followers));
-};
-
-export const fetchFollowing = (username) => async (dispatch) => {
-  const res = await fetch(`/api/users/${username}/following`);
-  const following = await res.json();
-  dispatch(loadFollowing(following.following));
 };
 
 function reducer(state = {}, action) {
