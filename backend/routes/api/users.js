@@ -4,7 +4,7 @@ const asyncHandler = require("express-async-handler");
 
 const { handleValidationErrors } = require("../../utils/validation");
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
-const { User, UserFollow } = require("../../db/models");
+const { User, UserFollow, Player } = require("../../db/models");
 
 const router = express.Router();
 
@@ -78,6 +78,24 @@ router.get(
       (follow) => follow.UserFollow.approved
     );
     res.json({ following });
+  })
+);
+
+router.get(
+  "/:username/players",
+  asyncHandler(async (req, res) => {
+    const username = req.params.username;
+    const user = await User.findOne({
+      where: { username },
+      include: [
+        {
+          model: Player,
+          as: "FollowedPlayers",
+        },
+      ],
+    });
+    const followedPlayers = user.FollowedPlayers;
+    res.json({ followedPlayers });
   })
 );
 
