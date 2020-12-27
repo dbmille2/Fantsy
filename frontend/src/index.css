@@ -7,6 +7,9 @@ body {
 .full-page {
   display: flex;
   justify-content: center;
+  position: relative;
+  margin: 0 auto;
+  width: 1260px;
 }
 
 .main-content {

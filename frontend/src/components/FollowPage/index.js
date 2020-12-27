@@ -6,7 +6,7 @@ import "./FollowPage.css";
 
 function FollowPage({ fState }) {
   const [followState, setFollowState] = useState(fState);
-  const [group, setGroup] = useState([]);
+  const [group, setGroup] = useState({});
   const profile = useSelector((state) => state.profile);
   useEffect(() => {
     setFollowState(fState);
@@ -40,7 +40,7 @@ function FollowPage({ fState }) {
       </div>
       <ul>
         {group &&
-          group.map((profile) => (
+          Object.values(group).map((profile) => (
             <li key={profile.id}>
               <ProfileListItem profile={profile} />
             </li>

@@ -2,9 +2,18 @@
   position: absolute;
 }
 
+.left-nav-wrapper {
+  width: 240px;
+  position: absolute;
+  top: 0;
+  left: -550px;
+}
+
 .left-nav {
   margin-top: 8px;
   margin-right: 15px;
+  height: 100vh;
+  position: fixed;
 }
 
 .left-nav-container {
@@ -67,4 +76,9 @@
 
 .left-nav-active {
   color: rgb(29, 161, 242);
+}
+
+.profile-button {
+  position: absolute;
+  bottom: 200px;
 }

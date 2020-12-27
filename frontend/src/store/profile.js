@@ -2,9 +2,12 @@ const LOAD_PROFILE = "profile/loadProfile";
 const LOAD_FOLLOWERS = "profile/loadFollowers";
 const LOAD_FOLLOWING = "profile/loadFollowing";
 
-const loadProfile = (profile) => ({
+const loadProfile = (profile, currentUser) => ({
   type: LOAD_PROFILE,
-  payload: profile,
+  payload: {
+    profile,
+    currentUser,
+  },
 });
 
 const loadFollowers = (followers) => ({
@@ -17,11 +20,10 @@ const loadFollowing = (following) => ({
   payload: following,
 });
 
-export const fetchProfile = (username) => async (dispatch) => {
+export const fetchProfile = (username, currentUser) => async (dispatch) => {
   const res = await fetch(`/api/users/${username}`);
   const profile = await res.json();
-  console.log(profile);
-  dispatch(loadProfile(profile));
+  dispatch(loadProfile(profile, currentUser));
 };
 
 export const fetchFollowers = (username) => async (dispatch) => {
@@ -40,25 +42,39 @@ function reducer(state = {}, action) {
   let newState;
   switch (action.type) {
     case LOAD_PROFILE:
-      const profile = action.payload.user;
-      console.log(profile);
+      const profile = action.payload.profile.user;
+      const currentUser = action.payload.currentUser;
+      const followers = {};
+      const following = {};
+      const followedPlayers = {};
+      if (profile.Followers) {
+        profile.Followers.forEach((follower) => {
+          followers[follower.id] = follower;
+        });
+      }
+      if (profile.Following) {
+        profile.Following.forEach((follow) => {
+          following[follow.id] = follow;
+        });
+      }
+      if (profile.FollowedPlayers) {
+        profile.FollowedPlayers.forEach((player) => {
+          followedPlayers[player.id] = player;
+        });
+      }
+      const isFollowing = currentUser in followers;
+      const isSelf = currentUser === profile.id;
       newState = Object.assign({}, state, {
         id: profile.id,
         username: profile.username,
         displayName: profile.displayName,
-        followers: profile.Followers,
-        following: profile.Following,
-        followedPlayers: profile.FollowedPlayers,
+        followers,
+        following,
+        followedPlayers,
+        isFollowing,
+        isSelf,
       });
       return newState;
-    // case LOAD_FOLLOWERS:
-    //   const followers = action.payload;
-    //   newState = Object.assign({}, state, { followers });
-    //   return newState;
-    // case LOAD_FOLLOWING:
-    //   const following = action.payload;
-    //   newState = Object.assign({}, state, { following });
-    //   return newState;
     default:
       return state;
   }

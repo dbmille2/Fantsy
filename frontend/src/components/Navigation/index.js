@@ -11,9 +11,9 @@ function Navigation({ isLoaded }) {
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <li>
+      <div className="profile-button">
         <ProfileButton user={sessionUser} />
-      </li>
+      </div>
     );
     navLinks = (
       <>
@@ -117,14 +117,14 @@ function Navigation({ isLoaded }) {
   }
 
   return (
-    <div className="left-nav">
-      <NavLink exact to="/home" className="home-logo">
-        <i className="fas fa-football-ball"></i>
-      </NavLink>
-      <ul className="left-nav-container">
-        {isLoaded && navLinks}
+    <div className="left-nav-wrapper">
+      <div className="left-nav">
+        <NavLink exact to="/home" className="home-logo">
+          <i className="fas fa-football-ball"></i>
+        </NavLink>
+        <ul className="left-nav-container">{isLoaded && navLinks}</ul>
         {isLoaded && sessionLinks}
-      </ul>
+      </div>
     </div>
   );
 }
