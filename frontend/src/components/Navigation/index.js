@@ -24,7 +24,7 @@ function Navigation({ isLoaded }) {
             className="left-nav-option"
             activeClassName="left-nav-active"
           >
-            <i class="fas fa-home" />
+            <i className="fas fa-home" />
             <span>Home</span>
           </NavLink>
         </li>
@@ -35,7 +35,7 @@ function Navigation({ isLoaded }) {
             className="left-nav-option"
             activeClassName="left-nav-active"
           >
-            <i class="fas fa-hashtag" />
+            <i className="fas fa-hashtag" />
 
             <span>Explore</span>
           </NavLink>
@@ -47,7 +47,7 @@ function Navigation({ isLoaded }) {
             className="left-nav-option"
             activeClassName="left-nav-active"
           >
-            <i class="fas fa-bell"></i>
+            <i className="fas fa-bell"></i>
 
             <span>Notifications</span>
           </NavLink>
@@ -59,7 +59,7 @@ function Navigation({ isLoaded }) {
             className="left-nav-option"
             activeClassName="left-nav-active"
           >
-            <i class="fas fa-bookmark"></i>
+            <i className="fas fa-bookmark"></i>
             <span>Saved</span>
           </NavLink>
         </li>
@@ -70,7 +70,7 @@ function Navigation({ isLoaded }) {
             className="left-nav-option"
             activeClassName="left-nav-active"
           >
-            <i class="fas fa-football-ball"></i>
+            <i className="fas fa-users"></i>
             <span>My Team</span>
           </NavLink>
         </li>
@@ -81,7 +81,7 @@ function Navigation({ isLoaded }) {
             className="left-nav-option"
             activeClassName="left-nav-active"
           >
-            <i class="fas fa-user"></i>
+            <i className="fas fa-user"></i>
             <span>Profile</span>
           </NavLink>
         </li>
@@ -101,8 +101,15 @@ function Navigation({ isLoaded }) {
     navLinks = (
       <>
         <li>
-          <NavLink exact to="/explore">
-            Explore
+          <NavLink
+            exact
+            to="/explore"
+            className="left-nav-option"
+            activeClassName="left-nav-active"
+          >
+            <i className="fas fa-hashtag" />
+
+            <span>Explore</span>
           </NavLink>
         </li>
       </>
@@ -110,10 +117,15 @@ function Navigation({ isLoaded }) {
   }
 
   return (
-    <ul className="left-nav-container">
-      {isLoaded && navLinks}
-      {isLoaded && sessionLinks}
-    </ul>
+    <div className="left-nav">
+      <NavLink exact to="/home" className="home-logo">
+        <i className="fas fa-football-ball"></i>
+      </NavLink>
+      <ul className="left-nav-container">
+        {isLoaded && navLinks}
+        {isLoaded && sessionLinks}
+      </ul>
+    </div>
   );
 }
 

@@ -2,23 +2,49 @@
   position: absolute;
 }
 
+.left-nav {
+  margin-top: 8px;
+  margin-right: 15px;
+}
+
 .left-nav-container {
   cursor: pointer;
   padding-left: 0px;
-  margin-right: 10px;
+}
+
+.home-logo {
+  text-decoration: none;
+  box-sizing: border-box;
+  color: rgb(29, 161, 242);
+  font-size: 20px;
+  padding: 10px 10px 10px 10px;
+  transition-property: background-color, color;
+  transition-duration: 0.2s;
+  border-radius: 20px;
+  margin-bottom: 15px;
+}
+
+.home-logo:hover {
+  color: rgb(29, 161, 242);
+  background-color: rgb(232, 245, 254);
+  border-radius: 20px;
+  transition-property: background-color, color;
+  transition-duration: 0.2s;
+  border-radius: 30px;
 }
 
 .left-nav-container li {
   list-style: none;
   padding-right: 30px;
-  margin-top: 15px;
+  /* margin-top: 15px; */
   margin-bottom: 15px;
   font-weight: 640;
   display: flex;
 }
-.left-nav-container i {
+
+.left-nav-container li i {
   width: 20px;
-  margin-right: 10px;
+  margin-right: 14px;
 }
 
 .left-nav-option {
@@ -26,12 +52,17 @@
   color: rgb(15, 20, 25);
   font-size: 18px;
   padding: 10px 15px 10px 10px;
+  transition-property: background-color, color;
+  transition-duration: 0.2s;
+  border-radius: 20px;
 }
 
 .left-nav-option:hover {
   color: rgb(29, 161, 242);
   background-color: rgb(232, 245, 254);
   border-radius: 20px;
+  transition-property: background-color, color;
+  transition-duration: 0.2s;
 }
 
 .left-nav-active {
