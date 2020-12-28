@@ -14,7 +14,7 @@ export const addFollower = (username, followerUserId, targetUserId) => async (
   dispatch
 ) => {
   const body = { followerUserId, targetUserId };
-  const res = await fetch(`/api/users/${username}/follow`, {
+  await fetch(`/api/users/${username}/follow`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),
@@ -28,7 +28,7 @@ export const removeFollower = (
   targetUserId
 ) => async (dispatch) => {
   const body = { followerUserId, targetUserId };
-  const res = await fetch(`/api/users/${username}/unfollow`, {
+  await fetch(`/api/users/${username}/unfollow`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),

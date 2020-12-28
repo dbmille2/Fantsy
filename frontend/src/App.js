@@ -15,7 +15,6 @@ import * as playerActions from "./store/players";
 function App() {
   const dispatch = useDispatch();
   const session = useSelector((state) => state.session);
-  console.log(session);
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
@@ -38,7 +37,7 @@ function App() {
             </Route>
             <Route path="/home">
               <NavHeader title="Home" />
-              <PostInput />
+              {session.following && <PostInput />}
             </Route>
             <Route exact path="/:username">
               <ProfilePage />

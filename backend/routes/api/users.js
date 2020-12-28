@@ -130,7 +130,6 @@ router.post(
   "/:username/follow",
   asyncHandler(async (req, res) => {
     const { followerUserId, targetUserId } = req.body;
-    console.log(followerUserId, targetUserId);
     await UserFollow.create({
       followerUserId,
       targetUserId,
