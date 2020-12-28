@@ -76,7 +76,6 @@ function Navigation({ isLoaded }) {
         </li>
         <li>
           <NavLink
-            exact
             to={`/${sessionUser.username}`}
             className="left-nav-option"
             activeClassName="left-nav-active"
