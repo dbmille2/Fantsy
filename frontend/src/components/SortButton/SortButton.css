@@ -1,0 +1,19 @@
+.sort-button {
+  margin-right: 10px;
+  border: none;
+  background-color: white;
+  font-size: 18px;
+  color: rgb(29, 161, 242);
+  border-radius: 50%;
+  padding: 8px 9px;
+  outline: none;
+  cursor: pointer;
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+
+.sort-button:hover {
+  background-color: rgb(232, 245, 254);
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}

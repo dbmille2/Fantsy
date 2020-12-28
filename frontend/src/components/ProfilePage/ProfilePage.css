@@ -1,0 +1,17 @@
+.profile-pic-and-follow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.profile-pic {
+  width: 125px;
+  margin-left: 15px;
+  border-radius: 50%;
+  border: 5px solid white;
+}
+
+.unfollow-button,
+.follow-button {
+  margin: 0 15px 15px 0;
+}

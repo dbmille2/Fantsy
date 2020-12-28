@@ -1,9 +1,10 @@
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import * as profileActions from "../../store/profile";
 import { Link } from "react-router-dom";
 import FollowButton from "../FollowButton";
+import "./ProfilePage.css";
 
 function ProfilePage() {
   let { username } = useParams();
@@ -11,6 +12,8 @@ function ProfilePage() {
   const profile = useSelector((state) => state.profile);
   const user = useSelector((state) => state.session.user);
   const isSelf = profile.isSelf;
+  const profilePic = profile.profilePic;
+  console.log(profilePic);
 
   useEffect(() => {
     dispatch(profileActions.fetchProfile(username, user.id));
@@ -18,8 +21,17 @@ function ProfilePage() {
 
   return (
     <div>
-      <p>Profile Pic</p>
-      {!isSelf && <FollowButton />}
+      <div className="profile-pic-and-follow">
+        {profilePic && (
+          <img
+            className="profile-pic"
+            src={profilePic[0].imgUrl}
+            alt="Profile"
+          />
+        )}
+
+        {!isSelf && <FollowButton className="follow" />}
+      </div>
       <p>{profile.displayName}</p>
       <p>@{profile.username}</p>
 

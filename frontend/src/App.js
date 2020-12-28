@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import PostInput from "./components/PostInput";
 import ProfilePage from "./components/ProfilePage";
 import FollowPage from "./components/FollowPage";
+import NavHeader from "./components/NavHeader";
 // import * as followActions from "./store/follows";
 import * as playerActions from "./store/players";
 
@@ -36,6 +37,7 @@ function App() {
               <SignupFormPage />
             </Route>
             <Route path="/home">
+              <NavHeader title="Home" />
               <PostInput />
             </Route>
             <Route exact path="/:username">

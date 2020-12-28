@@ -26,20 +26,19 @@
   box-sizing: border-box;
   color: rgb(29, 161, 242);
   font-size: 20px;
-  padding: 10px 10px 10px 10px;
+  padding: 10px 12px 10px 12px;
   transition-property: background-color, color;
   transition-duration: 0.2s;
-  border-radius: 20px;
+  border-radius: 50%;
   margin-bottom: 15px;
 }
 
 .home-logo:hover {
   color: rgb(29, 161, 242);
   background-color: rgb(232, 245, 254);
-  border-radius: 20px;
   transition-property: background-color, color;
   transition-duration: 0.2s;
-  border-radius: 30px;
+  border-radius: 50%;
 }
 
 .left-nav-container li {
@@ -60,7 +59,7 @@
   text-decoration: none;
   color: rgb(15, 20, 25);
   font-size: 18px;
-  padding: 10px 15px 10px 10px;
+  padding: 10px 15px 10px 12px;
   transition-property: background-color, color;
   transition-duration: 0.2s;
   border-radius: 20px;

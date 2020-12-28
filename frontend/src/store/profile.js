@@ -73,6 +73,7 @@ function reducer(state = {}, action) {
         id: profile.id,
         username: profile.username,
         displayName: profile.displayName,
+        profilePic: profile.ProfilePictures,
         followers,
         following,
         followedPlayers,
