@@ -86,14 +86,6 @@ function reducer(state = initialState, action) {
     case REMOVE_USER:
       newState = Object.assign({}, state, { user: null });
       return newState;
-    // case LOAD_FOLLOWING:
-    // const following = {};
-    // const followingArr = action.payload;
-    // followingArr.forEach((follow) => {
-    //   following[follow.id] = follow;
-    // });
-    // newState = Object.assign({}, state, { following });
-    // return newState;
     case LOAD_INFO:
       const info = action.payload.user;
       const followers = {};

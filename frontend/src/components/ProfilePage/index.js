@@ -13,7 +13,6 @@ function ProfilePage() {
   const user = useSelector((state) => state.session.user);
   const isSelf = profile.isSelf;
   const profilePic = profile.profilePic;
-  console.log(profilePic);
 
   useEffect(() => {
     dispatch(profileActions.fetchProfile(username, user.id));

@@ -1,1 +1,1 @@
-npx sequelize model:generate --name UserPreference --attributes userId:integer,theme:string,profilePicUrl:string,bannerUrl:string,bioRawData:string
+npx sequelize model:generate --name TaggedUser --attributes userId:integer,postId:integer,viewedNotification:boolean

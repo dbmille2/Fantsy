@@ -1,5 +1,4 @@
 import PostInput from "../PostInput";
-import PostButton from "../PostButton";
 import { useSelector } from "react-redux";
 import "./NewPost.css";
 
@@ -11,10 +10,6 @@ function NewPost() {
       <div className="pic-and-input">
         <img src={profilePic} className="post-profile-pic" alt="profile" />
         <PostInput />
-      </div>
-      <div className="new-post-buttons">
-        <div className="util-buttons">UtilButtonsPlaceholder</div>
-        <PostButton />
       </div>
     </div>
   );

@@ -6,8 +6,9 @@ import createMentionPlugin, {
 } from "draft-js-mention-plugin";
 import "./PostInput.css";
 import "draft-js/dist/Draft.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { createPost } from "../../store/posts";
 
 const Entry = (props) => {
   const { mention, theme, searchValue, isFocused, ...parentProps } = props;
@@ -42,11 +43,11 @@ const Entry = (props) => {
 
 function PostInput() {
   const following = useSelector((state) => state.session.following);
+  const user = useSelector((state) => state.session.user);
+  const dispatch = useDispatch();
   const history = useHistory();
   const followingArr = [...Object.values(following)];
-  console.log(followingArr);
   followingArr.forEach((follow) => {
-    console.log(follow);
     follow.name = follow.username;
     follow.link = `/${follow.username}`;
   });
@@ -82,6 +83,14 @@ function PostInput() {
   const { MentionSuggestions } = userMentionPlugin;
   const plugins = [userMentionPlugin];
 
+  const createPostHandler = () => {
+    const contentState = editorState.getCurrentContent();
+    const rawData = convertToRaw(contentState);
+    const userId = user.id;
+    setEditorState(EditorState.createEmpty());
+    dispatch(createPost(userId, JSON.stringify(rawData)));
+  };
+
   const focus = () => {
     ref.current.focus();
   };
@@ -103,6 +112,12 @@ function PostInput() {
           suggestions={suggestions}
           entryComponent={Entry}
         />
+      </div>
+      <div className="new-post-buttons">
+        <div className="util-buttons">UtilButtonsPlaceholder</div>
+        <button className="post-button" onClick={() => createPostHandler()}>
+          Post
+        </button>
       </div>
     </div>
   );
