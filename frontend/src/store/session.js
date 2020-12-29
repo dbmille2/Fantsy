@@ -3,6 +3,7 @@ import { fetch } from "./csrf.js";
 const SET_USER = "session/setUser";
 const REMOVE_USER = "session/removeUser";
 const LOAD_FOLLOWING = "session/loadFollowing";
+const LOAD_INFO = "session/loadInfo";
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -18,10 +19,21 @@ const loadFollowing = (following) => ({
   payload: following,
 });
 
+const loadInfo = (info) => ({
+  type: LOAD_INFO,
+  payload: info,
+});
+
 export const fetchFollowing = (username) => async (dispatch) => {
   const res = await fetch(`/api/users/${username}/following`);
   const following = res.data;
   dispatch(loadFollowing(following.following));
+};
+
+export const fetchInfo = (username) => async (dispatch) => {
+  const res = await fetch(`/api/users/${username}`);
+  const info = res.data;
+  dispatch(loadInfo(info));
 };
 
 export const login = ({ credential, password }) => async (dispatch) => {
@@ -36,7 +48,6 @@ export const login = ({ credential, password }) => async (dispatch) => {
 export const restoreUser = () => async (dispatch) => {
   const res = await fetch("/api/session");
   dispatch(setUser(res.data.user));
-  dispatch(fetchFollowing(res.data.user.username));
   return res;
 };
 
@@ -75,13 +86,43 @@ function reducer(state = initialState, action) {
     case REMOVE_USER:
       newState = Object.assign({}, state, { user: null });
       return newState;
-    case LOAD_FOLLOWING:
+    // case LOAD_FOLLOWING:
+    // const following = {};
+    // const followingArr = action.payload;
+    // followingArr.forEach((follow) => {
+    //   following[follow.id] = follow;
+    // });
+    // newState = Object.assign({}, state, { following });
+    // return newState;
+    case LOAD_INFO:
+      const info = action.payload.user;
+      const followers = {};
+      const followersArr = info.Followers;
+      followersArr.forEach((follower) => {
+        followers[follower.id] = follower;
+      });
       const following = {};
-      const followingArr = action.payload;
+      const followingArr = info.Following;
       followingArr.forEach((follow) => {
         following[follow.id] = follow;
       });
-      newState = Object.assign({}, state, { following });
+      const followedPlayers = {};
+      const playerArr = info.FollowedPlayers;
+      playerArr.forEach((player) => {
+        followedPlayers[player.id] = player;
+      });
+      const displayName = info.displayName;
+      const privateBool = info.private;
+      const preferences = info.UserPreference;
+
+      newState = Object.assign({}, state, {
+        followers,
+        following,
+        followedPlayers,
+        displayName,
+        privateBool,
+        preferences,
+      });
       return newState;
     default:
       return state;

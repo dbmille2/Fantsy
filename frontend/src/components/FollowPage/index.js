@@ -20,7 +20,7 @@ function FollowPage({ fState }) {
   }, [followState, profile]);
 
   return (
-    <div>
+    <div className="follow-page-container">
       <div className="follow-nav-container">
         <NavLink
           className="follow-nav-option"

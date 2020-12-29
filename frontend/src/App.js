@@ -5,10 +5,10 @@ import SignupFormPage from "./components/SignupFormPage";
 // import LoginFormPage from "./components/LoginFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
-import PostInput from "./components/PostInput";
 import ProfilePage from "./components/ProfilePage";
 import FollowPage from "./components/FollowPage";
 import NavHeader from "./components/NavHeader";
+import HomeContainer from "./components/HomeContainer";
 // import * as followActions from "./store/follows";
 import * as playerActions from "./store/players";
 
@@ -37,7 +37,7 @@ function App() {
             </Route>
             <Route path="/home">
               <NavHeader title="Home" />
-              {session.following && <PostInput />}
+              {session.user && <HomeContainer />}
             </Route>
             <Route exact path="/:username">
               <ProfilePage />

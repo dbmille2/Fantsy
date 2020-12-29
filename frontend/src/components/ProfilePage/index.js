@@ -25,7 +25,7 @@ function ProfilePage() {
         {profilePic && (
           <img
             className="profile-pic"
-            src={profilePic[0].imgUrl}
+            src={profilePic}
             alt="Profile"
           />
         )}

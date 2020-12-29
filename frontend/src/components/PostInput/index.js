@@ -5,17 +5,12 @@ import createMentionPlugin, {
   defaultSuggestionsFilter,
 } from "draft-js-mention-plugin";
 import "./PostInput.css";
+import "draft-js/dist/Draft.css";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 const Entry = (props) => {
-  const {
-    mention,
-    theme,
-    searchValue,
-    isFocused,
-    ...parentProps
-  } = props;
+  const { mention, theme, searchValue, isFocused, ...parentProps } = props;
 
   return (
     <div {...parentProps}>
@@ -23,7 +18,7 @@ const Entry = (props) => {
         <div className={theme.mentionSuggestionsEntry}>
           <div className={theme.mentionSuggestionsEntryContainerLeft}>
             <img
-              src={mention.ProfilePictures[0].imgUrl}
+              src={mention.UserPreference.profilePicUrl}
               className={theme.mentionSuggestionsEntryAvatar}
               role="presentation"
               alt="pic"
@@ -77,6 +72,7 @@ function PostInput() {
         mentionSuggestionsEntryText: "mentionSuggestionsEntryText",
         mentionSuggestionsEntryAvatar: "mentionSuggestionsEntryAvatar",
       },
+      mentionPrefix: "@",
       supportWhitespace: true,
     })
   );
@@ -95,6 +91,7 @@ function PostInput() {
       <div className="editor" onFocus={focus}>
         <Editor
           editorState={editorState}
+          placeholder="What's Happening?"
           onChange={(editorState) => setEditorState(editorState)}
           plugins={plugins}
           ref={(e) => (ref.current = e)}

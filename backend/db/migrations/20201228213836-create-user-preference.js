@@ -1,7 +1,7 @@
 "use strict";
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable("ProfilePictures", {
+    return queryInterface.createTable("UserPreferences", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -15,13 +15,20 @@ module.exports = {
           model: "Users",
         },
       },
-      imgUrl: {
+      theme: {
         allowNull: false,
         type: Sequelize.STRING,
       },
-      current: {
+      profilePicUrl: {
         allowNull: false,
-        type: Sequelize.BOOLEAN,
+        type: Sequelize.STRING,
+      },
+      bannerUrl: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
+      bioRawData: {
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,
@@ -36,6 +43,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("ProfilePictures");
+    return queryInterface.dropTable("UserPreferences");
   },
 };

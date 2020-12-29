@@ -1,12 +1,15 @@
 .editor {
   box-sizing: border-box;
   cursor: text;
-  padding: 16px;
+  margin-top: 24px;
+  padding: 0px 0px 30px 5px;
   border-radius: 2px;
-  margin-bottom: 2em;
+  margin-bottom: 10px;
+  margin-right: 10px;
   background-color: white;
   position: relative;
-  width: 500px;
+  width: 480px;
+  border-bottom: 1px solid rgb(235, 238, 240);
 }
 
 .editor :global(.public-DraftEditor-content) {
@@ -14,7 +17,7 @@
 }
 
 .mention {
-  color: #4a85bb;
+  color: rgb(29, 161, 242);
   text-decoration: none;
   cursor: pointer;
 }
@@ -60,7 +63,7 @@
 }
 
 .mentionSuggestionsEntryFocused {
-  composes: mentionSuggestionsEntry;
+  /* composes: mentionSuggestionsEntry; */
   background-color: #e6f3ff;
 }
 
@@ -71,8 +74,8 @@
   text-overflow: ellipsis;
 }
 
-.mentionSuggestionsEntryText {
-}
+/* .mentionSuggestionsEntryText {
+} */
 
 .mentionSuggestionsEntryTitle {
   font-size: 80%;
