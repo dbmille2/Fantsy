@@ -36,6 +36,7 @@ router.get(
       where: {
         userId: followingIds,
       },
+      order: [["createdAt", "DESC"]],
       limit: 20,
     });
     res.json({ posts });
