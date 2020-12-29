@@ -6,11 +6,11 @@
   width: 240px;
   position: absolute;
   top: 0;
-  left: -550px;
+  left: 120px;
 }
 
 .left-nav {
-  margin-top: 8px;
+  margin-top: 20px;
   margin-right: 15px;
   height: 100vh;
   position: fixed;

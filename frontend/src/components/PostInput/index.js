@@ -20,19 +20,18 @@ const Entry = (props) => {
           <div className={theme.mentionSuggestionsEntryContainerLeft}>
             <img
               src={mention.UserPreference.profilePicUrl}
-              className={theme.mentionSuggestionsEntryAvatar}
-              role="presentation"
+              className={theme.mentionSuggestionsEntryProfilePic}
               alt="pic"
             />
           </div>
 
           <div className={theme.mentionSuggestionsEntryContainerRight}>
-            <div className={theme.mentionSuggestionsEntryText}>
+            <div className={theme.mentionSuggestionsEntryDisplayName}>
               {mention.displayName}
             </div>
 
-            <div className={theme.mentionSuggestionsEntryTitle}>
-              {mention.username}
+            <div className={theme.mentionSuggestionsEntryUsername}>
+              @{mention.username}
             </div>
           </div>
         </div>
@@ -70,8 +69,9 @@ function PostInput() {
         mentionSuggestions: "mentionSuggestions",
         mentionSuggestionsEntry: "mentionSuggestionsEntry",
         mentionSuggestionsEntryFocused: "mentionSuggestionsEntryFocused",
-        mentionSuggestionsEntryText: "mentionSuggestionsEntryText",
-        mentionSuggestionsEntryAvatar: "mentionSuggestionsEntryAvatar",
+        mentionSuggestionsEntryDisplayName: "mentionSuggestionsEntryDisplayName",
+        mentionSuggestionsEntryUsername: "mentionSuggestionsEntryUsername",
+        mentionSuggestionsEntryProfilePic: "mentionSuggestionsEntryProfilePic",
       },
       mentionPrefix: "@",
       supportWhitespace: true,

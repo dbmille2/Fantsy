@@ -53,4 +53,21 @@ router.get(
     res.json({ posts });
   })
 );
+
+router.get(
+  "/:id",
+  asyncHandler(async (req, res) => {
+    const id = req.params.id;
+    const posts = await Post.findAll({
+      where: {
+        userId: id,
+      },
+      include: [{ model: User, include: [{ model: UserPreference }] }],
+      order: [["createdAt", "DESC"]],
+      limit: 20,
+    });
+    res.json({ posts });
+  })
+);
+
 module.exports = router;

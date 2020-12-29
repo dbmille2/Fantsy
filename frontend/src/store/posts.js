@@ -23,6 +23,12 @@ export const fetchFeed = (userId) => async (dispatch) => {
   dispatch(loadFeed(feed));
 };
 
+export const fetchProfileFeed = (userId) => async (dispatch) => {
+  const res = await fetch(`/api/posts/${userId}`);
+  const feed = res.data.posts;
+  dispatch(loadFeed(feed));
+};
+
 export const createPost = (userId, rawData) => async (dispatch) => {
   const body = { userId, rawData };
   const res = await fetch("/api/posts", {

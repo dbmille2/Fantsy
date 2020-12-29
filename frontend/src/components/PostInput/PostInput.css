@@ -47,17 +47,18 @@
   border-top: 1px solid #eee;
   background: #fff;
   border-radius: 2px;
+  width: 280px;
   cursor: pointer;
   padding-top: 8px;
   padding-bottom: 8px;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  border: 1px solid black;
-  position: absolute;
-  /* transform-origin: 50% 0%; */
-  /* transform: scaleY(0); */
-  /* margin: -16px; */
+  border: 1px solid rgb(235, 238, 240);
+  box-shadow: -1px -1px 10px 1px rgb(225, 225, 225);
+  transform: none !important;
+  position: absolute !important;
+  top: 30px !important;
 }
 
 .mentionSuggestionsEntryContainer {
@@ -77,37 +78,47 @@
 }
 
 .mentionSuggestionsEntry {
-  padding: 7px 10px 3px 10px;
-  /* transition: background-color 0.4s cubic-bezier(0.27, 1.27, 0.48, 0.56); */
+  display: flex;
+  align-items: center;
+  height: 50px;
+  border-bottom: 1px solid rgb(235, 238, 240);
+  transition-property: background-color;
+  transition-duration: 0.2s;
 }
 
 .mentionSuggestionsEntry:active {
-  background-color: #cce7ff;
+  background-color: rgb(247, 247, 247);
 }
 
 .mentionSuggestionsEntryFocused {
-  /* composes: mentionSuggestionsEntry; */
-  background-color: #e6f3ff;
+  background-color: rgb(247, 247, 247);
+  transition-property: background-color;
+  transition-duration: 0.2s;
 }
 
-.mentionSuggestionsEntryText,
-.mentionSuggestionsEntryTitle {
+.mentionSuggestionsEntryDisplayName,
+.mentionSuggestionsEntryUsername {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* .mentionSuggestionsEntryText {
-} */
-
-.mentionSuggestionsEntryTitle {
-  font-size: 80%;
-  color: #a7a7a7;
+.mentionSuggestionsEntryDisplayName {
+  color: black;
+  font-size: 14px;
+  font-weight: 600;
 }
 
-.mentionSuggestionsEntryAvatar {
-  display: block;
+.mentionSuggestionsEntryUsername {
+  font-size: 14px;
+  color: rgb(91, 112, 131);
+  font-weight: 350;
+}
+
+.mentionSuggestionsEntryProfilePic {
   width: 30px;
   height: 30px;
   border-radius: 50%;
+  margin-right: 8px;
+  margin-left: 12px;
 }

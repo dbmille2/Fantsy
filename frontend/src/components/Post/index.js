@@ -3,7 +3,6 @@ import Editor from "draft-js-plugins-editor";
 import { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import createMentionPlugin from "draft-js-mention-plugin";
-import "../PostInput/PostInput.css";
 import "./Post.css";
 
 function Post({ post }) {
@@ -31,8 +30,11 @@ function Post({ post }) {
     createMentionPlugin({
       mentionComponent: (mentionProps) => (
         <span
-          className={mentionProps.className}
-          onClick={() => history.push(`/${mentionProps.mention.username}`)}
+          className={`${mentionProps.className} post-mention`}
+          onClick={(event) => {
+            event.stopPropagation();
+            history.push(`/${mentionProps.mention.username}`);
+          }}
         >
           {mentionProps.children}
         </span>
@@ -43,6 +45,11 @@ function Post({ post }) {
       mentionPrefix: "@",
     })
   );
+
+  function postClickHandler(event) {
+    history.push(`/${username}/post/${post.id}`);
+  }
+
   const plugins = [userMentionPlugin];
   let data = JSON.parse(post.rawData);
   data = convertFromRaw(data);
@@ -51,11 +58,15 @@ function Post({ post }) {
   );
 
   return (
-    <div className="post-card">
+    <div className="post-card" onClick={(event) => postClickHandler(event)}>
       <img className="feed-profile-pic" src={profilePicUrl} alt="Profile" />
       <div className="post-content">
         <div className="post-header">
-          <Link className="post-user-links" to={`/${username}`}>
+          <Link
+            onClick={(event) => event.stopPropagation()}
+            className="post-user-links"
+            to={`/${username}`}
+          >
             <span className="feed-display-name">{displayName}</span>
             <span className="feed-username">@{username}</span>
             <span className="feed-timestamp-spacer">·</span>

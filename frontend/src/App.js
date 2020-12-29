@@ -23,9 +23,8 @@ function App() {
 
   return (
     <div className="full-page">
-      <div className="left-nav">
-        <Navigation isLoaded={isLoaded} />
-      </div>
+      <Navigation isLoaded={isLoaded} />
+
       <div className="main-content">
         {isLoaded && (
           <Switch>
@@ -40,6 +39,7 @@ function App() {
               {session.user && <HomeContainer />}
             </Route>
             <Route exact path="/:username">
+              <NavHeader title="Uhh" />
               <ProfilePage />
             </Route>
             <Route path="/:username/following">

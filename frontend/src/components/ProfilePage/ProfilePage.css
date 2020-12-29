@@ -2,16 +2,41 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  position: absolute;
+  top: 135px;
 }
 
 .profile-pic {
   width: 125px;
   margin-left: 15px;
   border-radius: 50%;
-  border: 5px solid white;
+  padding-left: 1px;
+  padding-top: 1px;
+  background-color: white;
+  border: 3px solid white;
 }
 
 .unfollow-button,
 .follow-button {
   margin: 0 15px 15px 0;
+}
+
+.full-profile-page {
+  border-left: 1px solid rgb(235, 238, 240);
+  border-right: 1px solid rgb(235, 238, 240);
+  height: 100%;
+  width: 561px;
+  margin-right: -1px;
+}
+
+.profile-heading {
+  margin-top: 50px;
+  width: 100%;
+  position: relative;
+}
+
+.banner {
+  width: 560px;
+  margin-right: 1px;
+  height: 200px;
 }

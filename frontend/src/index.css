@@ -24,9 +24,12 @@ body {
 .main-content {
   min-width: 560px;
   width: 560px;
-  border-right: 1px solid rgb(235, 238, 240);
-  border-left: 1px solid rgb(235, 238, 240);
-  height: 100vh;
+  height: 101vh;
   margin-top: 0px;
-  margin-left: -2px;
+  position: relative;
+}
+
+.right-nav {
+  position: fixed;
+  right: 0;
 }

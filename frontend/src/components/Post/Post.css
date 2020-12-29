@@ -5,10 +5,18 @@
   padding-top: 10px;
   padding-left: 14px;
   cursor: pointer;
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+
+.post-mention:hover {
+  text-decoration: underline;
 }
 
 .post-card:hover {
   background-color: rgb(247, 247, 247);
+  transition-property: background-color;
+  transition-duration: 0.2s;
 }
 
 .post-card-editor {
