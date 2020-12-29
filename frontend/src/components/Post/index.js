@@ -1,11 +1,31 @@
 import { EditorState, convertFromRaw } from "draft-js";
 import Editor from "draft-js-plugins-editor";
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import createMentionPlugin from "draft-js-mention-plugin";
 import "../PostInput/PostInput.css";
+import "./Post.css";
 
-function Post({ rawData }) {
+function Post({ post }) {
+  const profilePicUrl = post.User.UserPreference.profilePicUrl;
+  const displayName = post.User.displayName;
+  const username = post.User.username;
+  let createdAt = new Date(post.createdAt);
+  let now = new Date();
+  let elapsed = now - createdAt;
+  let timestamp;
+  if (elapsed < 1000) {
+    timestamp = `Now`;
+  } else if (elapsed < 60000) {
+    timestamp = `${Math.floor(elapsed / 1000)}s`;
+  } else if (elapsed < 3600000) {
+    timestamp = `${Math.floor(elapsed / 60000)}m`;
+  } else if (elapsed < 86400000) {
+    timestamp = `${Math.floor(elapsed / 3600000)}h`;
+  } else {
+    timestamp = createdAt.toDateString();
+  }
+
   const history = useHistory();
   const [userMentionPlugin] = useState(
     createMentionPlugin({
@@ -24,20 +44,33 @@ function Post({ rawData }) {
     })
   );
   const plugins = [userMentionPlugin];
-  let data = JSON.parse(rawData);
+  let data = JSON.parse(post.rawData);
   data = convertFromRaw(data);
   const [editorState, setEditorState] = useState(
     EditorState.createWithContent(data)
   );
 
   return (
-    <div>
-      <Editor
-        editorState={editorState}
-        readOnly={true}
-        plugins={plugins}
-        onChange={(editorState) => setEditorState(editorState)}
-      />
+    <div className="post-card">
+      <img className="feed-profile-pic" src={profilePicUrl} alt="Profile" />
+      <div className="post-content">
+        <div className="post-header">
+          <Link className="post-user-links" to={`/${username}`}>
+            <span className="feed-display-name">{displayName}</span>
+            <span className="feed-username">@{username}</span>
+            <span className="feed-timestamp-spacer">·</span>
+            <span className="feed-timestamp">{timestamp}</span>
+          </Link>
+        </div>
+        <div className="post-card-editor">
+          <Editor
+            editorState={editorState}
+            readOnly={true}
+            plugins={plugins}
+            onChange={(editorState) => setEditorState(editorState)}
+          />
+        </div>
+      </div>
     </div>
   );
 }

@@ -30,7 +30,7 @@ export const createPost = (userId, rawData) => async (dispatch) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),
   });
-  const newPost = res.data.newPost;
+  const newPost = res.data.fullPost;
   dispatch(loadNewPost(newPost));
 };
 

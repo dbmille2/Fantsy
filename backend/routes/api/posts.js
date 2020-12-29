@@ -1,6 +1,12 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
-const { User, Post, TaggedUser, TaggedPlayer } = require("../../db/models");
+const {
+  User,
+  Post,
+  TaggedUser,
+  TaggedPlayer,
+  UserPreference,
+} = require("../../db/models");
 
 const router = express.Router();
 
@@ -13,7 +19,11 @@ router.post(
       rawData,
       isReply,
     });
-    res.json({ newPost });
+    const fullPost = await Post.findOne({
+      where: { id: newPost.id },
+      include: [{ model: User, include: [{ model: UserPreference }] }],
+    });
+    res.json({ fullPost });
   })
 );
 
@@ -36,6 +46,7 @@ router.get(
       where: {
         userId: followingIds,
       },
+      include: [{ model: User, include: [{ model: UserPreference }] }],
       order: [["createdAt", "DESC"]],
       limit: 20,
     });

@@ -5,3 +5,7 @@
   height: 8px;
   background-color: rgb(247, 249, 250);
 }
+
+.home-container {
+  position: relative;
+}

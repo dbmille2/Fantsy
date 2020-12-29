@@ -1,0 +1,68 @@
+.post-card {
+  border-bottom: 1px solid rgb(235, 238, 240);
+  font-size: 14px;
+  display: flex;
+  padding-top: 10px;
+  padding-left: 14px;
+  cursor: pointer;
+}
+
+.post-card:hover {
+  background-color: rgb(247, 247, 247);
+}
+
+.post-card-editor {
+  box-sizing: border-box;
+  cursor: pointer;
+  padding: 4px 10px 30px 0px;
+  margin-bottom: 10px;
+  background-color: inherit;
+  position: relative;
+  width: 486px;
+}
+
+.feed-profile-pic {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+}
+
+.post-content {
+  display: flex;
+  flex-direction: column;
+  padding-left: 8px;
+}
+
+.post-user-links {
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.feed-display-name {
+  color: black;
+  font-weight: 600;
+}
+.feed-display-name:hover {
+  text-decoration: underline;
+}
+
+.feed-username {
+  color: rgb(91, 112, 131);
+  font-weight: 350;
+  margin-left: 5px;
+}
+
+.feed-timestamp {
+  color: rgb(91, 112, 131);
+  font-weight: 350;
+}
+
+.feed-timestamp-spacer {
+  color: rgb(91, 112, 131);
+  font-weight: 350;
+  padding: 0px 4px;
+}
+
+.feed-timestamp:hover {
+  text-decoration: underline;
+}
