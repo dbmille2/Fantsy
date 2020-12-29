@@ -1,0 +1,21 @@
+.post-button {
+  width: 72px;
+  height: 36px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  color: white;
+  background-color: rgb(29, 161, 242);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+
+.post-button:hover {
+  background-color: rgb(26, 145, 218);
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+
