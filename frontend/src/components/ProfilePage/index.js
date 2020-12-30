@@ -4,7 +4,9 @@ import { useEffect } from "react";
 import * as profileActions from "../../store/profile";
 import { Link, useHistory } from "react-router-dom";
 import FollowButton from "../FollowButton";
+import ProfilePostNav from "../ProfilePostNav";
 import ProfileFeedContainer from "../ProfileFeedContainer";
+import { months } from "./data";
 import "./ProfilePage.css";
 
 function ProfilePage() {
@@ -15,6 +17,9 @@ function ProfilePage() {
   const user = useSelector((state) => state.session.user);
   const isSelf = profile.isSelf;
   const profilePic = profile.profilePic;
+  let [month, _date, year] = new Date(profile.createdAt)
+    .toLocaleDateString("en-US")
+    .split("/");
 
   useEffect(() => {
     dispatch(profileActions.fetchProfile(username, user.id));
@@ -32,26 +37,39 @@ function ProfilePage() {
 
           {!isSelf && <FollowButton className="follow" />}
         </div>
-        <p>{profile.displayName}</p>
-        <p>@{profile.username}</p>
+        <div className="profile-info-container">
+          <div className="profile-display-name">{profile.displayName}</div>
+          <div className="profile-username">@{profile.username}</div>
+          <div className="profile-join-date">
+            <i className="far fa-calendar-alt" />
+            <span>
+              Joined {months[month - 1]} {year}
+            </span>
+          </div>
 
-        <span>
-          <Link to={`/${username}/following`}>
-            {profile.following && Object.keys(profile.following).length}{" "}
-            Following
+          <Link className="follow-container" to={`/${username}/following`}>
+            {profile.following && (
+              <span className="follow-number">
+                {Object.keys(profile.following).length}
+              </span>
+            )}
+            <span className="follow-text"> Following</span>
           </Link>
-        </span>
-        <span>
-          <Link to={`/${username}/followers`}>
-            {profile.followers && Object.keys(profile.followers).length}{" "}
-            Followers
+          <Link className="follow-container" to={`/${username}/followers`}>
+            {profile.followers && (
+              <span className="follow-number">
+                {Object.keys(profile.followers).length}
+              </span>
+            )}
+            <span className="follow-text"> Followers</span>
           </Link>
-        </span>
-        <div>
-          <button onClick={() => history.goBack()}>Go Back</button>
         </div>
+
+        {/* <div>
+          <button onClick={() => history.goBack()}>Go Back</button>
+        </div> */}
       </div>
-      <div className="profile-nav-container"></div>
+      {profile && <ProfilePostNav />}
       {profile.id && <ProfileFeedContainer />}
     </div>
   );

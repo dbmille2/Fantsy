@@ -59,7 +59,9 @@ function Post({ post }) {
 
   return (
     <div className="post-card" onClick={(event) => postClickHandler(event)}>
-      <img className="feed-profile-pic" src={profilePicUrl} alt="Profile" />
+      <Link onClick={(event) => event.stopPropagation()} to={`/${username}`}>
+        <img className="feed-profile-pic" src={profilePicUrl} alt="Profile" />
+      </Link>
       <div className="post-content">
         <div className="post-header">
           <Link

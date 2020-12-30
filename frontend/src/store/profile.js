@@ -69,12 +69,14 @@ function reducer(state = {}, action) {
       }
       const isFollowing = currentUser in followers;
       const isSelf = currentUser === profile.id;
+      console.log(profile);
       newState = Object.assign({}, state, {
         id: profile.id,
         username: profile.username,
         displayName: profile.displayName,
         profilePic: profile.UserPreference.profilePicUrl,
         banner: profile.UserPreference.bannerUrl,
+        createdAt: profile.createdAt,
         followers,
         following,
         followedPlayers,

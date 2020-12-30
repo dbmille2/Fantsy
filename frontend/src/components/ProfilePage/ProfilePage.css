@@ -4,16 +4,15 @@
   align-items: flex-end;
   position: absolute;
   top: 135px;
+  width: 100%;
 }
 
 .profile-pic {
   width: 125px;
-  margin-left: 15px;
+  margin-left: 10px;
   border-radius: 50%;
-  padding-left: 1px;
-  padding-top: 1px;
   background-color: white;
-  border: 3px solid white;
+  border: 4px solid white;
 }
 
 .unfollow-button,
@@ -33,10 +32,57 @@
   margin-top: 50px;
   width: 100%;
   position: relative;
+  margin-bottom: 15px;
 }
 
 .banner {
   width: 560px;
   margin-right: 1px;
   height: 200px;
+}
+
+.profile-info-container {
+  margin-top: 60px;
+  margin-left: 14px;
+}
+
+.profile-display-name {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 1px;
+}
+
+.profile-username {
+  color: rgb(91, 112, 131);
+  font-weight: 350;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.fa-calendar-alt {
+  margin-right: 5px;
+}
+
+.profile-join-date {
+  color: rgb(91, 112, 131);
+  font-weight: 350;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.follow-container {
+  text-decoration: none;
+  color: rgb(91, 112, 131);
+  font-weight: 350;
+  font-size: 14px;
+  margin-right: 16px;
+}
+
+.follow-container:hover {
+  text-decoration: underline;
+}
+
+.follow-number {
+  color: black;
+  font-weight: 700;
 }

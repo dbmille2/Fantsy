@@ -33,6 +33,15 @@
   width: 46px;
   height: 46px;
   border-radius: 50%;
+  filter: brightness(100%);
+  transition-property: filter;
+  transition-duration: 0.15s;
+}
+
+.feed-profile-pic:hover {
+  filter: brightness(85%);
+  transition-property: filter;
+  transition-duration: 0.15s;
 }
 
 .post-content {
