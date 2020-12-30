@@ -9,6 +9,7 @@ function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
   let navLinks;
   let sessionLinks;
+  let postModalButton = <button className="post-modal-button">Post</button>;
   if (sessionUser) {
     sessionLinks = (
       <div className="profile-button">
@@ -123,6 +124,7 @@ function Navigation({ isLoaded }) {
         </NavLink>
         <ul className="left-nav-container">{isLoaded && navLinks}</ul>
         {isLoaded && sessionLinks}
+        {isLoaded && sessionUser && postModalButton}
       </div>
     </div>
   );

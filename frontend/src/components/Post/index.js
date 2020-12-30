@@ -1,11 +1,14 @@
 import { EditorState, convertFromRaw } from "draft-js";
 import Editor from "draft-js-plugins-editor";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import createMentionPlugin from "draft-js-mention-plugin";
+import { starPost, unStarPost } from "../../store/posts";
 import "./Post.css";
 
 function Post({ post }) {
+  const user = useSelector((state) => state.session.user);
   const profilePicUrl = post.User.UserPreference.profilePicUrl;
   const displayName = post.User.displayName;
   const username = post.User.username;
@@ -22,10 +25,11 @@ function Post({ post }) {
   } else if (elapsed < 86400000) {
     timestamp = `${Math.floor(elapsed / 3600000)}h`;
   } else {
-    timestamp = createdAt.toDateString();
+    timestamp = createdAt.toDateString().split(" ").splice(1, 2).join(" ");
   }
 
   const history = useHistory();
+  const dispatch = useDispatch();
   const [userMentionPlugin] = useState(
     createMentionPlugin({
       mentionComponent: (mentionProps) => (
@@ -48,8 +52,20 @@ function Post({ post }) {
 
   const [commentHovered, setCommentHovered] = useState(false);
   const [starHovered, setStarHovered] = useState(false);
+  const [starred, setStarred] = useState(post.stars[user.id] !== undefined);
 
-  function postClickHandler(event) {
+  function starPostHandler(event) {
+    event.stopPropagation();
+    if (!starred) {
+      dispatch(starPost(post.id, user.id));
+      setStarred(true);
+    } else {
+      dispatch(unStarPost(post.id, user.id));
+      setStarred(false);
+    }
+  }
+
+  function postClickHandler() {
     history.push(`/${username}/post/${post.id}`);
   }
 
@@ -113,16 +129,24 @@ function Post({ post }) {
         <div
           onMouseOver={() => setStarHovered(true)}
           onMouseOut={() => setStarHovered(false)}
-          className="star-button"
+          onClick={(event) => starPostHandler(event)}
+          className={starred ? "star-button starred" : "star-button"}
         >
           <div
             className={
               starHovered ? "star-wrapper star-hovered" : "star-wrapper"
             }
           >
-            <i id="star-logo" className="far fa-heart"></i>
+            <i
+              id="star-logo"
+              className={starred ? "fas fa-heart" : "far fa-heart"}
+            ></i>
           </div>
-          <span className="number-stars">4</span>
+          {post.stars && Object.keys(post.stars).length > 0 && (
+            <span className="number-stars">
+              {Object.keys(post.stars).length}
+            </span>
+          )}
         </div>
         <div className="save-button">
           <i id="save-logo" className="far fa-bookmark"></i>

@@ -76,6 +76,28 @@
   color: rgb(29, 161, 242);
 }
 
+.post-modal-button {
+  width: 190px;
+  height: 45px;
+  margin-top: 15px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  color: white;
+  background-color: rgb(29, 161, 242);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+
+.post-modal-button:hover {
+  background-color: rgb(26, 145, 218);
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+
 .profile-button {
   position: absolute;
   bottom: 200px;

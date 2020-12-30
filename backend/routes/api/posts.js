@@ -5,6 +5,7 @@ const {
   Post,
   TaggedUser,
   TaggedPlayer,
+  StarredPost,
   UserPreference,
 } = require("../../db/models");
 
@@ -21,7 +22,10 @@ router.post(
     });
     const fullPost = await Post.findOne({
       where: { id: newPost.id },
-      include: [{ model: User, include: [{ model: UserPreference }] }],
+      include: [
+        { model: User, include: [{ model: UserPreference }] },
+        { model: User, as: "Stars" },
+      ],
     });
     res.json({ fullPost });
   })
@@ -46,11 +50,50 @@ router.get(
       where: {
         userId: followingIds,
       },
-      include: [{ model: User, include: [{ model: UserPreference }] }],
+      include: [
+        { model: User, include: [{ model: UserPreference }] },
+        { model: User, as: "Stars" },
+      ],
       order: [["createdAt", "DESC"]],
       limit: 20,
     });
     res.json({ posts });
+  })
+);
+
+router.put(
+  "/:postId/star",
+  asyncHandler(async (req, res) => {
+    const postId = req.params.postId;
+    const { userId } = req.body;
+    await StarredPost.create({
+      postId,
+      userId,
+    });
+    const updatedPost = await Post.findOne({
+      where: { id: postId },
+      include: [
+        { model: User, include: [{ model: UserPreference }] },
+        { model: User, as: "Stars" },
+      ],
+    });
+    res.json({ updatedPost });
+  })
+);
+
+router.put(
+  "/:postId/unstar",
+  asyncHandler(async (req, res) => {
+    const postId = req.params.postId;
+    const { userId } = req.body;
+    const post = await StarredPost.findOne({
+      where: {
+        postId,
+        userId,
+      },
+    });
+    await post.destroy();
+    res.json({ message: "deleted" });
   })
 );
 
@@ -62,7 +105,10 @@ router.get(
       where: {
         userId: id,
       },
-      include: [{ model: User, include: [{ model: UserPreference }] }],
+      include: [
+        { model: User, include: [{ model: UserPreference }] },
+        { model: User, as: "Stars" },
+      ],
       order: [["createdAt", "DESC"]],
       limit: 20,
     });
