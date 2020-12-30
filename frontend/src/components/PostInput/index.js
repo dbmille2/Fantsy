@@ -69,7 +69,8 @@ function PostInput() {
         mentionSuggestions: "mentionSuggestions",
         mentionSuggestionsEntry: "mentionSuggestionsEntry",
         mentionSuggestionsEntryFocused: "mentionSuggestionsEntryFocused",
-        mentionSuggestionsEntryDisplayName: "mentionSuggestionsEntryDisplayName",
+        mentionSuggestionsEntryDisplayName:
+          "mentionSuggestionsEntryDisplayName",
         mentionSuggestionsEntryUsername: "mentionSuggestionsEntryUsername",
         mentionSuggestionsEntryProfilePic: "mentionSuggestionsEntryProfilePic",
       },
@@ -114,7 +115,7 @@ function PostInput() {
         />
       </div>
       <div className="new-post-buttons">
-        <div className="util-buttons">UtilButtonsPlaceholder</div>
+        <div className="util-buttons"></div>
         <button className="post-button" onClick={() => createPostHandler()}>
           Post
         </button>
