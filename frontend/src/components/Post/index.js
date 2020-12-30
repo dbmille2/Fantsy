@@ -1,6 +1,6 @@
 import { EditorState, convertFromRaw } from "draft-js";
 import Editor from "draft-js-plugins-editor";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import createMentionPlugin from "draft-js-mention-plugin";

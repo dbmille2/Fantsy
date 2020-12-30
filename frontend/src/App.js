@@ -43,13 +43,17 @@ function App() {
             </Route>
             <Route exact path="/:username">
               <NavHeader title="Uhh" />
-              <ProfilePage />
+              <ProfilePage tab={"posts"} />
             </Route>
             <Route path="/:username/following">
               <FollowPage fState={false} />
             </Route>
             <Route path="/:username/followers">
               <FollowPage fState={true} />
+            </Route>
+            <Route path="/:username/likes">
+              <NavHeader title="Uhh" />
+              <ProfilePage tab={"likes"} />
             </Route>
           </Switch>
         )}

@@ -2,15 +2,19 @@ import HomeFeed from "../HomeFeed";
 import "./ProfileFeedContainer.css";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProfileFeed } from "../../store/posts";
+import { fetchProfileFeed, fetchLikesFeed } from "../../store/posts";
 
-function ProfileFeedContainer() {
+function ProfileFeedContainer({ tab }) {
   const dispatch = useDispatch();
   const profile = useSelector((state) => state.profile);
   const posts = useSelector((state) => state.posts);
   useEffect(() => {
-    dispatch(fetchProfileFeed(profile.id));
-  }, [dispatch, profile]);
+    if (tab === "posts") {
+      dispatch(fetchProfileFeed(profile.id));
+    } else if (tab === "likes") {
+      dispatch(fetchLikesFeed(profile.id));
+    }
+  }, [dispatch, profile, tab]);
   return (
     <div className="profile-feed-container">{posts.feed && <HomeFeed />}</div>
   );

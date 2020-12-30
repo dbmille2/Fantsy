@@ -3,7 +3,7 @@ import { fetch } from "./csrf.js";
 const LOAD_FEED = "posts/loadFeed";
 const CREATE_POST = "posts/createPost";
 const STAR_POST = "posts/starPost";
-const UNSTAR_POST = "posts/unSStarPost";
+const UNSTAR_POST = "posts/unStarPost";
 
 const loadNewPost = (post) => ({
   type: CREATE_POST,
@@ -42,6 +42,12 @@ export const fetchFeed = (userId) => async (dispatch) => {
 
 export const fetchProfileFeed = (userId) => async (dispatch) => {
   const res = await fetch(`/api/posts/${userId}`);
+  const feed = res.data.posts;
+  dispatch(loadFeed(feed));
+};
+
+export const fetchLikesFeed = (userId) => async (dispatch) => {
+  const res = await fetch(`/api/posts/${userId}/likes`);
   const feed = res.data.posts;
   dispatch(loadFeed(feed));
 };

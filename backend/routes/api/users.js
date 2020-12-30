@@ -65,7 +65,6 @@ router.get(
         { model: UserPreference },
       ],
     });
-    console.log(user);
     res.json({ user });
   })
 );

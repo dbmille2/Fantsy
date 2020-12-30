@@ -61,6 +61,62 @@ router.get(
   })
 );
 
+router.get(
+  "/:id/feed/:page",
+  asyncHandler(async (req, res) => {
+    const id = req.params.id;
+    const page = Number(req.params.page);
+    const user = await User.findOne({
+      where: { id },
+      include: [
+        {
+          model: User,
+          as: "Following",
+        },
+      ],
+    });
+    let followingIds = user.Following.map((follow) => follow.id);
+    followingIds = [...followingIds, id];
+    const posts = await Post.findAll({
+      where: {
+        userId: followingIds,
+      },
+      include: [
+        { model: User, include: [{ model: UserPreference }] },
+        { model: User, as: "Stars" },
+      ],
+      order: [["createdAt", "DESC"]],
+      offset: (page - 1) * 20,
+      limit: 20,
+    });
+    res.json({ posts });
+  })
+);
+
+router.get(
+  "/:id/likes",
+  asyncHandler(async (req, res) => {
+    const id = req.params.id;
+    const user = await User.findOne({
+      where: { id },
+      include: [
+        {
+          model: Post,
+          as: "StarredPosts",
+          include: [
+            { model: User, include: [{ model: UserPreference }] },
+            { model: User, as: "Stars" },
+          ],
+        },
+      ],
+      order: [["createdAt", "DESC"]],
+      limit: 20,
+    });
+    const posts = user.StarredPosts;
+    res.json({ posts });
+  })
+);
+
 router.put(
   "/:postId/star",
   asyncHandler(async (req, res) => {

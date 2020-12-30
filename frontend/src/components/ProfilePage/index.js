@@ -2,17 +2,16 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import * as profileActions from "../../store/profile";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import FollowButton from "../FollowButton";
 import ProfilePostNav from "../ProfilePostNav";
 import ProfileFeedContainer from "../ProfileFeedContainer";
 import { months } from "./data";
 import "./ProfilePage.css";
 
-function ProfilePage() {
+function ProfilePage({ tab }) {
   let { username } = useParams();
   const dispatch = useDispatch();
-  const history = useHistory();
   const profile = useSelector((state) => state.profile);
   const user = useSelector((state) => state.session.user);
   const isSelf = profile.isSelf;
@@ -70,7 +69,7 @@ function ProfilePage() {
         </div> */}
       </div>
       {profile && <ProfilePostNav />}
-      {profile.id && <ProfileFeedContainer />}
+      {profile.id && <ProfileFeedContainer tab={tab} />}
     </div>
   );
 }
