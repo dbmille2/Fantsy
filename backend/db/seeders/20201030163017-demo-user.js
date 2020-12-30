@@ -9,8 +9,8 @@ module.exports = {
       [
         {
           email: "demo@user.io",
-          username: "dbmille2",
-          displayName: "Daniel Miller",
+          username: "demo",
+          displayName: "Demo User",
           hashedPassword: bcrypt.hashSync("password"),
         },
         {
