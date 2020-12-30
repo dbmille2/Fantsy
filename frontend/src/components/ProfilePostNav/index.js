@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import ProfileListItem from "../ProfileListItem";
+// import ProfileListItem from "../ProfileListItem";
 import { NavLink } from "react-router-dom";
 import "./ProfilePostNav.css";
 

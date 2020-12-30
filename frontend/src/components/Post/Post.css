@@ -1,19 +1,22 @@
-.post-card {
+.post-card-container {
   border-bottom: 1px solid rgb(235, 238, 240);
+  cursor: pointer;
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+
+.post-card {
   font-size: 14px;
   display: flex;
   padding-top: 10px;
   padding-left: 14px;
-  cursor: pointer;
-  transition-property: background-color;
-  transition-duration: 0.2s;
 }
 
 .post-mention:hover {
   text-decoration: underline;
 }
 
-.post-card:hover {
+.post-card-container:hover {
   background-color: rgb(247, 247, 247);
   transition-property: background-color;
   transition-duration: 0.2s;
@@ -22,8 +25,8 @@
 .post-card-editor {
   box-sizing: border-box;
   cursor: pointer;
-  padding: 4px 10px 30px 0px;
-  margin-bottom: 10px;
+  padding: 4px 10px 10px 0px;
+  margin-bottom: 2px;
   background-color: inherit;
   position: relative;
   width: 486px;
@@ -82,4 +85,88 @@
 
 .feed-timestamp:hover {
   text-decoration: underline;
+}
+
+.post-interactions {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: rgb(91, 112, 131);
+  font-weight: 250;
+  font-size: 14px;
+  margin-right: 40px;
+  margin-bottom: 6px;
+  margin-left: 2px;
+}
+
+.number-comments,
+.number-stars {
+  padding: 8px 8px 8px 0px;
+}
+
+.comment-button:hover {
+  color: rgb(29, 161, 242);
+  transition-property: color;
+  transition-duration: 0.2s;
+}
+
+.comment-button {
+  display: flex;
+  transition-property: color;
+  transition-duration: 0.2s;
+}
+
+.comment-wrapper {
+  padding: 8px;
+  border-radius: 50%;
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+
+.comment-hovered {
+  border-radius: 50%;
+  background-color: rgb(225, 238, 247);
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+
+.star-button {
+  display: flex;
+  transition-property: color;
+  transition-duration: 0.2s;
+}
+
+.star-wrapper {
+  padding: 8px;
+  border-radius: 50%;
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+
+.star-button:hover {
+  color: rgb(224, 36, 94);
+  transition-property: color;
+  transition-duration: 0.2s;
+}
+
+.star-hovered {
+  border-radius: 50%;
+  background-color: rgb(245, 226, 232);
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+
+.save-button {
+  padding: 8px 10px;
+  border-radius: 50%;
+  transition-property: background-color, color;
+  transition-duration: 0.2s;
+}
+
+.save-button:hover {
+  color: rgb(23, 191, 99);
+  background-color: rgb(224, 241, 232);
+  border-radius: 50%;
+  transition-property: background-color, color;
+  transition-duration: 0.2s;
 }

@@ -46,6 +46,9 @@ function Post({ post }) {
     })
   );
 
+  const [commentHovered, setCommentHovered] = useState(false);
+  const [starHovered, setStarHovered] = useState(false);
+
   function postClickHandler(event) {
     history.push(`/${username}/post/${post.id}`);
   }
@@ -58,30 +61,71 @@ function Post({ post }) {
   );
 
   return (
-    <div className="post-card" onClick={(event) => postClickHandler(event)}>
-      <Link onClick={(event) => event.stopPropagation()} to={`/${username}`}>
-        <img className="feed-profile-pic" src={profilePicUrl} alt="Profile" />
-      </Link>
-      <div className="post-content">
-        <div className="post-header">
-          <Link
-            onClick={(event) => event.stopPropagation()}
-            className="post-user-links"
-            to={`/${username}`}
-          >
-            <span className="feed-display-name">{displayName}</span>
-            <span className="feed-username">@{username}</span>
-            <span className="feed-timestamp-spacer">·</span>
-            <span className="feed-timestamp">{timestamp}</span>
-          </Link>
+    <div
+      className="post-card-container"
+      onClick={(event) => postClickHandler(event)}
+    >
+      <div className="post-card">
+        <Link onClick={(event) => event.stopPropagation()} to={`/${username}`}>
+          <img className="feed-profile-pic" src={profilePicUrl} alt="Profile" />
+        </Link>
+        <div className="post-content">
+          <div className="post-header">
+            <Link
+              onClick={(event) => event.stopPropagation()}
+              className="post-user-links"
+              to={`/${username}`}
+            >
+              <span className="feed-display-name">{displayName}</span>
+              <span className="feed-username">@{username}</span>
+              <span className="feed-timestamp-spacer">·</span>
+              <span className="feed-timestamp">{timestamp}</span>
+            </Link>
+          </div>
+          <div className="post-card-editor">
+            <Editor
+              editorState={editorState}
+              readOnly={true}
+              plugins={plugins}
+              onChange={(editorState) => setEditorState(editorState)}
+            />
+          </div>
         </div>
-        <div className="post-card-editor">
-          <Editor
-            editorState={editorState}
-            readOnly={true}
-            plugins={plugins}
-            onChange={(editorState) => setEditorState(editorState)}
-          />
+      </div>
+      <div className="post-interactions">
+        <div
+          onMouseOver={() => setCommentHovered(true)}
+          onMouseOut={() => setCommentHovered(false)}
+          className="comment-button"
+        >
+          <div
+            className={
+              commentHovered
+                ? "comment-wrapper comment-hovered"
+                : "comment-wrapper"
+            }
+          >
+            <i id="comment-logo" className="far fa-comment"></i>
+          </div>
+          <span className="number-comments">4</span>
+        </div>
+
+        <div
+          onMouseOver={() => setStarHovered(true)}
+          onMouseOut={() => setStarHovered(false)}
+          className="star-button"
+        >
+          <div
+            className={
+              starHovered ? "star-wrapper star-hovered" : "star-wrapper"
+            }
+          >
+            <i id="star-logo" className="far fa-heart"></i>
+          </div>
+          <span className="number-stars">4</span>
+        </div>
+        <div className="save-button">
+          <i id="save-logo" className="far fa-bookmark"></i>
         </div>
       </div>
     </div>

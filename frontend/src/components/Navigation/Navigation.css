@@ -31,7 +31,6 @@
   transition-property: background-color, color;
   transition-duration: 0.2s;
   border-radius: 50%;
-  /* margin-bottom: px; */
 }
 
 .home-logo:hover {
@@ -45,7 +44,6 @@
 .left-nav-container li {
   list-style: none;
   padding-right: 30px;
-  /* margin-top: 15px; */
   margin-bottom: 15px;
   font-weight: 650;
   display: flex;
