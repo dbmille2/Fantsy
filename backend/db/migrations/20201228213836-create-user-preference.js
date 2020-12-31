@@ -18,14 +18,19 @@ module.exports = {
       theme: {
         allowNull: false,
         type: Sequelize.STRING,
+        defaultValue: "light",
       },
       profilePicUrl: {
         allowNull: false,
         type: Sequelize.STRING,
+        defaultValue:
+          "https://twirpz.files.wordpress.com/2015/06/twitter-avi-gender-balanced-figure.png",
       },
       bannerUrl: {
         allowNull: false,
         type: Sequelize.STRING,
+        defaultValue:
+          "https://cdn.cms-twdigitalassets.com/content/dam/blog-twitter/official/en_us/products/2017/rethinking-our-default-profile-photo/Avatar-Blog4-Progress.png.img.fullhd.medium.png",
       },
       bioRawData: {
         type: Sequelize.STRING,
