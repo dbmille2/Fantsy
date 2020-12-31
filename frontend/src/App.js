@@ -9,12 +9,14 @@ import ProfilePage from "./components/ProfilePage";
 import FollowPage from "./components/FollowPage";
 import NavHeader from "./components/NavHeader";
 import HomeContainer from "./components/HomeContainer";
+import SavedPostsContainer from "./components/SavedPostsContainer";
 // import * as followActions from "./store/follows";
 import * as playerActions from "./store/players";
 
 function App() {
   const dispatch = useDispatch();
   const session = useSelector((state) => state.session);
+  const profile = useSelector((state) => state.profile);
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
@@ -42,18 +44,24 @@ function App() {
               {session.user && <HomeContainer />}
             </Route>
             <Route exact path="/:username">
-              <NavHeader title="Uhh" />
+              <NavHeader title={profile.displayName} subTitle={"posts"} />
               <ProfilePage tab={"posts"} />
             </Route>
             <Route path="/:username/following">
+              <NavHeader title={profile.displayName} subTitle={"posts"} />
               <FollowPage fState={false} />
             </Route>
             <Route path="/:username/followers">
+              <NavHeader title={profile.displayName} subTitle={"posts"} />
               <FollowPage fState={true} />
             </Route>
             <Route path="/:username/likes">
-              <NavHeader title="Uhh" />
+              <NavHeader title={profile.displayName} subTitle={"likes"} />
               <ProfilePage tab={"likes"} />
+            </Route>
+            <Route path="/i/saved">
+              <NavHeader title="Saved" subTitle="posts" />
+              <SavedPostsContainer />
             </Route>
           </Switch>
         )}

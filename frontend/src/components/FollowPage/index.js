@@ -38,7 +38,7 @@ function FollowPage({ fState }) {
           Following
         </NavLink>
       </div>
-      <ul>
+      <ul className="followers-feed-container">
         {group &&
           Object.values(group).map((profile) => (
             <li key={profile.id}>

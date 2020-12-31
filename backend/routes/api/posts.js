@@ -6,6 +6,7 @@ const {
   TaggedUser,
   TaggedPlayer,
   StarredPost,
+  SavedPost,
   UserPreference,
 } = require("../../db/models");
 
@@ -22,10 +23,7 @@ router.post(
     });
     const fullPost = await Post.findOne({
       where: { id: newPost.id },
-      include: [
-        { model: User, include: [{ model: UserPreference }] },
-        { model: User, as: "Stars" },
-      ],
+      include: [{ model: User, include: [{ model: UserPreference }] }],
     });
     res.json({ fullPost });
   })
@@ -150,6 +148,66 @@ router.put(
     });
     await post.destroy();
     res.json({ message: "deleted" });
+  })
+);
+
+router.put(
+  "/:postId/save",
+  asyncHandler(async (req, res) => {
+    const postId = req.params.postId;
+    const { userId } = req.body;
+    await SavedPost.create({
+      postId,
+      userId,
+    });
+    const updatedPost = await Post.findOne({
+      where: { id: postId },
+      include: [
+        { model: User, include: [{ model: UserPreference }] },
+        { model: User, as: "Stars" },
+      ],
+    });
+    res.json({ updatedPost });
+  })
+);
+
+router.put(
+  "/:postId/unsave",
+  asyncHandler(async (req, res) => {
+    const postId = req.params.postId;
+    const { userId } = req.body;
+    const post = await SavedPost.findOne({
+      where: {
+        postId,
+        userId,
+      },
+    });
+    await post.destroy();
+    res.json({ message: "deleted" });
+  })
+);
+
+router.get(
+  "/:id/saved",
+  asyncHandler(async (req, res) => {
+    const id = req.params.id;
+    const user = await User.findOne({
+      where: { id },
+      include: [
+        {
+          model: Post,
+          as: "SavedPosts",
+          include: [
+            { model: User, include: [{ model: UserPreference }] },
+            { model: User, as: "Stars" },
+          ],
+        },
+      ],
+      order: [["createdAt", "DESC"]],
+      limit: 20,
+    });
+    const posts = user.SavedPosts;
+    res.json({ posts });
   })
 );
 

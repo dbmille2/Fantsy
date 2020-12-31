@@ -106,11 +106,16 @@ function reducer(state = initialState, action) {
       const displayName = info.displayName;
       const privateBool = info.private;
       const preferences = info.UserPreference;
-
+      const savedPosts = {};
+      const savedPostsArr = info.SavedPosts;
+      savedPostsArr.forEach((post) => {
+        savedPosts[post.id] = post.id;
+      });
       newState = Object.assign({}, state, {
         followers,
         following,
         followedPlayers,
+        savedPosts,
         displayName,
         privateBool,
         preferences,

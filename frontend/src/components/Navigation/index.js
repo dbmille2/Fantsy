@@ -56,7 +56,7 @@ function Navigation({ isLoaded }) {
         <li>
           <NavLink
             exact
-            to="/saved"
+            to="/i/saved"
             className="left-nav-option"
             activeClassName="left-nav-active"
           >

@@ -10,15 +10,17 @@ function HomeContainer() {
   const dispatch = useDispatch();
   const session = useSelector((state) => state.session);
   const posts = useSelector((state) => state.posts);
+
   useEffect(() => {
-    dispatch(fetchInfo(session.user.username));
     dispatch(fetchFeed(session.user.id));
+    dispatch(fetchInfo(session.user.username));
+    // ;
   }, [dispatch, session.user]);
   return (
     <div className="home-container">
       {session.following && <NewPost />}
       <div className="home-spacer"></div>
-      {posts.feed && <HomeFeed />}
+      {posts && <HomeFeed user={session.user} />}
     </div>
   );
 }

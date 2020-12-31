@@ -4,7 +4,13 @@ const asyncHandler = require("express-async-handler");
 
 const { handleValidationErrors } = require("../../utils/validation");
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
-const { User, UserFollow, Player, UserPreference } = require("../../db/models");
+const {
+  User,
+  UserFollow,
+  Player,
+  UserPreference,
+  Post,
+} = require("../../db/models");
 
 const router = express.Router();
 
@@ -63,6 +69,10 @@ router.get(
           as: "FollowedPlayers",
         },
         { model: UserPreference },
+        {
+          model: Post,
+          as: "SavedPosts",
+        },
       ],
     });
     res.json({ user });

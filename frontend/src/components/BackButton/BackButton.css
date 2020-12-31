@@ -1,0 +1,19 @@
+.back-button {
+  border: none;
+  background-color: white;
+  color: rgb(29, 161, 242);
+  border-radius: 50%;
+  font-size: 16px;
+  margin-right: 22px;
+  padding: 7px 9px 6px 9px;
+  transition-property: background-color;
+  transition-duration: 0.2s;
+  cursor: pointer;
+  outline: none;
+}
+
+.back-button:hover {
+  background-color: rgb(232, 245, 254);
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}

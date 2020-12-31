@@ -137,7 +137,7 @@
 }
 
 .star-button.starred {
-  color: rgb(224, 36, 94)
+  color: rgb(224, 36, 94);
 }
 
 .star-wrapper {
@@ -173,4 +173,8 @@
   border-radius: 50%;
   transition-property: background-color, color;
   transition-duration: 0.2s;
+}
+
+.save-button.saved {
+  color: rgb(23, 191, 99);
 }

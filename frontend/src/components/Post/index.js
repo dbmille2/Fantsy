@@ -5,10 +5,12 @@ import { useHistory, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import createMentionPlugin from "draft-js-mention-plugin";
 import { starPost, unStarPost } from "../../store/posts";
+import { savePost, unSavePost } from "../../store/posts";
 import "./Post.css";
 
 function Post({ post }) {
-  const user = useSelector((state) => state.session.user);
+  const session = useSelector((state) => state.session);
+  const user = session.user;
   const profilePicUrl = post.User.UserPreference.profilePicUrl;
   const displayName = post.User.displayName;
   const username = post.User.username;
@@ -50,9 +52,31 @@ function Post({ post }) {
     })
   );
 
+  const [playerMentionPlugin] = useState(
+    createMentionPlugin({
+      mentionComponent: (mentionProps) => (
+        <span
+          className={`${mentionProps.className} post-mention`}
+          onClick={(event) => {
+            event.stopPropagation();
+            history.push(`/players/${mentionProps.mention.tagName}`);
+          }}
+        >
+          {mentionProps.children}
+        </span>
+      ),
+      theme: {
+        mention: "mention",
+      },
+      mentionTrigger: "#",
+      mentionPrefix: "#",
+    })
+  );
+
   const [commentHovered, setCommentHovered] = useState(false);
   const [starHovered, setStarHovered] = useState(false);
   const [starred, setStarred] = useState(post.stars[user.id] !== undefined);
+  const [saved, setSaved] = useState(session.savedPosts[post.id] === post.id);
 
   function starPostHandler(event) {
     event.stopPropagation();
@@ -65,11 +89,22 @@ function Post({ post }) {
     }
   }
 
+  function savePostHandler(event) {
+    event.stopPropagation();
+    if (!saved) {
+      dispatch(savePost(post.id, user.id));
+      setSaved(true);
+    } else {
+      dispatch(unSavePost(post.id, user.id));
+      setSaved(false);
+    }
+  }
+
   function postClickHandler() {
     history.push(`/${username}/post/${post.id}`);
   }
 
-  const plugins = [userMentionPlugin];
+  const plugins = [userMentionPlugin, playerMentionPlugin];
   let data = JSON.parse(post.rawData);
   data = convertFromRaw(data);
   const [editorState, setEditorState] = useState(
@@ -148,8 +183,14 @@ function Post({ post }) {
             </span>
           )}
         </div>
-        <div className="save-button">
-          <i id="save-logo" className="far fa-bookmark"></i>
+        <div
+          className={saved ? "save-button saved" : "save-button"}
+          onClick={(event) => savePostHandler(event)}
+        >
+          <i
+            id="save-logo"
+            className={saved ? "fas fa-bookmark" : "far fa-bookmark"}
+          ></i>
         </div>
       </div>
     </div>

@@ -36,3 +36,7 @@
   position: relative;
   z-index: 2;
 }
+
+.new-post-wrapper {
+  position: relative;
+}

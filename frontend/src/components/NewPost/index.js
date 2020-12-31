@@ -12,7 +12,9 @@ function NewPost() {
         <Link to={`/${session.user.username}`}>
           <img src={profilePic} className="post-profile-pic" alt="profile" />
         </Link>
-        <PostInput />
+        <div className="new-post-wrapper">
+          <PostInput />
+        </div>
       </div>
     </div>
   );
