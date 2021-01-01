@@ -15,7 +15,6 @@ function TeamNav() {
 
       <NavLink
         className="team-nav-option"
-        exact
         to={`/i/team/all`}
         activeClassName="team-nav-active"
       >

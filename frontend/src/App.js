@@ -17,6 +17,7 @@ import ExploreFeedContainer from "./components/ExploreFeedContainer";
 import * as playerActions from "./store/players";
 import PlayerFeedContainer from "./components/PlayerFeedContainer";
 import TeamContainer from "./components/TeamContainer";
+import PlayerPositionNav from "./components/PlayerPositionNav";
 
 function App() {
   const dispatch = useDispatch();
@@ -88,9 +89,35 @@ function App() {
               <NavHeader title="Explore" />
               <ExploreFeedContainer selection="players" />
             </Route>
-            <Route path="/i/team/all">
+            <Route exact path="/i/team/all">
               <NavHeader title="All Players" />
-              <TeamContainer selection={"all"} />
+              <PlayerPositionNav />
+              <TeamContainer selection={"all"} subSelection={"all"} />
+            </Route>
+            <Route path="/i/team/all/qb">
+              <NavHeader title="All Players - QB" />
+              <PlayerPositionNav />
+              <TeamContainer selection={"all"} subSelection={"QB"} />
+            </Route>
+            <Route path="/i/team/all/rb">
+              <NavHeader title="All Players - RB" />
+              <PlayerPositionNav />
+              <TeamContainer selection={"all"} subSelection={"RB"} />
+            </Route>
+            <Route path="/i/team/all/wr">
+              <NavHeader title="All Players - WR" />
+              <PlayerPositionNav />
+              <TeamContainer selection={"all"} subSelection={"WR"} />
+            </Route>
+            <Route path="/i/team/all/te">
+              <NavHeader title="All Players - TE" />
+              <PlayerPositionNav />
+              <TeamContainer selection={"all"} subSelection={"TE"} />
+            </Route>
+            <Route path="/i/team/all/k">
+              <NavHeader title="All Players- K" />
+              <PlayerPositionNav />
+              <TeamContainer selection={"all"} subSelection={"K"} />
             </Route>
             <Route path="/i/team">
               <NavHeader title="My Team" />

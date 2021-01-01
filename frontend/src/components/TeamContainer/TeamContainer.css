@@ -4,3 +4,7 @@
   border-right: 1px solid rgb(235, 238, 240);
   height: 101vh;
 }
+
+.team-feed.all {
+  margin-top: 149px;
+}
