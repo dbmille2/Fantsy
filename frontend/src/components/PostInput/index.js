@@ -154,7 +154,30 @@ function PostInput() {
     const rawData = convertToRaw(contentState);
     const userId = user.id;
     setEditorState(EditorState.createEmpty());
-    dispatch(createPost(userId, JSON.stringify(rawData)));
+    let mentionedUsers = [];
+    let mentionedPlayers = [];
+    for (let key in rawData.entityMap) {
+      const ent = rawData.entityMap[key];
+      switch (ent.type) {
+        case "mention":
+          mentionedUsers.push(ent.data.mention);
+          break;
+        case "#mention":
+          mentionedPlayers.push(ent.data.mention);
+          break;
+        default:
+          break;
+      }
+    }
+    console.log(mentionedUsers, mentionedPlayers);
+    dispatch(
+      createPost(
+        userId,
+        mentionedUsers,
+        mentionedPlayers,
+        JSON.stringify(rawData)
+      )
+    );
   };
 
   const focus = () => {

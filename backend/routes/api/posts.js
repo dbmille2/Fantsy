@@ -15,11 +15,31 @@ const router = express.Router();
 router.post(
   "/",
   asyncHandler(async (req, res) => {
-    const { userId, rawData, isReply } = req.body;
+    const {
+      userId,
+      mentionedUsers,
+      mentionedPlayers,
+      rawData,
+      isReply,
+    } = req.body;
     const newPost = await Post.create({
       userId,
       rawData,
       isReply,
+    });
+    console.log("-------------->", mentionedUsers);
+    mentionedUsers.forEach(async (user) => {
+      await TaggedUser.create({
+        userId: user,
+        postId: newPost.id,
+        viewedNotification: false,
+      });
+    });
+    mentionedPlayers.forEach(async (player) => {
+      await TaggedPlayer.create({
+        playerId: player,
+        postId: newPost.id,
+      });
     });
     const fullPost = await Post.findOne({
       where: { id: newPost.id },

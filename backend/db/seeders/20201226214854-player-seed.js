@@ -11,7 +11,7 @@ module.exports = {
           teamName: "NO",
           position: "RB",
           imgUrl:
-            "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/3054850.png&w=96&h=70&cb=1",
+            "https://images.fantasypros.com/images/players/nfl/16421/headshot/250x250.webp",
         },
         {
           name: "Josh Allen",
@@ -19,7 +19,7 @@ module.exports = {
           teamName: "BUF",
           position: "QB",
           imgUrl:
-            "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/3918298.png&w=96&h=70&cb=1",
+            "https://images.fantasypros.com/images/players/nfl/17298/headshot/250x250.webp",
         },
         {
           name: "Tyreek Hill",
@@ -27,7 +27,23 @@ module.exports = {
           teamName: "KC",
           position: "WR",
           imgUrl:
-            "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/3116406.png&w=96&h=70&cb=1",
+            "https://images.fantasypros.com/images/players/nfl/15802/headshot/250x250.webp",
+        },
+        {
+          name: "Davante Adams",
+          tagName: "DavanteAdams",
+          teamName: "GB",
+          position: "WR",
+          imgUrl:
+            "https://images.fantasypros.com/images/players/nfl/12123/headshot/250x250.webp",
+        },
+        {
+          name: "Patrick Mahomes II",
+          tagName: "PatrickMahomes",
+          teamName: "KC",
+          position: "QB",
+          imgUrl:
+            "https://images.fantasypros.com/images/players/nfl/16413/headshot/250x250.webp",
         },
       ],
       {}

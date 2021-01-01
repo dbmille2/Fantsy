@@ -121,8 +121,19 @@ export const unSavePost = (postId, userId) => async (dispatch) => {
   dispatch(deleteSave(postId, userId));
 };
 
-export const createPost = (userId, rawData) => async (dispatch) => {
-  const body = { userId, rawData };
+export const createPost = (
+  userId,
+  mentionedUsers,
+  mentionedPlayers,
+  rawData
+) => async (dispatch) => {
+  mentionedUsers = mentionedUsers.map((user) => {
+    return user.id;
+  });
+  mentionedPlayers = mentionedPlayers.map((player) => {
+    return player.id;
+  });
+  const body = { userId, mentionedUsers, mentionedPlayers, rawData };
   const res = await fetch("/api/posts", {
     method: "POST",
     headers: { "Content-Type": "application/json" },

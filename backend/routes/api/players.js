@@ -1,7 +1,7 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
 
-const { Player, PlayerFollow, User } = require("../../db/models");
+const { Player, Post, PlayerFollow, User } = require("../../db/models");
 
 const router = express.Router();
 
@@ -20,6 +20,28 @@ router.get(
     });
     const playerFollowers = player.PlayersWithFollows;
     res.json({ playerFollowers });
+  })
+);
+
+router.get(
+  "/trending",
+  asyncHandler(async (req, res) => {
+    const players = await Player.findAll({
+      include: [
+        {
+          model: Post,
+          as: "PlayersWithTags",
+        },
+      ],
+    });
+    players.forEach((player) => {
+      player.dataValues.tagCount = player.PlayersWithTags.length;
+    });
+    console.log(players[0]);
+    players.sort((a, b) =>
+      a.dataValues.tagCount < b.dataValues.tagCount ? 1 : -1
+    );
+    res.json({ players });
   })
 );
 
