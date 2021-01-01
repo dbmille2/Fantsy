@@ -12,6 +12,7 @@ import HomeContainer from "./components/HomeContainer";
 import SavedPostsContainer from "./components/SavedPostsContainer";
 import Trending from "./components/Trending";
 import SearchBox from "./components/SearchBox";
+import ExploreFeedContainer from "./components/ExploreFeedContainer";
 // import * as followActions from "./store/follows";
 import * as playerActions from "./store/players";
 import PlayerFeedContainer from "./components/PlayerFeedContainer";
@@ -77,6 +78,14 @@ function App() {
             <Route path="/players/:playerId/following">
               <NavHeader />
               <PlayerFeedContainer selection={"following"} />
+            </Route>
+            <Route path="/explore/all">
+              <NavHeader title="Explore" />
+              <ExploreFeedContainer selection="all" />
+            </Route>
+            <Route path="/explore/players">
+              <NavHeader title="Explore" />
+              <ExploreFeedContainer selection="players" />
             </Route>
           </Switch>
         )}

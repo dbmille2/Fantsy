@@ -81,6 +81,21 @@ router.get(
 );
 
 router.get(
+  "/",
+  asyncHandler(async (req, res) => {
+    const posts = await Post.findAll({
+      include: [
+        { model: User, include: [{ model: UserPreference }] },
+        { model: User, as: "Stars" },
+      ],
+      order: [["createdAt", "DESC"]],
+      limit: 20,
+    });
+    res.json({ posts });
+  })
+);
+
+router.get(
   "/:id/feed/:page",
   asyncHandler(async (req, res) => {
     const id = req.params.id;
@@ -316,9 +331,51 @@ router.get(
     });
     let posts = player.PlayersWithTags;
     posts = posts.filter((post) => {
-      console.log("----->", post);
       return following[post.userId] !== undefined;
     });
+    res.json({ posts });
+  })
+);
+
+router.get(
+  "/explore/:userId",
+  asyncHandler(async (req, res) => {
+    const id = req.params.userId;
+    const user = await User.findOne({
+      where: { id },
+      include: [
+        {
+          model: Player,
+          as: "FollowedPlayers",
+        },
+      ],
+    });
+    const followedPlayers = user.FollowedPlayers;
+    let playerIds = user.FollowedPlayers.map((player) => player.id);
+    const players = await Player.findAll({
+      where: {
+        id: playerIds,
+      },
+      include: [
+        {
+          model: Post,
+          as: "PlayersWithTags",
+          include: [
+            { model: User, include: [{ model: UserPreference }] },
+            { model: User, as: "Stars" },
+          ],
+        },
+      ],
+      order: [["createdAt", "DESC"]],
+      limit: 20,
+    });
+    let posts = [];
+    players.forEach((player) => {
+      player.PlayersWithTags.forEach((post) => {
+        posts.push(post);
+      });
+    });
+
     res.json({ posts });
   })
 );

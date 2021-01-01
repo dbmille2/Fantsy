@@ -31,8 +31,7 @@ function Navigation({ isLoaded }) {
         </li>
         <li>
           <NavLink
-            exact
-            to="/explore"
+            to="/explore/all"
             className="left-nav-option"
             activeClassName="left-nav-active"
           >
@@ -103,7 +102,7 @@ function Navigation({ isLoaded }) {
         <li>
           <NavLink
             exact
-            to="/explore"
+            to="/explore/all"
             className="left-nav-option"
             activeClassName="left-nav-active"
           >

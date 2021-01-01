@@ -1,0 +1,42 @@
+.explore-feed-nav {
+  width: 561px;
+  margin-left: -1px;
+  margin-top: 0px;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  border-bottom: 2px solid rgb(235, 238, 240);
+  border-top: 1px solid white;
+  border-left: 1px solid rgb(235, 238, 240);
+  border-right: 1px solid rgb(235, 238, 240);
+  position: fixed;
+  top: 49px;
+  z-index: 5;
+}
+
+.explore-feed-nav-option {
+  text-decoration: none;
+  color: rgb(91, 136, 152);
+  font-size: 14px;
+  line-height: 50px;
+  width: 50%;
+  height: 50px;
+  text-align: center;
+  font-weight: bold;
+  transition-property: background-color, color;
+  transition-duration: 0.2s;
+}
+
+.explore-feed-nav-active {
+  color: rgb(29, 161, 242);
+  border-bottom: 2px solid rgb(29, 161, 242);
+}
+
+.explore-feed-nav-option:hover {
+  transition-property: background-color, color;
+  transition-duration: 0.2s;
+  color: rgb(29, 161, 242);
+  background-color: rgb(232, 245, 254);
+}

@@ -20,7 +20,7 @@ function NavHeader({ title, subTitle }) {
             {title !== "Home" && <BackButton />}
             <div className="nav-user-info">
               <span className="header-title">{title}</span>
-              {title !== "Home" && !playerId && (
+              {title !== "Home" && title !== "Explore" && !playerId && (
                 <span className="header-number-posts">
                   {Object.keys(feed).length} {subTitle}
                 </span>
