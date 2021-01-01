@@ -31,7 +31,7 @@ function Navigation({ isLoaded }) {
         </li>
         <li>
           <NavLink
-            to="/posts/explore/all"
+            to="/posts/explore"
             className="left-nav-option"
             activeClassName="left-nav-active"
           >
@@ -65,8 +65,7 @@ function Navigation({ isLoaded }) {
         </li>
         <li>
           <NavLink
-            exact
-            to="/team"
+            to="/i/team"
             className="left-nav-option"
             activeClassName="left-nav-active"
           >

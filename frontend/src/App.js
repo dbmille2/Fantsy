@@ -16,6 +16,7 @@ import ExploreFeedContainer from "./components/ExploreFeedContainer";
 // import * as followActions from "./store/follows";
 import * as playerActions from "./store/players";
 import PlayerFeedContainer from "./components/PlayerFeedContainer";
+import TeamContainer from "./components/TeamContainer";
 
 function App() {
   const dispatch = useDispatch();
@@ -83,9 +84,17 @@ function App() {
               <NavHeader title="Explore" />
               <ExploreFeedContainer selection="all" />
             </Route>
-            <Route path="/posts/explore/players">
+            <Route path="/posts/explore">
               <NavHeader title="Explore" />
               <ExploreFeedContainer selection="players" />
+            </Route>
+            <Route path="/i/team/all">
+              <NavHeader title="All Players" />
+              <TeamContainer selection={"all"} />
+            </Route>
+            <Route path="/i/team">
+              <NavHeader title="My Team" />
+              <TeamContainer selection={"team"} />
             </Route>
           </Switch>
         )}

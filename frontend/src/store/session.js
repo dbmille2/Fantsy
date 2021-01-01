@@ -4,6 +4,8 @@ const SET_USER = "session/setUser";
 const REMOVE_USER = "session/removeUser";
 const LOAD_FOLLOWING = "session/loadFollowing";
 const LOAD_INFO = "session/loadInfo";
+const ADD_PLAYER_FOLLOW = "profile/addPlayerFollow";
+const DELETE_PLAYER_FOLLOW = "profile/deletePlayerFollow";
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -24,6 +26,20 @@ const loadInfo = (info) => ({
   payload: info,
 });
 
+const loadPlayerFollow = (player) => ({
+  type: ADD_PLAYER_FOLLOW,
+  payload: {
+    player,
+  },
+});
+
+const deletePlayerFollow = (playerId) => ({
+  type: DELETE_PLAYER_FOLLOW,
+  payload: {
+    playerId,
+  },
+});
+
 export const fetchFollowing = (username) => async (dispatch) => {
   const res = await fetch(`/api/users/${username}/following`);
   const following = res.data;
@@ -34,6 +50,19 @@ export const fetchInfo = (username) => async (dispatch) => {
   const res = await fetch(`/api/users/${username}`);
   const info = res.data;
   dispatch(loadInfo(info));
+};
+
+export const addPlayerFollow = (userId, playerId) => async (dispatch) => {
+  const res = await fetch(`/api/users/${userId}/follow/${playerId}`);
+  const player = res.data.player;
+  dispatch(loadPlayerFollow(player));
+};
+
+export const removePlayerFollow = (userId, playerId) => async (dispatch) => {
+  await fetch(`/api/users/${userId}/follow/${playerId}`, {
+    method: "DELETE",
+  });
+  dispatch(deletePlayerFollow(playerId));
 };
 
 export const login = ({ credential, password }) => async (dispatch) => {
@@ -120,6 +149,16 @@ function reducer(state = initialState, action) {
         privateBool,
         preferences,
       });
+      return newState;
+    case ADD_PLAYER_FOLLOW:
+      const player = action.payload.player;
+      newState = { ...state };
+      newState.followedPlayers[player.id] = player;
+      return newState;
+    case DELETE_PLAYER_FOLLOW:
+      const playerId = action.payload.playerId;
+      newState = { ...state };
+      delete newState.followedPlayers[playerId];
       return newState;
     default:
       return state;

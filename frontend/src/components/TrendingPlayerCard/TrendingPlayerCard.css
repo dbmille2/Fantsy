@@ -49,3 +49,23 @@
   background-color: rgb(225, 228, 230);
   border-radius: 15px;
 }
+
+.trend-WR {
+  border-right: 4px solid rgb(245, 202, 73);
+}
+
+.trend-QB {
+  border-right: 4px solid rgb(117, 163, 116);
+}
+
+.trend-RB {
+  border-right: 4px solid rgb(88, 130, 250);
+}
+
+.trend-TE {
+  border-right: 4px solid rgb(222, 146, 109);
+}
+
+.trend-K {
+  border-right: 4px solid rgb(217, 81, 98);
+}

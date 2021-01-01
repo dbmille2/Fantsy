@@ -2,6 +2,7 @@ import { fetch } from "./csrf.js";
 
 const LOAD_PROFILE = "profile/loadProfile";
 
+
 const loadProfile = (profile, currentUser) => ({
   type: LOAD_PROFILE,
   payload: {

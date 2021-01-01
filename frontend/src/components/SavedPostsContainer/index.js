@@ -11,6 +11,9 @@ function SavedPostsContainer() {
   useEffect(() => {
     dispatch(fetchSavedFeed(user.id));
   }, [dispatch, user]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="saved-posts-container">{posts.feed && <HomeFeed />}</div>
   );

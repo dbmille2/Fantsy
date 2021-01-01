@@ -8,6 +8,7 @@ const {
   User,
   UserFollow,
   Player,
+  PlayerFollow,
   UserPreference,
   Post,
 } = require("../../db/models");
@@ -164,6 +165,36 @@ router.post(
     });
     await follow.destroy();
     res.json({ message: "unfollowed" });
+  })
+);
+
+router.get(
+  "/:userId/follow/:playerId",
+  asyncHandler(async (req, res) => {
+    const userId = req.params.userId;
+    const playerId = req.params.playerId;
+    await PlayerFollow.create({
+      playerId,
+      userId,
+    });
+    const player = await Player.findOne({ where: { id: playerId } });
+    res.json({ player });
+  })
+);
+
+router.delete(
+  "/:userId/follow/:playerId",
+  asyncHandler(async (req, res) => {
+    const userId = req.params.userId;
+    const playerId = req.params.playerId;
+    const follow = await PlayerFollow.findOne({
+      where: {
+        playerId,
+        userId,
+      },
+    });
+    await follow.destroy();
+    res.json({ message: "Unfollowed" });
   })
 );
 
