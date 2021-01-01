@@ -83,6 +83,20 @@ export const fetchSavedFeed = (userId) => async (dispatch) => {
   dispatch(loadFeed(feed));
 };
 
+export const fetchPlayersAllFeed = (playerId) => async (dispatch) => {
+  const res = await fetch(`/api/posts/players/${playerId}/all`);
+  const feed = res.data.posts;
+  dispatch(loadFeed(feed));
+};
+
+export const fetchPlayersFollowingFeed = (playerId, userId) => async (
+  dispatch
+) => {
+  const res = await fetch(`/api/posts/players/${playerId}/following/${userId}`);
+  const feed = res.data.posts;
+  dispatch(loadFeed(feed));
+};
+
 export const starPost = (postId, userId) => async (dispatch) => {
   const res = await fetch(`/api/posts/${postId}/star`, {
     method: "PUT",

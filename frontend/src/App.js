@@ -14,18 +14,21 @@ import Trending from "./components/Trending";
 import SearchBox from "./components/SearchBox";
 // import * as followActions from "./store/follows";
 import * as playerActions from "./store/players";
+import PlayerFeedContainer from "./components/PlayerFeedContainer";
 
 function App() {
   const dispatch = useDispatch();
   const session = useSelector((state) => state.session);
   const profile = useSelector((state) => state.profile);
-  const players = useSelector((state) => state.players);
+  const feed = useSelector((state) => state.posts.feed);
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
     dispatch(playerActions.fetchAllPlayers());
-    dispatch(playerActions.fetchTrendingPlayers());
   }, [dispatch]);
+  useEffect(() => {
+    dispatch(playerActions.fetchTrendingPlayers());
+  }, [dispatch, feed]);
 
   return (
     <div className="full-page">
@@ -66,6 +69,14 @@ function App() {
             <Route path="/i/saved">
               <NavHeader title="Saved" subTitle="posts" />
               <SavedPostsContainer />
+            </Route>
+            <Route path="/players/:playerId/all">
+              <NavHeader />
+              <PlayerFeedContainer selection={"all"} />
+            </Route>
+            <Route path="/players/:playerId/following">
+              <NavHeader />
+              <PlayerFeedContainer selection={"following"} />
             </Route>
           </Switch>
         )}

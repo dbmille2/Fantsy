@@ -59,7 +59,7 @@ function Post({ post }) {
           className={`${mentionProps.className} post-mention`}
           onClick={(event) => {
             event.stopPropagation();
-            history.push(`/players/${mentionProps.mention.tagName}`);
+            history.push(`/players/${mentionProps.mention.id}/following`);
           }}
         >
           {mentionProps.children}

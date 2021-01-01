@@ -91,7 +91,7 @@ function PostInput() {
       mentionComponent: (mentionProps) => (
         <span
           className={mentionProps.className}
-          onClick={() => history.push(`/${mentionProps.mention.username}`)}
+          onClick={() => history.push(`${mentionProps.mention.username}`)}
         >
           {mentionProps.children}
         </span>
@@ -118,9 +118,7 @@ function PostInput() {
       mentionComponent: (mentionProps) => (
         <span
           className={mentionProps.className}
-          onClick={() =>
-            history.push(`/players/${mentionProps.mention.tagName}`)
-          }
+          onClick={() => history.push(`/players/${mentionProps.mention.id}/following`)}
         >
           {mentionProps.children}
         </span>

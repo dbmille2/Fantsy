@@ -53,7 +53,11 @@ function reducer(state = {}, action) {
   let newState;
   switch (action.type) {
     case LOAD_ALL_PLAYERS:
-      const allPlayers = action.payload;
+      const players = action.payload;
+      const allPlayers = {};
+      players.forEach((player) => {
+        allPlayers[player.id] = player;
+      });
       newState = Object.assign({}, state, { allPlayers });
       return newState;
     case LOAD_TRENDING_PLAYERS:
@@ -61,7 +65,11 @@ function reducer(state = {}, action) {
       newState = Object.assign({}, state, { trendingPlayers });
       return newState;
     case LOAD_FOLLOWED_PLAYERS:
-      const followedPlayers = action.payload;
+      const fPlayers = action.payload;
+      const followedPlayers = {};
+      fPlayers.forEach((player) => {
+        followedPlayers[player.id] = player;
+      });
       newState = Object.assign({}, state, { followedPlayers });
       return newState;
     case LOAD_PLAYER_FOLLOWERS:

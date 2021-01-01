@@ -3,6 +3,7 @@ const asyncHandler = require("express-async-handler");
 const {
   User,
   Post,
+  Player,
   TaggedUser,
   TaggedPlayer,
   StarredPost,
@@ -245,6 +246,78 @@ router.get(
       ],
       order: [["createdAt", "DESC"]],
       limit: 20,
+    });
+    res.json({ posts });
+  })
+);
+
+router.get(
+  "/players/:id/all",
+  asyncHandler(async (req, res) => {
+    const playerId = req.params.id;
+    const player = await Player.findOne({
+      where: {
+        id: playerId,
+      },
+      include: [
+        {
+          model: Post,
+          as: "PlayersWithTags",
+          include: [
+            { model: User, include: [{ model: UserPreference }] },
+            { model: User, as: "Stars" },
+          ],
+        },
+      ],
+      order: [["createdAt", "DESC"]],
+      limit: 20,
+    });
+    const posts = player.PlayersWithTags;
+    res.json({ posts });
+  })
+);
+
+router.get(
+  "/players/:id/following/:userId",
+  asyncHandler(async (req, res) => {
+    const playerId = req.params.id;
+    const userId = req.params.userId;
+    const user = await User.findOne({
+      where: { id: userId },
+      include: [
+        {
+          model: User,
+          as: "Following",
+        },
+      ],
+    });
+    let followingIds = user.Following.map((follow) => follow.id);
+    const following = {};
+    followingIds.forEach((follow) => {
+      following[follow] = follow;
+    });
+    console.log(following);
+    const player = await Player.findOne({
+      where: {
+        id: playerId,
+      },
+      include: [
+        {
+          model: Post,
+          as: "PlayersWithTags",
+          include: [
+            { model: User, include: [{ model: UserPreference }] },
+            { model: User, as: "Stars" },
+          ],
+        },
+      ],
+      order: [["createdAt", "DESC"]],
+      limit: 20,
+    });
+    let posts = player.PlayersWithTags;
+    posts = posts.filter((post) => {
+      console.log("----->", post);
+      return following[post.userId] !== undefined;
     });
     res.json({ posts });
   })

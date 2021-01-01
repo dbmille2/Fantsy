@@ -5,7 +5,7 @@ function TrendingPlayerCard({ player }) {
   return (
     <Link
       className="trending-player-card-link"
-      to={`/players/${player.tagName}`}
+      to={`/players/${player.id}/all`}
     >
       <li className="trending-player-card">
         <div className="trending-player-card-text">
