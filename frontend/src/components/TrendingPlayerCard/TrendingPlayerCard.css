@@ -1,0 +1,51 @@
+.trending-player-card-link {
+  text-decoration: none;
+}
+
+.trending-player-card {
+  border-bottom: 1px solid rgb(235, 238, 240);
+  padding-left: 15px;
+  padding-right: 15px;
+  height: 17%;
+  display: flex;
+  align-items: center;
+  transition-property: background-color;
+  transition-duration: 0.2s;
+  justify-content: space-between;
+}
+
+.trending-player-card:hover {
+  background-color: rgb(239, 241, 242);
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+
+.trending-card-header {
+  color: rgb(91, 112, 131);
+  font-size: 12px;
+}
+
+.trending-card-player-name {
+  color: black;
+  margin-top: 4px;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.trending-card-team-info {
+  margin-top: 4px;
+  color: rgb(91, 112, 131);
+  font-size: 13px;
+}
+
+.trending-card-number-posts {
+  margin-top: 6px;
+  color: rgb(91, 112, 131);
+  font-size: 12px;
+}
+
+.trending-player-card-pic {
+  width: 75px;
+  background-color: rgb(225, 228, 230);
+  border-radius: 15px;
+}

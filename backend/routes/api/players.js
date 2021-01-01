@@ -26,7 +26,7 @@ router.get(
 router.get(
   "/trending",
   asyncHandler(async (req, res) => {
-    const players = await Player.findAll({
+    let players = await Player.findAll({
       include: [
         {
           model: Post,
@@ -41,6 +41,10 @@ router.get(
     players.sort((a, b) =>
       a.dataValues.tagCount < b.dataValues.tagCount ? 1 : -1
     );
+    players.forEach((player) => {
+      delete player.dataValues.PlayersWithTags;
+    });
+    players = players.slice(0, 5);
     res.json({ players });
   })
 );

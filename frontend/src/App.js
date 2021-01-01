@@ -10,6 +10,8 @@ import FollowPage from "./components/FollowPage";
 import NavHeader from "./components/NavHeader";
 import HomeContainer from "./components/HomeContainer";
 import SavedPostsContainer from "./components/SavedPostsContainer";
+import Trending from "./components/Trending";
+import SearchBox from "./components/SearchBox";
 // import * as followActions from "./store/follows";
 import * as playerActions from "./store/players";
 
@@ -17,10 +19,12 @@ function App() {
   const dispatch = useDispatch();
   const session = useSelector((state) => state.session);
   const profile = useSelector((state) => state.profile);
+  const players = useSelector((state) => state.players);
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
     dispatch(playerActions.fetchAllPlayers());
+    dispatch(playerActions.fetchTrendingPlayers());
   }, [dispatch]);
 
   return (
@@ -66,8 +70,11 @@ function App() {
           </Switch>
         )}
       </div>
-      <div className="right-nav">
-        <p>placeholder</p>
+      <div className="right-panel-wrapper">
+        <div className="right-panel">
+          <SearchBox />
+          {<Trending />}
+        </div>
       </div>
     </div>
   );

@@ -22,6 +22,7 @@ body {
 }
 
 .main-content {
+  margin-right: 85px;
   min-width: 560px;
   width: 560px;
   height: 101vh;
@@ -29,7 +30,19 @@ body {
   position: relative;
 }
 
-.right-nav {
+.right-panel-wrapper {
+  width: 350px;
+  position: absolute;
+  top: 0;
+  right: 0px;
+}
+
+.right-panel {
+  width: 360px;
+  margin-left: -35px;
+  height: 100vh;
   position: fixed;
-  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

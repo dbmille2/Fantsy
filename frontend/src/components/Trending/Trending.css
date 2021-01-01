@@ -1,0 +1,29 @@
+.trending-panel {
+  width: 315px;
+  height: 600px;
+  margin: 10px 15px;
+  background-color: rgba(247, 249, 250);
+  border-radius: 15px;
+}
+
+.trending-header {
+  height: 45px;
+  line-height: 45px;
+  padding-left: 15px;
+  border-bottom: 1px solid rgb(235, 238, 240);
+  font-size: 18px;
+  font-weight: 750;
+}
+
+.trending-players-list {
+  list-style: none;
+  padding-left: 0px;
+  height: 100%;
+  margin: 0px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.trending-footer {
+  height: 45px;
+}
