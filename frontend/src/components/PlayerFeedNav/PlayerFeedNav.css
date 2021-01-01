@@ -33,3 +33,10 @@
   color: rgb(29, 161, 242);
   border-bottom: 2px solid rgb(29, 161, 242);
 }
+
+.player-feed-nav-option:hover {
+  transition-property: background-color, color;
+  transition-duration: 0.2s;
+  color: rgb(29, 161, 242);
+  background-color: rgb(232, 245, 254);
+}
