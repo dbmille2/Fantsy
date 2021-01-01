@@ -15,6 +15,9 @@ function PlayerFeedContainer({ selection }) {
   const user = useSelector((state) => state.session.user);
   const { playerId } = useParams();
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  useEffect(() => {
     if (selection === "all") {
       dispatch(fetchPlayersAllFeed(playerId));
     } else if (selection === "following") {

@@ -12,6 +12,10 @@ function HomeContainer() {
   const posts = useSelector((state) => state.posts);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     dispatch(fetchFeed(session.user.id));
     dispatch(fetchInfo(session.user.username));
     // ;

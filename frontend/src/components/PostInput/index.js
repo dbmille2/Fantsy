@@ -76,6 +76,7 @@ function PostInput() {
   const following = useSelector((state) => state.session.following);
   const user = useSelector((state) => state.session.user);
   const players = useSelector((state) => state.players.allPlayers);
+  const playersArr = Object.values(players);
   const dispatch = useDispatch();
   const history = useHistory();
   const followingArr = [...Object.values(following)];
@@ -114,11 +115,13 @@ function PostInput() {
 
   const [playerMentionPlugin] = useState(
     createMentionPlugin({
-      players,
+      playersArr,
       mentionComponent: (mentionProps) => (
         <span
           className={mentionProps.className}
-          onClick={() => history.push(`/players/${mentionProps.mention.id}/following`)}
+          onClick={() =>
+            history.push(`/players/${mentionProps.mention.id}/following`)
+          }
         >
           {mentionProps.children}
         </span>
@@ -142,7 +145,7 @@ function PostInput() {
 
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const [suggestions, setSuggestions] = useState(followingArr);
-  const [playerSuggestions, setPlayerSuggestions] = useState(players);
+  const [playerSuggestions, setPlayerSuggestions] = useState(playersArr);
   const { MentionSuggestions } = userMentionPlugin;
   const PlayerMentionSuggestions = playerMentionPlugin.MentionSuggestions;
   const plugins = [userMentionPlugin, playerMentionPlugin];
@@ -201,7 +204,7 @@ function PostInput() {
         />
         <PlayerMentionSuggestions
           onSearchChange={({ value }) =>
-            setPlayerSuggestions(defaultSuggestionsFilter(value, players))
+            setPlayerSuggestions(defaultSuggestionsFilter(value, playersArr))
           }
           suggestions={playerSuggestions}
           entryComponent={PlayerEntry}

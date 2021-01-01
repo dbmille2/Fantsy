@@ -21,6 +21,9 @@ function ProfilePage({ tab }) {
     .split("/");
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  useEffect(() => {
     dispatch(profileActions.fetchProfile(username, user.id));
   }, [dispatch, username, user]);
 
