@@ -6,7 +6,7 @@ function ExploreFeedNav() {
     <div className="explore-feed-nav">
       <NavLink
         className="explore-feed-nav-option"
-        to={`/explore/players`}
+        to={`/posts/explore/players`}
         activeClassName="explore-feed-nav-active"
       >
         My Team
@@ -14,7 +14,7 @@ function ExploreFeedNav() {
 
       <NavLink
         className="explore-feed-nav-option"
-        to={`/explore/all`}
+        to={`/posts/explore/all`}
         activeClassName="explore-feed-nav-active"
       >
         All

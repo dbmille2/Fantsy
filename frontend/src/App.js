@@ -79,11 +79,11 @@ function App() {
               <NavHeader />
               <PlayerFeedContainer selection={"following"} />
             </Route>
-            <Route path="/explore/all">
+            <Route path="/posts/explore/all">
               <NavHeader title="Explore" />
               <ExploreFeedContainer selection="all" />
             </Route>
-            <Route path="/explore/players">
+            <Route path="/posts/explore/players">
               <NavHeader title="Explore" />
               <ExploreFeedContainer selection="players" />
             </Route>
