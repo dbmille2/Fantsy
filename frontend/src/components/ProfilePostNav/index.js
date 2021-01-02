@@ -1,5 +1,5 @@
 // import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector} from "react-redux";
 // import ProfileListItem from "../ProfileListItem";
 import { NavLink } from "react-router-dom";
 import "./ProfilePostNav.css";

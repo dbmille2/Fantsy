@@ -10,6 +10,7 @@ function SignupFormPage() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [displayName, setDisplayName] = useState("");
+  const [image, setImage] = useState(null);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -21,7 +22,7 @@ function SignupFormPage() {
     if (password === confirmPassword) {
       setErrors([]);
       return dispatch(
-        sessionActions.signup({ email, username, displayName, password })
+        sessionActions.signup({ email, username, displayName, image, password })
       ).catch((res) => {
         if (res.data && res.data.errors) setErrors(res.data.errors);
       });
@@ -29,6 +30,12 @@ function SignupFormPage() {
     return setErrors([
       "Confirm Password field must be the same as the Password field",
     ]);
+  };
+
+  const updateFile = (e) => {
+    const file = e.target.files[0];
+    if (file) setImage(file);
+    console.log(file);
   };
 
   return (
@@ -68,6 +75,9 @@ function SignupFormPage() {
           />
         </label>
         <label>
+          <input type="file" onChange={updateFile} />
+        </label>
+        <label>
           Password
           <input
             type="password"
@@ -87,6 +97,18 @@ function SignupFormPage() {
         </label>
         <button type="submit">Sign Up</button>
       </form>
+      <div>
+        {sessionUser && (
+          <div>
+            <h1>{sessionUser.username}</h1>
+            {/* <img
+              style={{ width: "150px" }}
+              src={sessionUser.profilePicUrl}
+              alt="profile"
+            /> */}
+          </div>
+        )}
+      </div>
     </>
   );
 }

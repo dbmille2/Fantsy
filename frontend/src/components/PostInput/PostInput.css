@@ -121,3 +121,30 @@
   margin-right: 8px;
   margin-left: 12px;
 }
+
+.preview-post-image {
+  max-width: 450px;
+  margin-top: 20px;
+  border-radius: 15px;
+}
+
+.pic-and-x-button {
+  position: relative;
+}
+
+.post-x-button {
+  position: absolute;
+  top: 25px;
+  left: 10px;
+}
+
+.file-upload {
+  cursor: pointer;
+  padding: 6px;
+  color: rgb(29, 161, 242);
+  font-size: 20px;
+}
+
+#img-input {
+  display: none;
+}

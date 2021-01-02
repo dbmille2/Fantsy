@@ -7,10 +7,11 @@ import { fetchSavedFeed } from "../../store/posts";
 function SavedPostsContainer() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
+  const session = useSelector((state) => state.session);
   const posts = useSelector((state) => state.posts);
   useEffect(() => {
     dispatch(fetchSavedFeed(user.id));
-  }, [dispatch, user]);
+  }, [dispatch, user, session.savedPosts]);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

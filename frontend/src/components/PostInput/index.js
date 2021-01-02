@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import createMentionPlugin, {
   defaultSuggestionsFilter,
 } from "draft-js-mention-plugin";
+import ReactGiphySearchbox from "react-giphy-searchbox";
 import "./PostInput.css";
 import "draft-js/dist/Draft.css";
 import { useSelector, useDispatch } from "react-redux";
@@ -142,13 +143,22 @@ function PostInput() {
       supportWhitespace: true,
     })
   );
-
+  const [image, setImage] = useState("");
+  const [imgSrc, setImgSrc] = useState(null);
+  const [gifUrl, setGifUrl] = useState("");
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const [suggestions, setSuggestions] = useState(followingArr);
   const [playerSuggestions, setPlayerSuggestions] = useState(playersArr);
   const { MentionSuggestions } = userMentionPlugin;
   const PlayerMentionSuggestions = playerMentionPlugin.MentionSuggestions;
   const plugins = [userMentionPlugin, playerMentionPlugin];
+
+  const updateFile = (e) => {
+    const file = e.target.files[0];
+    if (file) setImage(file);
+    console.log(file);
+    setImgSrc(URL.createObjectURL(file));
+  };
 
   const createPostHandler = () => {
     const contentState = editorState.getCurrentContent();
@@ -209,9 +219,51 @@ function PostInput() {
           suggestions={playerSuggestions}
           entryComponent={PlayerEntry}
         />
+
+        {imgSrc && (
+          <div className="pic-and-x-button">
+            <div
+              className="post-x-button"
+              onClick={() => {
+                setImgSrc(null);
+              }}
+            >
+              X
+            </div>
+            <img className="preview-post-image" src={imgSrc} alt="" />
+          </div>
+        )}
+        {gifUrl && (
+          <div className="pic-and-x-button">
+            <div
+              className="post-x-button"
+              onClick={() => {
+                setGifUrl(null);
+              }}
+            >
+              X
+            </div>
+            <img className="preview-post-image" src={gifUrl} alt="" />
+          </div>
+        )}
       </div>
+      {/* <div className="searchboxWrapper">
+        <ReactGiphySearchbox
+          apiKey="9Ixlv3DWC1biJRI57RanyL7RTbfzz0o7"
+          onSelect={(item) => setGifUrl(item.images.original.url)}
+          masonryConfig={[
+            { columns: 2, imageWidth: 110, gutter: 5 },
+            { mq: "700px", columns: 3, imageWidth: 120, gutter: 5 },
+          ]}
+        />
+      </div> */}
       <div className="new-post-buttons">
-        <div className="util-buttons"></div>
+        <div className="util-buttons">
+          <label htmlFor="img-input" className="file-upload">
+            <i className="far fa-image"></i>
+          </label>
+          <input id="img-input" type="file" onChange={updateFile}></input>
+        </div>
         <button className="post-button" onClick={() => createPostHandler()}>
           Post
         </button>
