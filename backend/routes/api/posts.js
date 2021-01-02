@@ -10,6 +10,10 @@ const {
   SavedPost,
   UserPreference,
 } = require("../../db/models");
+const {
+  singlePublicFileUpload,
+  singleMulterUpload,
+} = require("../../awsS3.js");
 
 const router = express.Router();
 
@@ -21,14 +25,16 @@ router.post(
       mentionedUsers,
       mentionedPlayers,
       rawData,
+      contentUrl,
       isReply,
     } = req.body;
     const newPost = await Post.create({
       userId,
       rawData,
       isReply,
+      contentUrl,
     });
-    console.log("-------------->", mentionedUsers);
+
     mentionedUsers.forEach(async (user) => {
       await TaggedUser.create({
         userId: user,
@@ -42,6 +48,49 @@ router.post(
         postId: newPost.id,
       });
     });
+    const fullPost = await Post.findOne({
+      where: { id: newPost.id },
+      include: [{ model: User, include: [{ model: UserPreference }] }],
+    });
+    res.json({ fullPost });
+  })
+);
+
+router.post(
+  "/image",
+  singleMulterUpload("image"),
+  asyncHandler(async (req, res) => {
+    let {
+      userId,
+      mentionedUsers,
+      mentionedPlayers,
+      rawData,
+      isReply,
+    } = req.body;
+    const contentUrl = await singlePublicFileUpload(req.file);
+    const newPost = await Post.create({
+      userId,
+      rawData,
+      isReply,
+      contentUrl,
+    });
+    mentionedUsers = [...mentionedUsers];
+    mentionedPlayers = [...mentionedPlayers];
+    mentionedUsers &&
+      mentionedUsers.forEach(async (user) => {
+        await TaggedUser.create({
+          userId: Number(user),
+          postId: newPost.id,
+          viewedNotification: false,
+        });
+      });
+    mentionedPlayers &&
+      mentionedPlayers.forEach(async (player) => {
+        await TaggedPlayer.create({
+          playerId: Number(player),
+          postId: newPost.id,
+        });
+      });
     const fullPost = await Post.findOne({
       where: { id: newPost.id },
       include: [{ model: User, include: [{ model: UserPreference }] }],

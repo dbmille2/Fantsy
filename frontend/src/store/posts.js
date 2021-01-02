@@ -151,7 +151,8 @@ export const createPost = (
   userId,
   mentionedUsers,
   mentionedPlayers,
-  rawData
+  rawData,
+  contentUrl
 ) => async (dispatch) => {
   mentionedUsers = mentionedUsers.map((user) => {
     return user.id;
@@ -159,11 +160,44 @@ export const createPost = (
   mentionedPlayers = mentionedPlayers.map((player) => {
     return player.id;
   });
-  const body = { userId, mentionedUsers, mentionedPlayers, rawData };
+  const body = {
+    userId,
+    mentionedUsers,
+    mentionedPlayers,
+    rawData,
+    contentUrl,
+  };
   const res = await fetch("/api/posts", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),
+  });
+  const newPost = res.data.fullPost;
+  dispatch(loadNewPost(newPost));
+};
+
+export const createPostWithImage = (
+  userId,
+  mentionedUsers,
+  mentionedPlayers,
+  rawData,
+  image
+) => async (dispatch) => {
+  mentionedUsers = mentionedUsers.map((user) => {
+    return user.id;
+  });
+  mentionedPlayers = mentionedPlayers.map((player) => {
+    return player.id;
+  });
+  const formData = new FormData();
+  formData.append("userId", userId);
+  formData.append("mentionedUsers", mentionedUsers);
+  formData.append("mentionedPlayers", mentionedPlayers);
+  formData.append("rawData", rawData);
+  formData.append("image", image);
+  const res = await fetch("/api/posts/image", {
+    method: "POST",
+    body: formData,
   });
   const newPost = res.data.fullPost;
   dispatch(loadNewPost(newPost));

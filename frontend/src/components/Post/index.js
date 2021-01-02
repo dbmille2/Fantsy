@@ -149,6 +149,17 @@ function Post({ post }) {
               plugins={plugins}
               onChange={(editorState) => setEditorState(editorState)}
             />
+            {post.contentUrl && (
+              <img
+                className={
+                  post.contentUrl.endsWith("gif")
+                    ? "preview-post-gif"
+                    : "preview-post-image"
+                }
+                src={post.contentUrl}
+                alt=""
+              />
+            )}
           </div>
         </div>
       </div>
