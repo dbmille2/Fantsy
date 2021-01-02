@@ -68,6 +68,7 @@ export const removePlayerFollow = (userId, playerId) => async (dispatch) => {
 export const login = ({ credential, password }) => async (dispatch) => {
   const res = await fetch("/api/session", {
     method: "POST",
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ credential, password }),
   });
   dispatch(setUser(res.data.user));
