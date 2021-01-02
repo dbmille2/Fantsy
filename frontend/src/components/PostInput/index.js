@@ -74,7 +74,7 @@ const PlayerEntry = (props) => {
   );
 };
 
-function PostInput() {
+function PostInput({ modal, onClose }) {
   const following = useSelector((state) => state.session.following);
   const user = useSelector((state) => state.session.user);
   const players = useSelector((state) => state.players.allPlayers);
@@ -146,6 +146,8 @@ function PostInput() {
   );
   const [image, setImage] = useState("");
   const [imgSrc, setImgSrc] = useState(null);
+  const [imageModal, setImageModal] = useState("");
+  const [imgSrcModal, setImgSrcModal] = useState(null);
   const [isGifOpen, setIsGifOpen] = useState(false);
   const [gifUrl, setGifUrl] = useState("");
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
@@ -160,6 +162,13 @@ function PostInput() {
     if (file) setImage(file);
     console.log(file);
     setImgSrc(URL.createObjectURL(file));
+  };
+
+  const updateFileModal = (e) => {
+    const file = e.target.files[0];
+    if (file) setImage(file);
+    console.log(file);
+    setImgSrcModal(URL.createObjectURL(file));
   };
 
   const createPostHandler = () => {
@@ -183,7 +192,7 @@ function PostInput() {
       }
     }
 
-    if (imgSrc) {
+    if (imgSrc || imgSrcModal) {
       rawData = JSON.stringify(rawData);
       dispatch(
         createPostWithImage(
@@ -194,6 +203,8 @@ function PostInput() {
           image
         )
       );
+      setImgSrcModal("");
+      modal && onClose();
       setImgSrc("");
     } else if (gifUrl) {
       let contentUrl = gifUrl;
@@ -207,6 +218,7 @@ function PostInput() {
           contentUrl
         )
       );
+      modal && onClose();
       setGifUrl("");
     } else {
       let contentUrl = null;
@@ -219,6 +231,7 @@ function PostInput() {
           contentUrl
         )
       );
+      modal && onClose();
     }
   };
 
@@ -228,7 +241,7 @@ function PostInput() {
 
   return (
     <div className="editor-wrapper">
-      <div className="editor" onFocus={focus}>
+      <div className={modal ? "editor editor-modal" : "editor"} onFocus={focus}>
         <Editor
           editorState={editorState}
           placeholder="What's Happening?"
@@ -251,7 +264,7 @@ function PostInput() {
           entryComponent={PlayerEntry}
         />
 
-        {imgSrc && (
+        {imgSrc && !modal && (
           <div className="pic-and-x-button">
             <div
               className="post-x-button"
@@ -262,6 +275,19 @@ function PostInput() {
               <i className="fas fa-times"></i>
             </div>
             <img className="preview-post-image" src={imgSrc} alt="" />
+          </div>
+        )}
+        {imgSrcModal && modal && (
+          <div className="pic-and-x-button">
+            <div
+              className="post-x-button"
+              onClick={() => {
+                setImgSrcModal(null);
+              }}
+            >
+              <i className="fas fa-times"></i>
+            </div>
+            <img className="preview-post-image" src={imgSrcModal} alt="" />
           </div>
         )}
         {gifUrl && (
@@ -280,14 +306,17 @@ function PostInput() {
       </div>
       <div className="new-post-buttons">
         <div className="util-buttons">
-          <label htmlFor="img-input" className="file-upload">
-            <i className="far fa-image"></i>
+          <label
+            htmlFor={modal ? "img-input-modal" : "img-input"}
+            className="file-upload"
+          >
+            <i className="fas fa-image pic-icon"></i>
           </label>
           <input
-            id="img-input"
+            id={modal ? "img-input-modal" : "img-input"}
             type="file"
             disabled={gifUrl ? true : false}
-            onChange={updateFile}
+            onChange={modal ? updateFileModal : updateFile}
           ></input>
           <div
             className="gif-search-button-container"
@@ -297,7 +326,9 @@ function PostInput() {
               disabled={imgSrc ? true : false}
               onClick={() => setIsGifOpen(true)}
               className="gif-search-button"
-            >GIF</button>
+            >
+              GIF
+            </button>
             <GifModal open={isGifOpen} onClose={() => setIsGifOpen(false)}>
               <div className="searchboxWrapper">
                 <ReactGiphySearchbox

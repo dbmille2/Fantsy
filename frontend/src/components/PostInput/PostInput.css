@@ -162,12 +162,23 @@
 
 .file-upload {
   cursor: pointer;
-  padding: 4px 6px 4px 6px;
-  color: rgb(29, 161, 242);
-  font-size: 26px;
+  padding: 6px 6px 6px 6px;
+
+  font-size: 20px;
   border-radius: 50%;
   transition-property: background-color;
   transition-duration: 0.2s;
+}
+
+.pic-icon {
+  color: white;
+  background-color: rgb(29, 161, 242);
+  padding: 1px 3px 0px 3px;
+  border-radius: 3px;
+}
+
+.pic-icon:hover {
+  color: rgb(232, 245, 254);
 }
 
 .file-upload:hover {
@@ -177,6 +188,10 @@
 }
 
 #img-input {
+  display: none;
+}
+
+#img-input-modal {
   display: none;
 }
 
@@ -226,16 +241,17 @@
 
 .gif-search-button {
   background-color: rgba(0, 0, 0, 0);
-  border: 2px solid rgb(29, 161, 242);
+  border: 3px solid rgb(29, 161, 242);
   color: rgb(29, 161, 242);
   outline: none;
-  height: 19px;
+  box-sizing: border-box;
+  height: 20px;
   padding: 0px;
-  margin: 0px;
-  width: 24px;
+  margin: 0px 0px -1px 0px;
+  width: 25px;
   font-size: 10px;
   cursor: pointer;
   font-weight: 600px;
   text-align: center;
-  border-radius: 2px;
+  border-radius: 3px;
 }

@@ -1,33 +1,44 @@
-.gif-search-modal {
+.new-post-modal {
   position: fixed;
   top: 20%;
   left: 50%;
-  height: 600px;
+  width: 560px;
+  min-height: 280px;
+  height: auto;
   transform: translate(-50%, -20%);
   background-color: white;
-  padding: 10px 0px 0px 0px;
-  z-index: 100;
+  padding: 50px 0px 0px 0px;
+  z-index: 99;
   border-radius: 20px;
 }
 
-.gif-search-overlay {
+.new-post-overlay {
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 100;
+  z-index: 99;
 }
 
-.gif-search-close {
+.new-post-close {
   border: none;
   font-size: 25px;
-  outline: none;
   position: fixed;
-  left: 8px;
+  outline: none;
+  top: 12px;
+  left: 12px;
   color: rgb(29, 161, 242);
   background-color: white;
   cursor: pointer;
-  z-index: 100;
+  z-index: 99;
+}
+
+.editor-modal {
+  min-height: 150px;
+}
+
+.new-post-container-modal {
+  border-top: 1px solid rgb(196, 207, 214);
 }
