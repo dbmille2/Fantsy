@@ -233,7 +233,7 @@ function PostInput() {
             <img className="preview-post-image" src={imgSrc} alt="" />
           </div>
         )}
-        {gifUrl && (
+        {/* {gifUrl && (
           <div className="pic-and-x-button">
             <div
               className="post-x-button"
@@ -245,7 +245,7 @@ function PostInput() {
             </div>
             <img className="preview-post-image" src={gifUrl} alt="" />
           </div>
-        )}
+        )} */}
       </div>
       {/* <div className="searchboxWrapper">
         <ReactGiphySearchbox
