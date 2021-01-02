@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import FollowButton from "../FollowButton";
 import ProfilePostNav from "../ProfilePostNav";
 import ProfileFeedContainer from "../ProfileFeedContainer";
+import { fetchInfo } from "../../store/session";
 import { months } from "./data";
 import "./ProfilePage.css";
 
@@ -14,12 +15,17 @@ function ProfilePage({ tab }) {
   const dispatch = useDispatch();
   const profile = useSelector((state) => state.profile);
   const user = useSelector((state) => state.session.user);
+  const session = useSelector((state) => state.session);
   const isSelf = profile.isSelf;
   const profilePic = profile.profilePic;
   let [month, _date, year] = new Date(profile.createdAt)
     .toLocaleDateString("en-US")
     .split("/");
 
+  useEffect(() => {
+    dispatch(fetchInfo(session.user.username));
+    // ;
+  }, [dispatch, session.user]);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -66,10 +72,6 @@ function ProfilePage({ tab }) {
             <span className="follow-text"> Followers</span>
           </Link>
         </div>
-
-        {/* <div>
-          <button onClick={() => history.goBack()}>Go Back</button>
-        </div> */}
       </div>
       {profile && <ProfilePostNav />}
       {profile.id && <ProfileFeedContainer tab={tab} />}

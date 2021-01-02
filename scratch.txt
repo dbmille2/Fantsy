@@ -1,1 +1,1 @@
-npx sequelize model:generate --name TaggedUser --attributes userId:integer,postId:integer,viewedNotification:boolean
+npx dotenv sequelize-cli migration:create --name modify_posts

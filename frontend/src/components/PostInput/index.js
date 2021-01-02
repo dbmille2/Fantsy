@@ -4,11 +4,13 @@ import { useState, useRef } from "react";
 import createMentionPlugin, {
   defaultSuggestionsFilter,
 } from "draft-js-mention-plugin";
+import ReactGiphySearchbox from "react-giphy-searchbox";
 import "./PostInput.css";
 import "draft-js/dist/Draft.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { createPost } from "../../store/posts";
+import { createPost, createPostWithImage } from "../../store/posts";
+import GifModal from "../GifModal";
 
 const UserEntry = (props) => {
   const { mention, theme, searchValue, isFocused, ...parentProps } = props;
@@ -142,7 +144,10 @@ function PostInput() {
       supportWhitespace: true,
     })
   );
-
+  const [image, setImage] = useState("");
+  const [imgSrc, setImgSrc] = useState(null);
+  const [isGifOpen, setIsGifOpen] = useState(false);
+  const [gifUrl, setGifUrl] = useState("");
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const [suggestions, setSuggestions] = useState(followingArr);
   const [playerSuggestions, setPlayerSuggestions] = useState(playersArr);
@@ -150,9 +155,16 @@ function PostInput() {
   const PlayerMentionSuggestions = playerMentionPlugin.MentionSuggestions;
   const plugins = [userMentionPlugin, playerMentionPlugin];
 
+  const updateFile = (e) => {
+    const file = e.target.files[0];
+    if (file) setImage(file);
+    console.log(file);
+    setImgSrc(URL.createObjectURL(file));
+  };
+
   const createPostHandler = () => {
     const contentState = editorState.getCurrentContent();
-    const rawData = convertToRaw(contentState);
+    let rawData = convertToRaw(contentState);
     const userId = user.id;
     setEditorState(EditorState.createEmpty());
     let mentionedUsers = [];
@@ -170,15 +182,44 @@ function PostInput() {
           break;
       }
     }
-    console.log(mentionedUsers, mentionedPlayers);
-    dispatch(
-      createPost(
-        userId,
-        mentionedUsers,
-        mentionedPlayers,
-        JSON.stringify(rawData)
-      )
-    );
+
+    if (imgSrc) {
+      rawData = JSON.stringify(rawData);
+      dispatch(
+        createPostWithImage(
+          userId,
+          mentionedUsers,
+          mentionedPlayers,
+          rawData,
+          image
+        )
+      );
+      setImgSrc("");
+    } else if (gifUrl) {
+      let contentUrl = gifUrl;
+      rawData = JSON.stringify(rawData);
+      dispatch(
+        createPost(
+          userId,
+          mentionedUsers,
+          mentionedPlayers,
+          rawData,
+          contentUrl
+        )
+      );
+      setGifUrl("");
+    } else {
+      let contentUrl = null;
+      dispatch(
+        createPost(
+          userId,
+          mentionedUsers,
+          mentionedPlayers,
+          JSON.stringify(rawData),
+          contentUrl
+        )
+      );
+    }
   };
 
   const focus = () => {
@@ -186,7 +227,7 @@ function PostInput() {
   };
 
   return (
-    <div>
+    <div className="editor-wrapper">
       <div className="editor" onFocus={focus}>
         <Editor
           editorState={editorState}
@@ -209,9 +250,76 @@ function PostInput() {
           suggestions={playerSuggestions}
           entryComponent={PlayerEntry}
         />
+
+        {imgSrc && (
+          <div className="pic-and-x-button">
+            <div
+              className="post-x-button"
+              onClick={() => {
+                setImgSrc(null);
+              }}
+            >
+              <i className="fas fa-times"></i>
+            </div>
+            <img className="preview-post-image" src={imgSrc} alt="" />
+          </div>
+        )}
+        {gifUrl && (
+          <div className="pic-and-x-button">
+            <div
+              className="post-x-button"
+              onClick={() => {
+                setGifUrl(null);
+              }}
+            >
+              <i className="fas fa-times"></i>
+            </div>
+            <img className="preview-post-gif" src={gifUrl} alt="" />
+          </div>
+        )}
       </div>
       <div className="new-post-buttons">
-        <div className="util-buttons"></div>
+        <div className="util-buttons">
+          <label htmlFor="img-input" className="file-upload">
+            <i className="far fa-image"></i>
+          </label>
+          <input
+            id="img-input"
+            type="file"
+            disabled={gifUrl ? true : false}
+            onChange={updateFile}
+          ></input>
+          <div
+            className="gif-search-button-container"
+            onClick={() => console.log("clicked")}
+          >
+            <button
+              disabled={imgSrc ? true : false}
+              onClick={() => setIsGifOpen(true)}
+              className="gif-search-button"
+            >GIF</button>
+            <GifModal open={isGifOpen} onClose={() => setIsGifOpen(false)}>
+              <div className="searchboxWrapper">
+                <ReactGiphySearchbox
+                  apiKey="9Ixlv3DWC1biJRI57RanyL7RTbfzz0o7"
+                  onSelect={(item) => {
+                    setIsGifOpen(false);
+                    setGifUrl(item.images.original.url);
+                  }}
+                  masonryConfig={[
+                    { columns: 3, imageWidth: 150, gutter: 5 },
+                    { mq: "700px", columns: 3, imageWidth: 150, gutter: 5 },
+                  ]}
+                  searchFormClassName={"gif-search-form"}
+                  gifListHeight={"548px"}
+                  listWrapperClassName={"gif-list-wrapper"}
+                  poweredByGiphy={false}
+                />
+              </div>
+            </GifModal>
+          </div>
+        </div>
+
         <button className="post-button" onClick={() => createPostHandler()}>
           Post
         </button>

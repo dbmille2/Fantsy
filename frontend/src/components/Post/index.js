@@ -1,7 +1,8 @@
 import { EditorState, convertFromRaw } from "draft-js";
 import Editor from "draft-js-plugins-editor";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
+import { fetchInfo } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import createMentionPlugin from "draft-js-mention-plugin";
 import { starPost, unStarPost } from "../../store/posts";
@@ -10,6 +11,10 @@ import "./Post.css";
 
 function Post({ post }) {
   const session = useSelector((state) => state.session);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchInfo(session.user.username));
+  }, [dispatch, session.user]);
   const user = session.user;
   const profilePicUrl = post.User.UserPreference.profilePicUrl;
   const displayName = post.User.displayName;
@@ -31,7 +36,7 @@ function Post({ post }) {
   }
 
   const history = useHistory();
-  const dispatch = useDispatch();
+
   const [userMentionPlugin] = useState(
     createMentionPlugin({
       mentionComponent: (mentionProps) => (
@@ -76,7 +81,11 @@ function Post({ post }) {
   const [commentHovered, setCommentHovered] = useState(false);
   const [starHovered, setStarHovered] = useState(false);
   const [starred, setStarred] = useState(post.stars[user.id] !== undefined);
-  const [saved, setSaved] = useState(session.savedPosts[post.id] === post.id);
+  const [saved, setSaved] = useState(false);
+
+  useEffect(() => {
+    setSaved(session.savedPosts[post.id] === post.id);
+  }, [session.savedPosts, post.id]);
 
   function starPostHandler(event) {
     event.stopPropagation();
@@ -140,6 +149,17 @@ function Post({ post }) {
               plugins={plugins}
               onChange={(editorState) => setEditorState(editorState)}
             />
+            {post.contentUrl && (
+              <img
+                className={
+                  post.contentUrl.endsWith("gif")
+                    ? "preview-post-gif"
+                    : "preview-post-image"
+                }
+                src={post.contentUrl}
+                alt=""
+              />
+            )}
           </div>
         </div>
       </div>

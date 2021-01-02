@@ -68,6 +68,7 @@ export const removePlayerFollow = (userId, playerId) => async (dispatch) => {
 export const login = ({ credential, password }) => async (dispatch) => {
   const res = await fetch("/api/session", {
     method: "POST",
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ credential, password }),
   });
   dispatch(setUser(res.data.user));
@@ -81,15 +82,16 @@ export const restoreUser = () => async (dispatch) => {
 };
 
 export const signup = (user) => async (dispatch) => {
-  const { username, email, displayName, password } = user;
+  const { username, email, displayName, image, password } = user;
+  const formData = new FormData();
+  formData.append("username", username);
+  formData.append("email", email);
+  formData.append("password", password);
+  formData.append("displayName", displayName);
+  if (image) formData.append("image", image);
   const response = await fetch("/api/users", {
     method: "POST",
-    body: JSON.stringify({
-      username,
-      email,
-      displayName,
-      password,
-    }),
+    body: formData,
   });
 
   dispatch(setUser(response.data.user));

@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
       userId: DataTypes.INTEGER,
       rawData: DataTypes.STRING,
       isReply: DataTypes.BOOLEAN,
+      contentUrl: DataTypes.STRING,
     },
     {}
   );

@@ -57,6 +57,7 @@
   box-shadow: -1px -1px 10px 1px rgb(225, 225, 225);
   transform: none !important;
   position: absolute !important;
+  z-index: 5;
 }
 
 .mentionSuggestionsEntryContainer {
@@ -120,4 +121,121 @@
   border-radius: 50%;
   margin-right: 8px;
   margin-left: 12px;
+}
+
+.preview-post-image {
+  width: 470px;
+  height: 270px;
+  margin-top: 20px;
+  border-radius: 15px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 1px solid rgb(196, 207, 214);
+}
+
+.preview-post-gif {
+  width: 470px;
+  margin-top: 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  border: 1px solid rgb(196, 207, 214);
+}
+
+.pic-and-x-button {
+  position: relative;
+}
+
+.post-x-button {
+  position: absolute;
+  top: 25px;
+  left: 5px;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 5px 9px 4px 9px;
+  color: white;
+}
+
+.post-x-button:hover {
+  background-color: rgba(34, 34, 34, 0.8);
+}
+
+.file-upload {
+  cursor: pointer;
+  padding: 4px 6px 4px 6px;
+  color: rgb(29, 161, 242);
+  font-size: 26px;
+  border-radius: 50%;
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+
+.file-upload:hover {
+  background-color: rgb(232, 245, 254);
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+
+#img-input {
+  display: none;
+}
+
+.gif-search-button-container {
+  position: relative;
+  background-color: white;
+  z-index: 1;
+  margin-top: -1px;
+  border-radius: 50%;
+  margin-left: 10px;
+  cursor: pointer;
+  padding: 8px 8px 10px 8px;
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+
+.gif-search-button-container:hover {
+  background-color: rgb(232, 245, 254);
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+
+.gif-search-form input {
+  border: none;
+  border-radius: 20px;
+  background-color: rgb(235, 238, 240);
+  width: 85%;
+  height: 32px;
+  padding-left: 18px;
+  margin-left: 50px;
+}
+
+.gif-search-form input:focus {
+  background-color: white;
+  border: 1px solid rgb(29, 161, 242);
+}
+
+.gif-list-wrapper {
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.util-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.gif-search-button {
+  background-color: rgba(0, 0, 0, 0);
+  border: 2px solid rgb(29, 161, 242);
+  color: rgb(29, 161, 242);
+  outline: none;
+  height: 19px;
+  padding: 0px;
+  margin: 0px;
+  width: 24px;
+  font-size: 10px;
+  cursor: pointer;
+  font-weight: 600px;
+  text-align: center;
+  border-radius: 2px;
 }
