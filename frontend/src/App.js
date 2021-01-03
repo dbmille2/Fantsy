@@ -58,16 +58,26 @@ function App() {
               <ProfilePage tab={"posts"} />
             </Route>
             <Route path="/:username/following">
-              <NavHeader title={profile.displayName} subTitle={"posts"} />
+              <NavHeader
+                title={profile.displayName}
+                subTitle={`@${profile.username}`}
+              />
               <FollowPage fState={false} />
             </Route>
             <Route path="/:username/followers">
-              <NavHeader title={profile.displayName} subTitle={"posts"} />
+              <NavHeader
+                title={profile.displayName}
+                subTitle={`@${profile.username}`}
+              />
               <FollowPage fState={true} />
             </Route>
             <Route path="/:username/likes">
               <NavHeader title={profile.displayName} subTitle={"likes"} />
               <ProfilePage tab={"likes"} />
+            </Route>
+            <Route path="/:username/media">
+              <NavHeader title={profile.displayName} subTitle={"posts"} />
+              <ProfilePage tab={"media"} />
             </Route>
             <Route path="/i/saved">
               <NavHeader title="Saved" subTitle="posts" />
@@ -95,27 +105,27 @@ function App() {
               <TeamContainer selection={"all"} subSelection={"all"} />
             </Route>
             <Route path="/i/team/all/qb">
-              <NavHeader title="All Players - QB" />
+              <NavHeader title="All Players - QB" subTitle={" "} />
               <PlayerPositionNav />
               <TeamContainer selection={"all"} subSelection={"QB"} />
             </Route>
             <Route path="/i/team/all/rb">
-              <NavHeader title="All Players - RB" />
+              <NavHeader title="All Players - RB" subTitle={" "} />
               <PlayerPositionNav />
               <TeamContainer selection={"all"} subSelection={"RB"} />
             </Route>
             <Route path="/i/team/all/wr">
-              <NavHeader title="All Players - WR" />
+              <NavHeader title="All Players - WR" subTitle={" "} />
               <PlayerPositionNav />
               <TeamContainer selection={"all"} subSelection={"WR"} />
             </Route>
             <Route path="/i/team/all/te">
-              <NavHeader title="All Players - TE" />
+              <NavHeader title="All Players - TE" subTitle={" "} />
               <PlayerPositionNav />
               <TeamContainer selection={"all"} subSelection={"TE"} />
             </Route>
             <Route path="/i/team/all/k">
-              <NavHeader title="All Players- K" />
+              <NavHeader title="All Players - K" subTitle={" "} />
               <PlayerPositionNav />
               <TeamContainer selection={"all"} subSelection={"K"} />
             </Route>

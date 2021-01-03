@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
+import NewPost from "../NewPost";
+import PostModal from "../PostModal";
 import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
+  const [isPostOpen, setIsPostOpen] = useState(false);
   let navLinks;
   let sessionLinks;
-  let postModalButton = <button className="post-modal-button">Post</button>;
+  let postModalButton = (
+    <button onClick={() => setIsPostOpen(true)} className="post-modal-button">
+      Post
+    </button>
+  );
   if (sessionUser) {
     sessionLinks = (
       <div className="profile-button">
@@ -123,6 +130,9 @@ function Navigation({ isLoaded }) {
         <ul className="left-nav-container">{isLoaded && navLinks}</ul>
         {isLoaded && sessionLinks}
         {isLoaded && sessionUser && postModalButton}
+        <PostModal open={isPostOpen} onClose={() => setIsPostOpen(false)}>
+          <NewPost modal={true} onClose={() => setIsPostOpen(false)}/>
+        </PostModal>
       </div>
     </div>
   );

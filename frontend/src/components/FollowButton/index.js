@@ -7,7 +7,7 @@ function FollowButton() {
   const profile = useSelector((state) => state.profile);
   const dispatch = useDispatch();
 
-  const clickHandler = (e) => {
+  const clickHandler = (event) => {
     if (profile.isFollowing) {
       dispatch(removeFollower(profile.username, user.id, profile.id));
     } else {
@@ -27,7 +27,7 @@ function FollowButton() {
       className={profile.isFollowing ? "unfollow-button" : "follow-button"}
       onMouseOver={profile.isFollowing ? (event) => onHover(event) : undefined}
       onMouseOut={profile.isFollowing ? (event) => offHover(event) : undefined}
-      onClick={clickHandler}
+      onClick={(event) => clickHandler(event)}
     >
       {profile.isFollowing ? "Following" : "Follow"}
     </button>

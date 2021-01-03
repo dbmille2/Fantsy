@@ -33,6 +33,7 @@
 }
 
 .feed-profile-pic {
+  border: 1px solid rgb(235, 238, 240);
   width: 46px;
   height: 46px;
   border-radius: 50%;

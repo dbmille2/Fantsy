@@ -2,7 +2,11 @@ import HomeFeed from "../HomeFeed";
 import "./ProfileFeedContainer.css";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProfileFeed, fetchLikesFeed } from "../../store/posts";
+import {
+  fetchProfileFeed,
+  fetchLikesFeed,
+  fetchMediaFeed,
+} from "../../store/posts";
 
 function ProfileFeedContainer({ tab }) {
   const dispatch = useDispatch();
@@ -13,6 +17,8 @@ function ProfileFeedContainer({ tab }) {
       dispatch(fetchProfileFeed(profile.id));
     } else if (tab === "likes") {
       dispatch(fetchLikesFeed(profile.id));
+    } else if (tab === "media") {
+      dispatch(fetchMediaFeed(profile.id));
     }
   }, [dispatch, profile, tab]);
   return (

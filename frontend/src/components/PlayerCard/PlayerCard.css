@@ -1,3 +1,7 @@
+.player-card-link {
+  text-decoration: none;
+}
+
 .player-card-pic {
   width: 46px;
   height: 46px;

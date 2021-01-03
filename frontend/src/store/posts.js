@@ -77,6 +77,12 @@ export const fetchLikesFeed = (userId) => async (dispatch) => {
   dispatch(loadFeed(feed));
 };
 
+export const fetchMediaFeed = (userId) => async (dispatch) => {
+  const res = await fetch(`/api/posts/${userId}/media`);
+  const feed = res.data.posts;
+  dispatch(loadFeed(feed));
+};
+
 export const fetchSavedFeed = (userId) => async (dispatch) => {
   const res = await fetch(`/api/posts/${userId}/saved`);
   const feed = res.data.posts;
