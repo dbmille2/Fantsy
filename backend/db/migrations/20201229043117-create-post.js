@@ -17,7 +17,7 @@ module.exports = {
       },
       rawData: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
       },
       isReply: {
         allowNull: false,
