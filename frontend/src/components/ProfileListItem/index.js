@@ -14,7 +14,7 @@ function ProfileListItem({ profile }) {
           <div className="follower-card-text">
             <div className="follower-card-text-name">{profile.displayName}</div>
             <div className="follower-card-text-username">
-              {profile.username}
+              @{profile.username}
             </div>
           </div>
         </div>
