@@ -41,9 +41,7 @@ function FollowPage({ fState }) {
       <ul className="followers-feed-container">
         {group &&
           Object.values(group).map((profile) => (
-            <li key={profile.id}>
-              <ProfileListItem profile={profile} />
-            </li>
+            <ProfileListItem profile={profile} />
           ))}
       </ul>
     </div>

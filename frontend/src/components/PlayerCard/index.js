@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 function PlayerCard({ player }) {
   const followedPlayers = useSelector((state) => state.session.followedPlayers);
   useEffect(() => {
-    console.log("HI");
   }, [followedPlayers]);
   return (
     <div className={`player-card ${player.position}`}>

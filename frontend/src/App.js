@@ -18,6 +18,7 @@ import * as playerActions from "./store/players";
 import PlayerFeedContainer from "./components/PlayerFeedContainer";
 import TeamContainer from "./components/TeamContainer";
 import PlayerPositionNav from "./components/PlayerPositionNav";
+import SinglePostContainer from "./components/SinglePostContainer";
 
 function App() {
   const dispatch = useDispatch();
@@ -132,6 +133,10 @@ function App() {
             <Route path="/i/team">
               <NavHeader title="My Team" />
               <TeamContainer selection={"team"} />
+            </Route>
+            <Route path="/:username/post/:postId">
+              <NavHeader title="Post" />
+              <SinglePostContainer />
             </Route>
           </Switch>
         )}

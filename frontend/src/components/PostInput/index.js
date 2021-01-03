@@ -160,14 +160,12 @@ function PostInput({ modal, onClose }) {
   const updateFile = (e) => {
     const file = e.target.files[0];
     if (file) setImage(file);
-    console.log(file);
     setImgSrc(URL.createObjectURL(file));
   };
 
   const updateFileModal = (e) => {
     const file = e.target.files[0];
     if (file) setImage(file);
-    console.log(file);
     setImgSrcModal(URL.createObjectURL(file));
   };
 
