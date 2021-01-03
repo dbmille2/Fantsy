@@ -20,6 +20,7 @@
 }
 
 .post-profile-pic:hover {
+  border: none;
   filter: brightness(85%);
   transition-property: filter;
   transition-duration: 0.15s;

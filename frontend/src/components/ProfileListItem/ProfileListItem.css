@@ -15,6 +15,7 @@
 }
 
 .follower-card-pic:hover {
+  border: none;
   filter: brightness(85%);
   transition-property: filter;
   transition-duration: 0.15s;
@@ -41,6 +42,7 @@
 
 .follower-card-info {
   display: flex;
+  align-items: center;
 }
 
 .follower-card-text {
