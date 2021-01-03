@@ -37,7 +37,6 @@ router.get(
     players.forEach((player) => {
       player.dataValues.tagCount = player.PlayersWithTags.length;
     });
-    console.log(players[0]);
     players.sort((a, b) =>
       a.dataValues.tagCount < b.dataValues.tagCount ? 1 : -1
     );

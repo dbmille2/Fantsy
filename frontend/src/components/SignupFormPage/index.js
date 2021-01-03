@@ -35,7 +35,6 @@ function SignupFormPage() {
   const updateFile = (e) => {
     const file = e.target.files[0];
     if (file) setImage(file);
-    console.log(file);
   };
 
   return (

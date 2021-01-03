@@ -4,12 +4,14 @@ import session from "./session";
 import profile from "./profile";
 import players from "./players";
 import posts from "./posts";
+import search from "./search";
 
 const rootReducer = combineReducers({
   session,
   profile,
   players,
-  posts
+  posts,
+  search,
 });
 
 let enhancer;

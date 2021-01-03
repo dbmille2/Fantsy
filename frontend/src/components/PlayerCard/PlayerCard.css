@@ -11,6 +11,7 @@
   transition-duration: 0.15s;
   background-color: rgb(225, 228, 230);
   margin-right: 8px;
+  border: 1px solid rgb(215, 218, 220);
 }
 
 .player-card-pic:hover {

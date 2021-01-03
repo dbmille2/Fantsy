@@ -1,0 +1,62 @@
+.follower-card-link {
+  text-decoration: none;
+}
+
+.follower-card-pic {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  filter: brightness(100%);
+  transition-property: filter;
+  transition-duration: 0.15s;
+  background-color: rgb(225, 228, 230);
+  margin-right: 8px;
+  border: 1px solid rgb(235, 238, 240);
+}
+
+.follower-card-pic:hover {
+  filter: brightness(85%);
+  transition-property: filter;
+  transition-duration: 0.15s;
+}
+
+.follower-card {
+  cursor: pointer;
+  border-bottom: 1px solid rgb(235, 238, 240);
+  transition-property: background-color;
+  transition-duration: 0.2s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  height: 70px;
+  padding-left: 14px;
+}
+
+.follower-card:hover {
+  background-color: rgb(239, 241, 242);
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+
+.follower-card-info {
+  display: flex;
+}
+
+.follower-card-text {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.follower-card-text-name {
+  font-size: 14px;
+  color: black;
+  font-weight: 600;
+}
+
+.follower-card-text-username {
+  margin-top: 2px;
+  color: rgb(91, 112, 131);
+  font-size: 13px;
+}
