@@ -200,6 +200,26 @@ router.get(
   })
 );
 
+router.get(
+  "/:id/media",
+  asyncHandler(async (req, res) => {
+    const id = req.params.id;
+    let posts = await Post.findAll({
+      where: {
+        userId: id,
+      },
+      include: [
+        { model: User, include: [{ model: UserPreference }] },
+        { model: User, as: "Stars" },
+      ],
+      order: [["createdAt", "DESC"]],
+      limit: 20,
+    });
+    posts = posts.filter((post) => post.contentUrl !== null);
+    res.json({ posts });
+  })
+);
+
 router.put(
   "/:postId/star",
   asyncHandler(async (req, res) => {

@@ -30,12 +30,15 @@ function NavHeader({ title, subTitle }) {
                 title !== "Explore" &&
                 title !== "My Team" &&
                 title !== "All Players" &&
-                !playerId && (
+                title !== "Post" &&
+                title !== "Notifications" &&
+                subTitle !== " " && (
                   <span className="header-number-posts">
-                    {Object.keys(feed).length}{" "}
+                    {(subTitle === "posts" || subTitle === "likes") &&
+                      Object.keys(feed).length}
                     {!playerId
-                      ? subTitle
-                      : `${allPlayers[playerId].position} - ${allPlayers[playerId].teamName}`}
+                      ? ` ${subTitle}`
+                      : ` ${allPlayers[playerId].position} - ${allPlayers[playerId].teamName}`}
                   </span>
                 )}
             </div>

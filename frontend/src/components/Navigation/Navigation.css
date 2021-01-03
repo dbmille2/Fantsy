@@ -1,5 +1,56 @@
 .profile-dropdown {
+  list-style: none;
+  padding: 0px;
+  height: 110px;
+  margin-top: 0px;
+}
+
+.profile-dropdown-container {
   position: absolute;
+  bottom: 70px;
+  width: 280px;
+  height: 200px;
+  left: -25px;
+  border: 1px solid rgb(235, 238, 240);
+  box-shadow: -1px -1px 10px 1px rgb(225, 225, 225);
+  background-color: white;
+  border-radius: 15px;
+  padding: 0px;
+}
+
+.profile-dropdown li {
+  line-height: 55px;
+  height: 55px;
+  padding-left: 14px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.profile-dropdown li:hover {
+  background-color: rgb(247, 249, 250);
+}
+
+.github-links {
+  line-height: 55px;
+}
+
+.fa-github {
+  color: black;
+  font-size: 46px;
+  line-height: 55px !important;
+}
+
+.user-info-dropdown {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.user-profile-pic-text-wrapper.dropdown-wrapper {
+  display: flex;
+  font-size: 15px;
+  align-items: center;
+  padding: 14px 12px 10px 14px;
+  border-bottom: 1px solid rgb(235, 238, 240);
 }
 
 .left-nav-wrapper {
@@ -7,6 +58,7 @@
   position: absolute;
   top: 0;
   left: 80px;
+  z-index: 4;
 }
 
 .left-nav {
@@ -100,5 +152,58 @@
 
 .profile-button {
   position: absolute;
-  bottom: 200px;
+  bottom: 30px;
+  left: -25px;
+}
+
+.user-button-profile-pic {
+  border: 1px solid rgb(235, 238, 240);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.user-button-display-name {
+  color: black;
+  font-weight: 600;
+}
+
+.user-profile-pic-text-wrapper {
+  display: flex;
+  font-size: 15px;
+  align-items: center;
+  
+}
+
+.user-button-username {
+  color: rgb(91, 112, 131);
+  font-weight: 350;
+}
+
+.user-profile-button {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: space-between;
+  width: 240px;
+  padding: 8px 8px;
+  border-radius: 50px;
+  transition-property: background-color;
+  transition-duration: 0.2s;
+  user-select: none;
+}
+
+.user-profile-button:hover {
+  background-color: rgb(232, 245, 254);
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+
+.logout-li {
+  border-top: 1px solid rgb(235, 238, 240);
+}
+
+.user-button-ellipsis {
+  color: rgb(91, 112, 131);
 }
