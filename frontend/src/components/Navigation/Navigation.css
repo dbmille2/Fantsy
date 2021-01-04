@@ -162,6 +162,7 @@
   height: 46px;
   border-radius: 50%;
   margin-right: 8px;
+  object-fit: cover;
 }
 
 .user-button-display-name {
@@ -173,7 +174,6 @@
   display: flex;
   font-size: 15px;
   align-items: center;
-  
 }
 
 .user-button-username {
