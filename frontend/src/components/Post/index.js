@@ -13,9 +13,9 @@ import "./Post.css";
 function Post({ post }) {
   const session = useSelector((state) => state.session);
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchInfo(session.user.username));
-  }, [dispatch, session.user]);
+  // useEffect(() => {
+  //   dispatch(fetchInfo(session.user.username));
+  // }, [dispatch, session.user]);
   const user = session.user;
   const profilePicUrl = post.User.UserPreference.profilePicUrl;
   const displayName = post.User.displayName;
