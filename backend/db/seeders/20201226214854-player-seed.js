@@ -118,7 +118,7 @@ module.exports = {
             "https://images.fantasypros.com/images/players/nfl/11616/headshot/250x250.webp",
         },
         {
-          name: "StefonDiggs",
+          name: "Stefon Diggs",
           tagName: "StefonDiggs",
           teamName: "BUF",
           position: "WR",
@@ -142,7 +142,7 @@ module.exports = {
             "https://images.fantasypros.com/images/players/nfl/18218/headshot/250x250.webp",
         },
         {
-          name: "JustinJefferson",
+          name: "Justin Jefferson",
           tagName: "JustinJefferson",
           teamName: "MIN",
           position: "WR",
