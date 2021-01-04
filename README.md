@@ -5,5 +5,5 @@ README coming soon. For now check out the [Wiki](https://github.com/dbmille2/Fan
 https://fantsy.herokuapp.com/
 
 Demo -
-Login - dmiller
-password - password
+ - Login - dmiller
+ - password - password
