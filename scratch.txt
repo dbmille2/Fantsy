@@ -1,1 +1,1 @@
-npx dotenv sequelize-cli migration:create --name modify_posts
+Restart Heroku
