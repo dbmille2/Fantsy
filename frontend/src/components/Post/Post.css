@@ -40,6 +40,7 @@
   filter: brightness(100%);
   transition-property: filter;
   transition-duration: 0.15s;
+  object-fit: cover;
 }
 
 .feed-profile-pic:hover {
