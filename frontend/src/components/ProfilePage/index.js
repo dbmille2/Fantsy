@@ -32,60 +32,56 @@ function ProfilePage({ tab }) {
   }, []);
   useEffect(() => {
     dispatch(profileActions.fetchProfile(username, user.id));
-  }, [dispatch, username, user.id]);
+  }, [dispatch, username, user]);
 
   return (
     <div className="full-profile-page">
       <div className="profile-heading">
-        {profile && (
-          <img className="banner" src={profile.banner} alt="banner" />
-        )}
-        {profile && (
-          <div className="profile-pic-and-follow">
+        <img className="banner" src={profile.banner} alt="banner" />
+
+        <div className="profile-pic-and-follow">
+          {profile.profilePic && (
             <img
               className="profile-pic"
               src={profile.profilePic}
               alt="Profile"
             />
-
-            <div className="profile-pic-background"></div>
-            {!profile.isSelf && <FollowButton className="follow" />}
-            {profile.isSelf && <EditProfileButton />}
+          )}
+          <div className="profile-pic-background"></div>
+          {!profile.isSelf && <FollowButton className="follow" />}
+          {profile.isSelf && <EditProfileButton />}
+        </div>
+        <div className="profile-info-container">
+          <div className="profile-display-name">{profile.displayName}</div>
+          <div className="profile-username">@{profile.username}</div>
+          <div className="profile-bio">{profile.bio}</div>
+          <div className="profile-join-date">
+            <i className="far fa-calendar-alt" />
+            <span>
+              Joined {months[month - 1]} {year}
+            </span>
           </div>
-        )}
-        {profile && (
-          <div className="profile-info-container">
-            <div className="profile-display-name">{profile.displayName}</div>
-            <div className="profile-username">@{profile.username}</div>
-            <div className="profile-bio">{profile.bio}</div>
-            <div className="profile-join-date">
-              <i className="far fa-calendar-alt" />
-              <span>
-                Joined {months[month - 1]} {year}
+
+          <Link className="follow-container" to={`/${username}/following`}>
+            {profile.following && (
+              <span className="follow-number">
+                {Object.keys(profile.following).length}
               </span>
-            </div>
-
-            <Link className="follow-container" to={`/${username}/following`}>
-              {profile.following && (
-                <span className="follow-number">
-                  {Object.keys(profile.following).length}
-                </span>
-              )}
-              <span className="follow-text"> Following</span>
-            </Link>
-            <Link className="follow-container" to={`/${username}/followers`}>
-              {profile.followers && (
-                <span className="follow-number">
-                  {Object.keys(profile.followers).length}
-                </span>
-              )}
-              <span className="follow-text"> Followers</span>
-            </Link>
-          </div>
-        )}
+            )}
+            <span className="follow-text"> Following</span>
+          </Link>
+          <Link className="follow-container" to={`/${username}/followers`}>
+            {profile.followers && (
+              <span className="follow-number">
+                {Object.keys(profile.followers).length}
+              </span>
+            )}
+            <span className="follow-text"> Followers</span>
+          </Link>
+        </div>
       </div>
       {profile && <ProfilePostNav />}
-      {profile && <ProfileFeedContainer tab={tab} />}
+      {profile.id && <ProfileFeedContainer tab={tab} />}
     </div>
   );
 }
