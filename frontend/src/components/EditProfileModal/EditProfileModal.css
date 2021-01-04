@@ -1,0 +1,40 @@
+.edit-profile-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 560px;
+  min-height: 650px;
+  height: auto;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 50px 0px 0px 0px;
+  z-index: 99;
+  border-radius: 20px;
+}
+
+.edit-profile-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+}
+
+.edit-profile-close {
+  border: none;
+  font-size: 25px;
+  position: fixed;
+  outline: none;
+  top: 12px;
+  left: 12px;
+  color: rgb(29, 161, 242);
+  background-color: white;
+  cursor: pointer;
+  z-index: 99;
+}
+
+.edit-profile-container-modal {
+  border-top: 1px solid rgb(196, 207, 214);
+}

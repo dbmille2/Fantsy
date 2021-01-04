@@ -3,16 +3,27 @@
   justify-content: space-between;
   align-items: flex-end;
   position: absolute;
-  top: 135px;
+  top: 145px;
   width: 100%;
 }
 
 .profile-pic {
   width: 125px;
+  height: 125px;
   margin-left: 10px;
   border-radius: 50%;
   background-color: white;
-  border: 4px solid white;
+  object-fit: cover;
+  z-index: 2;
+}
+.profile-pic-background {
+  width: 133px;
+  height: 133px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  left: 6px;
+  bottom: -4px;
 }
 
 .unfollow-button,
@@ -37,11 +48,12 @@
 .banner {
   width: 560px;
   margin-right: 1px;
-  height: 200px;
+  height: 210px;
+  object-fit: cover;
 }
 
 .profile-info-container {
-  margin-top: 60px;
+  margin-top: 64px;
   margin-left: 14px;
 }
 

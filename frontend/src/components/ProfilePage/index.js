@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import * as profileActions from "../../store/profile";
 import { Link } from "react-router-dom";
 import FollowButton from "../FollowButton";
+import EditProfileButton from "../EditProfileButton";
 import ProfilePostNav from "../ProfilePostNav";
 import ProfileFeedContainer from "../ProfileFeedContainer";
 import { fetchInfo } from "../../store/session";
@@ -42,8 +43,9 @@ function ProfilePage({ tab }) {
           {profilePic && (
             <img className="profile-pic" src={profilePic} alt="Profile" />
           )}
-
+          <div className="profile-pic-background"></div>
           {!isSelf && <FollowButton className="follow" />}
+          {isSelf && <EditProfileButton />}
         </div>
         <div className="profile-info-container">
           <div className="profile-display-name">{profile.displayName}</div>

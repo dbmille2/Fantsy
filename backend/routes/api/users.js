@@ -4,6 +4,8 @@ const asyncHandler = require("express-async-handler");
 const {
   singlePublicFileUpload,
   singleMulterUpload,
+  multipleMulterUpload,
+  multiplePublicFileUpload,
 } = require("../../awsS3.js");
 
 const { handleValidationErrors } = require("../../utils/validation");
@@ -207,6 +209,174 @@ router.delete(
     });
     await follow.destroy();
     res.json({ message: "Unfollowed" });
+  })
+);
+
+router.put(
+  "/:userId/update/pic",
+  singleMulterUpload("image"),
+  asyncHandler(async (req, res) => {
+    const userId = req.params.userId;
+    const { newBio, newDisplayName } = req.body;
+    const profilePicUrl = await singlePublicFileUpload(req.file);
+    const preference = await UserPreference.findOne({
+      where: {
+        userId,
+      },
+    });
+    await preference.update({ profilePicUrl, bioRawData: newBio });
+    const user = await User.findOne({
+      where: { id: userId },
+      include: [
+        {
+          model: User,
+          as: "Followers",
+          include: [{ model: UserPreference }],
+        },
+        {
+          model: User,
+          as: "Following",
+          include: [{ model: UserPreference }],
+        },
+        {
+          model: Player,
+          as: "FollowedPlayers",
+        },
+        { model: UserPreference },
+        {
+          model: Post,
+          as: "SavedPosts",
+        },
+      ],
+    });
+    await user.update({ displayName: newDisplayName });
+    res.json({ user });
+  })
+);
+
+router.put(
+  "/:userId/update/banner",
+  singleMulterUpload("image"),
+  asyncHandler(async (req, res) => {
+    const userId = req.params.userId;
+    const { newBio, newDisplayName } = req.body;
+    const bannerUrl = await singlePublicFileUpload(req.file);
+    const preference = await UserPreference.findOne({
+      where: {
+        userId,
+      },
+    });
+    await preference.update({ bannerUrl, bioRawData: newBio });
+    const user = await User.findOne({
+      where: { id: userId },
+      include: [
+        {
+          model: User,
+          as: "Followers",
+          include: [{ model: UserPreference }],
+        },
+        {
+          model: User,
+          as: "Following",
+          include: [{ model: UserPreference }],
+        },
+        {
+          model: Player,
+          as: "FollowedPlayers",
+        },
+        { model: UserPreference },
+        {
+          model: Post,
+          as: "SavedPosts",
+        },
+      ],
+    });
+    await user.update({ displayName: newDisplayName });
+    res.json({ user });
+  })
+);
+
+router.put(
+  "/:userId/update/both",
+  multipleMulterUpload("images"),
+  asyncHandler(async (req, res) => {
+    const userId = req.params.userId;
+    const { newBio, newDisplayName } = req.body;
+    const images = await multiplePublicFileUpload(req.files);
+    const profilePicUrl = images[0];
+    const bannerUrl = images[1];
+    const preference = await UserPreference.findOne({
+      where: {
+        userId,
+      },
+    });
+    await preference.update({ profilePicUrl, bannerUrl, bioRawData: newBio });
+    const user = await User.findOne({
+      where: { id: userId },
+      include: [
+        {
+          model: User,
+          as: "Followers",
+          include: [{ model: UserPreference }],
+        },
+        {
+          model: User,
+          as: "Following",
+          include: [{ model: UserPreference }],
+        },
+        {
+          model: Player,
+          as: "FollowedPlayers",
+        },
+        { model: UserPreference },
+        {
+          model: Post,
+          as: "SavedPosts",
+        },
+      ],
+    });
+    await user.update({ displayName: newDisplayName });
+    res.json({ user });
+  })
+);
+
+router.put(
+  "/:userId/update/text",
+  asyncHandler(async (req, res) => {
+    const userId = req.params.userId;
+    const { newBio, newDisplayName } = req.body;
+    const preference = await UserPreference.findOne({
+      where: {
+        userId,
+      },
+    });
+    await preference.update({ bioRawData: newBio });
+    const user = await User.findOne({
+      where: { id: userId },
+      include: [
+        {
+          model: User,
+          as: "Followers",
+          include: [{ model: UserPreference }],
+        },
+        {
+          model: User,
+          as: "Following",
+          include: [{ model: UserPreference }],
+        },
+        {
+          model: Player,
+          as: "FollowedPlayers",
+        },
+        { model: UserPreference },
+        {
+          model: Post,
+          as: "SavedPosts",
+        },
+      ],
+    });
+    await user.update({ displayName: newDisplayName });
+    res.json({ user });
   })
 );
 
