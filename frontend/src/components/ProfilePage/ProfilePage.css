@@ -67,6 +67,11 @@
   color: rgb(91, 112, 131);
   font-weight: 350;
   font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.profile-bio {
+  font-size: 15px;
   margin-bottom: 10px;
 }
 

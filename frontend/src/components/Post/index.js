@@ -193,7 +193,7 @@ function Post({ post }) {
           >
             <i id="comment-logo" className="far fa-comment"></i>
           </div>
-          <span className="number-comments">4</span>
+          <span className="number-comments"></span>
         </div>
 
         <div

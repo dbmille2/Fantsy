@@ -50,6 +50,7 @@ function ProfilePage({ tab }) {
         <div className="profile-info-container">
           <div className="profile-display-name">{profile.displayName}</div>
           <div className="profile-username">@{profile.username}</div>
+          <div className="profile-bio">{profile.bio}</div>
           <div className="profile-join-date">
             <i className="far fa-calendar-alt" />
             <span>
