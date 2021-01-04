@@ -4,7 +4,6 @@ import TrendingPlayerCard from "../TrendingPlayerCard";
 
 function Trending() {
   const trendingPlayers = useSelector((state) => state.players.trendingPlayers);
-  console.log(trendingPlayers);
   return (
     <div className="trending-panel">
       <div className="trending-header">Trending Players</div>

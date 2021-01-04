@@ -33,7 +33,6 @@ function EditProfileForm({ onClose }) {
   };
 
   const updateProfileHandler = () => {
-    console.log(newProfilePic, newBannerPic);
     if (newProfilePic && !newBannerPic) {
       dispatch(
         updateProfilePic(newBio, newDisplayName, newProfilePic, profile.id)

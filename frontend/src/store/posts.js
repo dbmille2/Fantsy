@@ -53,7 +53,6 @@ const deleteSave = (postId, userId) => ({
 
 export const fetchFeed = (userId) => async (dispatch) => {
   const res = await fetch(`/api/posts/${userId}/feed`);
-  console.log("feeed", res.data);
   const feed = res.data.posts;
 
   dispatch(loadFeed(feed));
