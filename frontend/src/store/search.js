@@ -10,7 +10,6 @@ const loadUserResults = (users) => ({
 export const searchUsers = (query) => async (dispatch) => {
   const res = await fetch(`/api/search/users/${query}`);
   const users = res.data.users;
-  console.log(users);
   dispatch(loadUserResults(users));
 };
 

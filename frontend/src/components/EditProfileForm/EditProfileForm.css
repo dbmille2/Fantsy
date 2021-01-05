@@ -1,0 +1,175 @@
+.edit-profile-banner {
+  width: 560px;
+  margin-right: 1px;
+  height: 210px;
+  object-fit: cover;
+  filter: brightness(78%);
+}
+
+.edit-profile-user-pic {
+  position: absolute;
+  bottom: -60px;
+  left: 15px;
+  width: 110px;
+  filter: brightness(78%);
+  height: 110px;
+  border-radius: 50%;
+  background-color: white;
+
+  object-fit: cover;
+}
+
+.edit-profile-pic-background {
+  width: 118px;
+  height: 118px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  left: 12px;
+  bottom: -64px;
+}
+
+.edit-profile-form-pictures {
+  position: relative;
+}
+
+.edit-profile-form-wrapper {
+  position: relative;
+}
+
+.edit-profile-form-header {
+  position: absolute;
+  top: -35px;
+  left: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 475px;
+}
+
+.edit-profile-form-header-text {
+  font-size: 18px;
+  font-weight: 750;
+}
+
+.profile-file-upload {
+  position: absolute;
+  left: 54px;
+  bottom: -22px;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  filter: brightness(90%);
+  padding: 6px 8px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0);
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+
+.profile-file-upload:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+
+.banner-file-upload {
+  position: absolute;
+  left: 260px;
+  bottom: 92px;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  filter: brightness(90%);
+  padding: 6px 8px 6px 9px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0);
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+
+.banner-file-upload:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+
+#profile-pic-input,
+#profile-banner-input {
+  display: none;
+}
+
+.edit-profile-form-inputs {
+  margin-left: 13px;
+  margin-top: 72px;
+}
+.bio-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding-top: 5px;
+  background-color: white;
+  outline: none;
+  border: 1px solid rgb(196, 207, 214);
+  border-radius: 4px;
+}
+
+.bio-wrapper.focused {
+  border: 2px solid rgb(29, 161, 242);
+}
+
+.bio-header.focused {
+  color: rgb(29, 161, 242);
+}
+
+.bio-text-area {
+  margin-top: 2px;
+  width: 518px;
+  resize: none;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 17px;
+  margin-left: 0px;
+}
+
+.bio-header {
+  color: rgb(96, 116, 135);
+}
+
+.name-input-wrapper {
+  margin-bottom: 20px;
+}
+
+.name-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding-top: 5px;
+  background-color: white;
+  outline: none;
+  border: 1px solid rgb(196, 207, 214);
+  border-radius: 4px;
+}
+
+.name-wrapper.focused {
+  border: 2px solid rgb(29, 161, 242);
+}
+
+.name-header.focused {
+  color: rgb(29, 161, 242);
+}
+
+.name-input {
+  margin-top: 2px;
+  width: 518px;
+  resize: none;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 17px;
+  margin-left: -1px;
+  padding-bottom: 5px;
+}
+
+.name-header {
+  color: rgb(96, 116, 135);
+}

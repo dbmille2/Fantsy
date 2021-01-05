@@ -1,8 +1,7 @@
 .player-feed-container {
   margin-top: 50px;
-  border-left: 1px solid rgb(235, 238, 240);
-  border-right: 1px solid rgb(235, 238, 240);
-  height: 101vh;
+  /* border-left: 1px solid rgb(235, 238, 240); */
+  /* border-right: 1px solid rgb(235, 238, 240); */
 }
 
 .player-feed {

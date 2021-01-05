@@ -7,14 +7,15 @@ import { useDispatch, useSelector } from "react-redux";
 import createMentionPlugin from "draft-js-mention-plugin";
 import { starPost, unStarPost } from "../../store/posts";
 import { savePost, unSavePost } from "../../store/posts";
+import ImageModal from "../ImageModal";
 import "./Post.css";
 
 function Post({ post }) {
   const session = useSelector((state) => state.session);
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchInfo(session.user.username));
-  }, [dispatch, session.user]);
+  // useEffect(() => {
+  //   dispatch(fetchInfo(session.user.username));
+  // }, [dispatch, session.user]);
   const user = session.user;
   const profilePicUrl = post.User.UserPreference.profilePicUrl;
   const displayName = post.User.displayName;
@@ -82,6 +83,7 @@ function Post({ post }) {
   const [starHovered, setStarHovered] = useState(false);
   const [starred, setStarred] = useState(post.stars[user.id] !== undefined);
   const [saved, setSaved] = useState(false);
+  const [isImageOpen, setIsImageOpen] = useState(false);
 
   useEffect(() => {
     setSaved(session.savedPosts[post.id] === post.id);
@@ -109,7 +111,12 @@ function Post({ post }) {
     }
   }
 
-  function postClickHandler() {
+  // function imageClickHandler(event) {
+
+  //   setIsImageOpen(true);
+  // }
+
+  function postClickHandler(event) {
     history.push(`/${username}/post/${post.id}`);
   }
 
@@ -150,15 +157,23 @@ function Post({ post }) {
               onChange={(editorState) => setEditorState(editorState)}
             />
             {post.contentUrl && (
-              <img
-                className={
-                  post.contentUrl.endsWith("gif")
-                    ? "preview-post-gif"
-                    : "preview-post-image"
-                }
-                src={post.contentUrl}
-                alt=""
-              />
+              <>
+                <div className="image-holder">
+                  <img
+                    className={
+                      post.contentUrl.endsWith("gif")
+                        ? "preview-post-gif"
+                        : "preview-post-image"
+                    }
+                    src={post.contentUrl}
+                    alt=""
+                  />
+                </div>
+                <ImageModal
+                  open={isImageOpen}
+                  onClose={() => setIsImageOpen(false)}
+                ></ImageModal>
+              </>
             )}
           </div>
         </div>
@@ -178,7 +193,7 @@ function Post({ post }) {
           >
             <i id="comment-logo" className="far fa-comment"></i>
           </div>
-          <span className="number-comments">4</span>
+          <span className="number-comments"></span>
         </div>
 
         <div

@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import * as profileActions from "../../store/profile";
 import { Link } from "react-router-dom";
 import FollowButton from "../FollowButton";
+import EditProfileButton from "../EditProfileButton";
 import ProfilePostNav from "../ProfilePostNav";
 import ProfileFeedContainer from "../ProfileFeedContainer";
 import { fetchInfo } from "../../store/session";
@@ -15,17 +16,17 @@ function ProfilePage({ tab }) {
   const dispatch = useDispatch();
   const profile = useSelector((state) => state.profile);
   const user = useSelector((state) => state.session.user);
-  const session = useSelector((state) => state.session);
-  const isSelf = profile.isSelf;
-  const profilePic = profile.profilePic;
+  // const session = useSelector((state) => state.session);
+  // const isSelf = profile.isSelf;
+  // const profilePic = profile.profilePic;
   let [month, _date, year] = new Date(profile.createdAt)
     .toLocaleDateString("en-US")
     .split("/");
 
-  useEffect(() => {
-    dispatch(fetchInfo(session.user.username));
-    // ;
-  }, [dispatch, session.user]);
+  // useEffect(() => {
+  //   dispatch(fetchInfo(session.user.username));
+  //   // ;
+  // }, [dispatch, session.user]);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -39,15 +40,21 @@ function ProfilePage({ tab }) {
         <img className="banner" src={profile.banner} alt="banner" />
 
         <div className="profile-pic-and-follow">
-          {profilePic && (
-            <img className="profile-pic" src={profilePic} alt="Profile" />
+          {profile.profilePic && (
+            <img
+              className="profile-pic"
+              src={profile.profilePic}
+              alt="Profile"
+            />
           )}
-
-          {!isSelf && <FollowButton className="follow" />}
+          <div className="profile-pic-background"></div>
+          {!profile.isSelf && <FollowButton className="follow" />}
+          {profile.isSelf && <EditProfileButton />}
         </div>
         <div className="profile-info-container">
           <div className="profile-display-name">{profile.displayName}</div>
           <div className="profile-username">@{profile.username}</div>
+          <div className="profile-bio">{profile.bio}</div>
           <div className="profile-join-date">
             <i className="far fa-calendar-alt" />
             <span>

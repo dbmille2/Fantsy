@@ -2,7 +2,6 @@ import { fetch } from "./csrf.js";
 
 const LOAD_PROFILE = "profile/loadProfile";
 
-
 const loadProfile = (profile, currentUser) => ({
   type: LOAD_PROFILE,
   payload: {
@@ -35,6 +34,75 @@ export const removeFollower = (
     body: JSON.stringify(body),
   });
   dispatch(fetchProfile(username, followerUserId));
+};
+
+export const updateProfilePic = (
+  newBio,
+  newDisplayName,
+  newProfilePic,
+  id
+) => async (dispatch) => {
+  const formData = new FormData();
+  formData.append("newBio", newBio);
+  formData.append("newDisplayName", newDisplayName);
+  formData.append("image", newProfilePic);
+  const res = await fetch(`/api/users/${id}/update/pic`, {
+    method: "PUT",
+    body: formData,
+  });
+  const profile = res.data;
+  dispatch(loadProfile(profile, id));
+};
+
+export const updateProfileBanner = (
+  newBio,
+  newDisplayName,
+  newBannerPic,
+  id
+) => async (dispatch) => {
+  const formData = new FormData();
+  formData.append("newBio", newBio);
+  formData.append("newDisplayName", newDisplayName);
+  formData.append("image", newBannerPic);
+  const res = await fetch(`/api/users/${id}/update/banner`, {
+    method: "PUT",
+    body: formData,
+  });
+  const profile = res.data;
+  dispatch(loadProfile(profile, id));
+};
+
+export const updateBothPics = (
+  newBio,
+  newDisplayName,
+  newProfilePic,
+  newBannerPic,
+  id
+) => async (dispatch) => {
+  const formData = new FormData();
+  formData.append("newBio", newBio);
+  formData.append("newDisplayName", newDisplayName);
+  formData.append("images", newProfilePic);
+  formData.append("images", newBannerPic);
+  const res = await fetch(`/api/users/${id}/update/both`, {
+    method: "PUT",
+    body: formData,
+  });
+  const profile = res.data;
+  dispatch(loadProfile(profile, id));
+};
+
+export const updateTextOnly = (newBio, newDisplayName, id) => async (
+  dispatch
+) => {
+  const body = { newBio, newDisplayName };
+  const res = await fetch(`/api/users/${id}/update/text`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+  const profile = res.data;
+  dispatch(loadProfile(profile, id));
 };
 
 export const fetchProfile = (username, currentUser) => async (dispatch) => {
@@ -70,13 +138,13 @@ function reducer(state = {}, action) {
       }
       const isFollowing = currentUser in followers;
       const isSelf = currentUser === profile.id;
-      console.log(profile);
       newState = Object.assign({}, state, {
         id: profile.id,
         username: profile.username,
         displayName: profile.displayName,
         profilePic: profile.UserPreference.profilePicUrl,
         banner: profile.UserPreference.bannerUrl,
+        bio: profile.UserPreference.bioRawData,
         createdAt: profile.createdAt,
         followers,
         following,

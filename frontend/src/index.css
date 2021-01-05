@@ -39,10 +39,17 @@ body {
 
 .right-panel {
   width: 360px;
-  margin-left: -35px;
+  margin-left: -43px;
   height: 100vh;
   position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-left: 1px solid rgb(235, 238, 240);
+  z-index: 2;
+}
+
+.left-nav {
+  border-right: 1px solid rgb(235, 238, 240);
+  padding-right: 26px;
 }

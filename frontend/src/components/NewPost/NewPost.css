@@ -17,6 +17,7 @@
   filter: brightness(100%);
   transition-property: filter;
   transition-duration: 0.15s;
+  object-fit: cover;
 }
 
 .post-profile-pic:hover {
@@ -36,7 +37,6 @@
 
 .new-post-container {
   position: relative;
-  z-index: 2;
 }
 
 .new-post-wrapper {

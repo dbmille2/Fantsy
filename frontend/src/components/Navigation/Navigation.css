@@ -57,13 +57,14 @@
   width: 240px;
   position: absolute;
   top: 0;
-  left: 80px;
+  left: 75px;
   z-index: 4;
 }
 
 .left-nav {
-  margin-top: 20px;
+  margin-top: 0px;
   margin-right: 15px;
+  padding-top: 20px;
   height: 100vh;
   position: fixed;
 }
@@ -72,6 +73,7 @@
   cursor: pointer;
   margin-top: 20px;
   padding-left: 0px;
+  width: 206px;
 }
 
 .home-logo {
@@ -162,6 +164,7 @@
   height: 46px;
   border-radius: 50%;
   margin-right: 8px;
+  object-fit: cover;
 }
 
 .user-button-display-name {
@@ -173,7 +176,6 @@
   display: flex;
   font-size: 15px;
   align-items: center;
-  
 }
 
 .user-button-username {

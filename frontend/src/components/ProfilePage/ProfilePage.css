@@ -3,16 +3,28 @@
   justify-content: space-between;
   align-items: flex-end;
   position: absolute;
-  top: 135px;
+  top: 145px;
   width: 100%;
 }
 
 .profile-pic {
   width: 125px;
+  height: 125px;
   margin-left: 10px;
   border-radius: 50%;
   background-color: white;
-  border: 4px solid white;
+  object-fit: cover;
+  z-index: 1;
+}
+.profile-pic-background {
+  width: 133px;
+  height: 133px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 0;
+  left: 6px;
+  bottom: -4px;
 }
 
 .unfollow-button,
@@ -21,10 +33,9 @@
 }
 
 .full-profile-page {
-  border-left: 1px solid rgb(235, 238, 240);
-  border-right: 1px solid rgb(235, 238, 240);
-  width: 561px;
-  margin-right: -1px;
+  /* border-left: 1px solid rgb(235, 238, 240); */
+  /* border-right: 1px solid rgb(235, 238, 240); */
+  width: 560px;
 }
 
 .profile-heading {
@@ -37,11 +48,12 @@
 .banner {
   width: 560px;
   margin-right: 1px;
-  height: 200px;
+  height: 210px;
+  object-fit: cover;
 }
 
 .profile-info-container {
-  margin-top: 60px;
+  margin-top: 64px;
   margin-left: 14px;
 }
 
@@ -54,6 +66,11 @@
 .profile-username {
   color: rgb(91, 112, 131);
   font-weight: 350;
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.profile-bio {
   font-size: 15px;
   margin-bottom: 10px;
 }

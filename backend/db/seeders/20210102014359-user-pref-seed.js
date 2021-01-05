@@ -32,6 +32,69 @@ module.exports = {
             "https://cdn.cms-twdigitalassets.com/content/dam/blog-twitter/official/en_us/products/2017/rethinking-our-default-profile-photo/Avatar-Blog4-Progress.png.img.fullhd.medium.png",
           bioRawData: null,
         },
+        {
+          userId: 4,
+          theme: "light",
+          profilePicUrl:
+            "https://twirpz.files.wordpress.com/2015/06/twitter-avi-gender-balanced-figure.png",
+          bannerUrl:
+            "https://cdn.cms-twdigitalassets.com/content/dam/blog-twitter/official/en_us/products/2017/rethinking-our-default-profile-photo/Avatar-Blog4-Progress.png.img.fullhd.medium.png",
+          bioRawData: null,
+        },
+        {
+          userId: 5,
+          theme: "light",
+          profilePicUrl:
+            "https://twirpz.files.wordpress.com/2015/06/twitter-avi-gender-balanced-figure.png",
+          bannerUrl:
+            "https://cdn.cms-twdigitalassets.com/content/dam/blog-twitter/official/en_us/products/2017/rethinking-our-default-profile-photo/Avatar-Blog4-Progress.png.img.fullhd.medium.png",
+          bioRawData: null,
+        },
+        {
+          userId: 6,
+          theme: "light",
+          profilePicUrl:
+            "https://twirpz.files.wordpress.com/2015/06/twitter-avi-gender-balanced-figure.png",
+          bannerUrl:
+            "https://cdn.cms-twdigitalassets.com/content/dam/blog-twitter/official/en_us/products/2017/rethinking-our-default-profile-photo/Avatar-Blog4-Progress.png.img.fullhd.medium.png",
+          bioRawData: null,
+        },
+        {
+          userId: 7,
+          theme: "light",
+          profilePicUrl:
+            "https://twirpz.files.wordpress.com/2015/06/twitter-avi-gender-balanced-figure.png",
+          bannerUrl:
+            "https://cdn.cms-twdigitalassets.com/content/dam/blog-twitter/official/en_us/products/2017/rethinking-our-default-profile-photo/Avatar-Blog4-Progress.png.img.fullhd.medium.png",
+          bioRawData: null,
+        },
+        {
+          userId: 8,
+          theme: "light",
+          profilePicUrl:
+            "https://twirpz.files.wordpress.com/2015/06/twitter-avi-gender-balanced-figure.png",
+          bannerUrl:
+            "https://cdn.cms-twdigitalassets.com/content/dam/blog-twitter/official/en_us/products/2017/rethinking-our-default-profile-photo/Avatar-Blog4-Progress.png.img.fullhd.medium.png",
+          bioRawData: null,
+        },
+        {
+          userId: 9,
+          theme: "light",
+          profilePicUrl:
+            "https://twirpz.files.wordpress.com/2015/06/twitter-avi-gender-balanced-figure.png",
+          bannerUrl:
+            "https://cdn.cms-twdigitalassets.com/content/dam/blog-twitter/official/en_us/products/2017/rethinking-our-default-profile-photo/Avatar-Blog4-Progress.png.img.fullhd.medium.png",
+          bioRawData: null,
+        },
+        {
+          userId: 10,
+          theme: "light",
+          profilePicUrl:
+            "https://twirpz.files.wordpress.com/2015/06/twitter-avi-gender-balanced-figure.png",
+          bannerUrl:
+            "https://cdn.cms-twdigitalassets.com/content/dam/blog-twitter/official/en_us/products/2017/rethinking-our-default-profile-photo/Avatar-Blog4-Progress.png.img.fullhd.medium.png",
+          bioRawData: null,
+        },
       ],
       {}
     );
