@@ -1,10 +1,10 @@
 .header {
   height: 50px;
-  width: 561px;
+  width: 559px;
   box-sizing: border-box;
   border-bottom: 1px solid rgb(235, 238, 240);
-  border-left: 1px solid rgb(235, 238, 240);
-  border-right: 1px solid rgb(235, 238, 240);
+  /* border-left: 1px solid rgb(235, 238, 240); */
+  /* border-right: 1px solid rgb(235, 238, 240); */
   background-color: white;
   font-size: 18px;
   font-weight: 750;

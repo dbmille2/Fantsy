@@ -1,6 +1,6 @@
 .follow-nav-container {
-  width: 561px;
-  margin-left: -1px;
+  width: 559px;
+  margin-left: 1px;
   margin-top: 0px;
   height: 50px;
   display: flex;
@@ -9,8 +9,8 @@
   background-color: white;
   border-bottom: 2px solid rgb(235, 238, 240);
   border-top: 1px solid white;
-  border-left: 1px solid rgb(235, 238, 240);
-  border-right: 1px solid rgb(235, 238, 240);
+  /* border-left: 1px solid rgb(235, 238, 240); */
+  /* border-right: 1px solid rgb(235, 238, 240); */
   position: fixed;
   top: 49px;
   z-index: 5;
@@ -21,7 +21,7 @@
   color: rgb(91, 136, 152);
   font-size: 14px;
   line-height: 50px;
-  width: 50%;
+  width: 280px;
   height: 50px;
   text-align: center;
   font-weight: bold;
@@ -42,15 +42,14 @@
 }
 
 .follow-page-container {
-  border-left: 1px solid rgb(235, 238, 240);
-  border-right: 1px solid rgb(235, 238, 240);
+  /* border-left: 1px solid rgb(235, 238, 240); */
+  /* border-right: 1px solid rgb(235, 238, 240); */
   position: relative;
-  width: 561px;
-  margin-right: -1px;
+  width: 560px;
   height: 100vh;
 }
 
 .followers-feed-container {
-  margin-top: 100px;
+  margin-top: 99px;
   padding-left: 0px;
 }

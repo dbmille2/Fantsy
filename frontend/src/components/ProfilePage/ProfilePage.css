@@ -32,10 +32,9 @@
 }
 
 .full-profile-page {
-  border-left: 1px solid rgb(235, 238, 240);
-  border-right: 1px solid rgb(235, 238, 240);
-  width: 561px;
-  margin-right: -1px;
+  /* border-left: 1px solid rgb(235, 238, 240); */
+  /* border-right: 1px solid rgb(235, 238, 240); */
+  width: 560px;
 }
 
 .profile-heading {
