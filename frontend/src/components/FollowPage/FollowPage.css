@@ -1,6 +1,5 @@
 .follow-nav-container {
-  width: 559px;
-  margin-left: 1px;
+  width: 560px;
   margin-top: 0px;
   height: 50px;
   display: flex;
@@ -13,7 +12,7 @@
   /* border-right: 1px solid rgb(235, 238, 240); */
   position: fixed;
   top: 49px;
-  z-index: 5;
+  z-index: 2;
 }
 
 .follow-nav-option {

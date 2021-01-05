@@ -1,6 +1,6 @@
 .header {
   height: 50px;
-  width: 559px;
+  width: 560px;
   box-sizing: border-box;
   border-bottom: 1px solid rgb(235, 238, 240);
   /* border-left: 1px solid rgb(235, 238, 240); */
@@ -13,7 +13,7 @@
   justify-content: space-between;
   align-items: center;
   position: fixed;
-  z-index: 3;
+  z-index: 2;
 }
 
 .left-header {

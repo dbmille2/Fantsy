@@ -1,8 +1,7 @@
 .explore-feed-nav {
-  width: 559px;
-  box-sizing: border-box;
+  width: 560px;
+  /* box-sizing: border-box; */
   margin-top: 0px;
-  margin-left: 1px;
   height: 50px;
   display: flex;
   justify-content: space-around;
@@ -14,7 +13,7 @@
   /* border-right: 1px solid rgb(235, 238, 240); */
   position: fixed;
   top: 49px;
-  z-index: 5;
+  z-index: 2;
 }
 
 .explore-feed-nav-option {
