@@ -14,7 +14,7 @@
   border-radius: 50%;
   background-color: white;
   object-fit: cover;
-  z-index: 2;
+  z-index: 1;
 }
 .profile-pic-background {
   width: 133px;
@@ -22,6 +22,7 @@
   background-color: white;
   border-radius: 50%;
   position: absolute;
+  z-index: 0;
   left: 6px;
   bottom: -4px;
 }
