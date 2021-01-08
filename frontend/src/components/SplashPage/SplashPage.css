@@ -1,0 +1,81 @@
+.splash-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vh;
+  height: 100vh;
+  z-index: -1;
+  display: flex;
+}
+
+.splash-background-left {
+  position: fixed;
+  width: 50vw;
+  height: 100vh;
+  background-color: rgb(116, 202, 254);
+}
+
+.splash-background-right {
+  position: fixed;
+  right: 0;
+  width: 50vw;
+  height: 100vh;
+  background-color: white;
+}
+
+.splash-football {
+  position: fixed;
+  height: 100vh;
+  left: 50vw;
+  top: -1200px;
+  margin-top: 40vh;
+  margin-left: -1150px;
+  font-size: 1700px;
+  /* font-size: 170vh; */
+
+  color: rgb(29, 161, 242);
+}
+
+.splash-info {
+  position: fixed;
+  margin-left: -150px;
+  top: 38vh;
+  left: 25vw;
+  width: 380px;
+  height: 270px;
+  line-height: 55px;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.splash-info i {
+  padding-right: 15px;
+}
+
+.splash-signup-container {
+  display: flex;
+  flex-direction: column;
+  width: 380px;
+  position: fixed;
+  top: 38vh;
+  left: 75vw;
+  margin-left: -190px;
+  margin-top: -50px;
+}
+
+.signup-icon {
+  color: rgb(29, 161, 242);
+  font-size: 35px;
+}
+
+.splash-signup-header {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.splash-signup-join {
+  font-weight: 700;
+}

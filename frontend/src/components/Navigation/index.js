@@ -92,35 +92,7 @@ function Navigation({ isLoaded }) {
         </li>
       </>
     );
-  } else {
-    sessionLinks = (
-      <>
-        <li>
-          <LoginFormModal />
-        </li>
-        <li>
-          <NavLink to="/signup">Sign Up</NavLink>
-        </li>
-      </>
-    );
-    navLinks = (
-      <>
-        <li>
-          <NavLink
-            exact
-            to="/explore/all"
-            className="left-nav-option"
-            activeClassName="left-nav-active"
-          >
-            <i className="fas fa-hashtag" />
-
-            <span>Explore</span>
-          </NavLink>
-        </li>
-      </>
-    );
-  }
-
+  } 
   return (
     <div className="left-nav-wrapper">
       <div className="left-nav">
