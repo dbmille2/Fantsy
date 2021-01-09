@@ -29,8 +29,8 @@ function LoginForm() {
 
     return [htmlElRef, setFocus];
   };
-
   const [nameRef, setNameFocus] = useFocus();
+  const [passRef, setPassFocus] = useFocus();
 
   //   return (
   //     <div className="login-form">
@@ -65,8 +65,11 @@ function LoginForm() {
   return (
     <div className="login-form">
       <div className="login-name-wrapper">
-        <button
-          disabled="true"
+        <div
+          onClick={() => {
+            setNameFocused(true);
+            setNameFocus();
+          }}
           className={nameFocused ? "cred-wrapper focused" : "cred-wrapper"}
         >
           <span className={nameFocused ? "cred-header focused" : "cred-header"}>
@@ -74,19 +77,20 @@ function LoginForm() {
           </span>
           <input
             type="text"
+            ref={nameRef}
             onBlur={() => setNameFocused(false)}
             onFocus={() => setNameFocused(true)}
             value={credential}
             onChange={(event) => setCredential(event.target.value)}
             className="cred-input"
           ></input>
-        </button>
+        </div>
       </div>
       <div className="password-wrapper">
         <div
           onClick={() => {
             setPasswordFocused(true);
-            setNameFocus();
+            setPassFocus();
           }}
           className={
             passwordFocused
@@ -103,7 +107,7 @@ function LoginForm() {
           </span>
           <input
             type="password"
-            ref={nameRef}
+            ref={passRef}
             onBlur={() => setPasswordFocused(false)}
             onFocus={() => setPasswordFocused(true)}
             value={password}
