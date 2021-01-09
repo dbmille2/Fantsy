@@ -2,10 +2,19 @@ import React, { useState } from "react";
 import LoginForm from "../LoginFormModal/LoginForm";
 import SignupFormModal from "../SignupFormModal";
 import SignupForm from "../SignupForm";
+import * as sessionActions from "../../store/session";
+import { useDispatch } from "react-redux";
 import "./SplashPage.css";
 
 function SignupFormPage() {
+  const dispatch = useDispatch();
   const [isSignupOpen, setIsSignupOpen] = useState(false);
+
+  const demoLogin = () => {
+    dispatch(
+      sessionActions.login({ credential: "dbmille2", password: "password" })
+    );
+  };
 
   return (
     <div className="splash-page">
@@ -23,7 +32,7 @@ function SignupFormPage() {
             </p>
             <p>
               <i className="far fa-comment"></i>
-              Ask for advice or give it.
+              Ask and give advice.
             </p>
           </div>
         </div>
@@ -44,7 +53,9 @@ function SignupFormPage() {
               >
                 Sign up
               </button>
-              <button>Demo</button>
+              <button onClick={() => demoLogin()} className="demo-button">
+                Demo
+              </button>
               <SignupFormModal
                 open={isSignupOpen}
                 onClose={() => setIsSignupOpen(false)}

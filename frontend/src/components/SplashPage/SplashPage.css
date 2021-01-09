@@ -79,3 +79,44 @@
 .splash-signup-join {
   font-weight: 700;
 }
+
+.signup-button {
+  height: 40px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  color: white;
+  background-color: rgb(29, 161, 242);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+
+.signup-button:hover {
+  background-color: rgb(26, 145, 218);
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+
+.demo-button {
+  margin-top: 16px;
+  height: 40px;
+  border: 1px solid rgb(29, 161, 242);
+  border-radius: 25px;
+  color: rgb(29, 161, 242);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: white;
+  transition-property: background-color;
+  transition-duration: 0.2s;
+  outline: none;
+}
+
+.demo-button:hover {
+  background-color: rgb(232, 245, 254);
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
