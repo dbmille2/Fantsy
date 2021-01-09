@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import "./SignupForm.css";
 
-function SignupFormPage() {
+function SignupForm() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
@@ -15,7 +15,7 @@ function SignupFormPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/" />;
+  if (sessionUser) return <Redirect to="/home" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -96,20 +96,8 @@ function SignupFormPage() {
         </label>
         <button type="submit">Sign Up</button>
       </form>
-      <div>
-        {sessionUser && (
-          <div>
-            <h1>{sessionUser.username}</h1>
-            {/* <img
-              style={{ width: "150px" }}
-              src={sessionUser.profilePicUrl}
-              alt="profile"
-            /> */}
-          </div>
-        )}
-      </div>
     </>
   );
 }
 
-export default SignupFormPage;
+export default SignupForm;

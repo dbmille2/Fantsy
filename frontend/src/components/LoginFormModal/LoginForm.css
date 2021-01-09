@@ -1,0 +1,91 @@
+.login-form {
+  position: fixed;
+  margin-top: 15px;
+  left: 75vw;
+  top: 0;
+  display: flex;
+  justify-content: space-around;
+  width: 500px;
+  padding: 10px;
+  margin-left: -350px;
+}
+
+.cred-wrapper {
+  position: absolute;
+  cursor: text;
+  padding: 7px;
+  display: flex;
+  width: 210px;
+  height: 55px;
+  flex-direction: column;
+  background-color: white;
+  outline: none;
+  border: 1px solid rgb(196, 207, 214);
+  border-radius: 4px;
+}
+
+.cred-wrapper.focused {
+  border: 2px solid rgb(29, 161, 242);
+  margin: -1px;
+}
+
+.cred-input {
+  margin-top: 2px;
+  width: 200px;
+  resize: none;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 20px;
+  margin-left: -1px;
+}
+
+.cred-header {
+  color: rgb(96, 116, 135);
+  font-size: 13px;
+  pointer-events: none;
+}
+
+.cred-header.focused {
+  color: rgb(29, 161, 242);
+}
+
+.password-input-wrapper {
+  position: absolute;
+  cursor: text;
+  display: flex;
+  width: 210px;
+  height: 55px;
+  flex-direction: column;
+  padding: 7px;
+  background-color: white;
+  outline: none;
+  border: 1px solid rgb(196, 207, 214);
+  border-radius: 4px;
+}
+
+.password-input-wrapper.focused {
+  border: 2px solid rgb(29, 161, 242);
+  margin: -1px;
+}
+
+.password-input {
+  margin-top: 2px;
+  width: 200px;
+  resize: none;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 20px;
+  margin-left: -1px;
+}
+
+.password-header {
+  font-size: 13px;
+  color: rgb(96, 116, 135);
+  pointer-events: none;
+}
+
+.password-header.focused {
+  color: rgb(29, 161, 242);
+}

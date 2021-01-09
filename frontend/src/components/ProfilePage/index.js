@@ -7,7 +7,7 @@ import FollowButton from "../FollowButton";
 import EditProfileButton from "../EditProfileButton";
 import ProfilePostNav from "../ProfilePostNav";
 import ProfileFeedContainer from "../ProfileFeedContainer";
-import { fetchInfo } from "../../store/session";
+import { purgeFeed } from "../../store/posts";
 import { months } from "./data";
 import "./ProfilePage.css";
 
@@ -31,6 +31,7 @@ function ProfilePage({ tab }) {
     window.scrollTo(0, 0);
   }, []);
   useEffect(() => {
+    dispatch(purgeFeed());
     dispatch(profileActions.fetchProfile(username, user.id));
   }, [dispatch, username, user]);
 

@@ -18,35 +18,34 @@ function NavHeader({ title, subTitle }) {
   const feed = useSelector((state) => state.posts.feed);
   return (
     <div className="nav-header-wrapper">
-      {feed && (
-        <div className="header">
-          <div className="left-header">
-            {title !== "Home" && <BackButton />}
-            <div className="nav-user-info">
-              <span className="header-title">
-                {!playerId ? title : allPlayers[playerId].name}
-              </span>
-              {title !== "Home" &&
-                title !== "Explore" &&
-                title !== "My Team" &&
-                title !== "All Players" &&
-                title !== "Post" &&
-                title !== "Notifications" &&
-                subTitle !== " " && (
-                  <span className="header-number-posts">
-                    {(subTitle === "posts" || subTitle === "likes") &&
-                      Object.keys(feed).length}
-                    {!playerId
-                      ? ` ${subTitle}`
-                      : ` ${allPlayers[playerId].position} - ${allPlayers[playerId].teamName}`}
-                  </span>
-                )}
-            </div>
+      <div className="header">
+        <div className="left-header">
+          {title !== "Home" && <BackButton />}
+          <div className="nav-user-info">
+            <span className="header-title">
+              {!playerId ? title : allPlayers[playerId].name}
+            </span>
+            {feed &&
+              title !== "Home" &&
+              title !== "Explore" &&
+              title !== "My Team" &&
+              title !== "All Players" &&
+              title !== "Post" &&
+              title !== "Notifications" &&
+              subTitle !== " " && (
+                <span className="header-number-posts">
+                  {(subTitle === "posts" || subTitle === "likes") &&
+                    Object.keys(feed).length}
+                  {!playerId
+                    ? ` ${subTitle}`
+                    : ` ${allPlayers[playerId].position} - ${allPlayers[playerId].teamName}`}
+                </span>
+              )}
           </div>
-
-          {title === "Home" && <SortButton />}
         </div>
-      )}
+
+        {title === "Home" && <SortButton />}
+      </div>
     </div>
   );
 }

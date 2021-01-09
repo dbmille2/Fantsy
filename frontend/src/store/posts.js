@@ -1,6 +1,7 @@
 import { fetch } from "./csrf.js";
 
 const LOAD_FEED = "posts/loadFeed";
+const PURGE_FEED = "posts/purgeFeed";
 const CREATE_POST = "posts/createPost";
 const STAR_POST = "posts/starPost";
 const UNSTAR_POST = "posts/unStarPost";
@@ -19,6 +20,10 @@ const loadFeed = (feed) => ({
   payload: {
     feed,
   },
+});
+
+export const purgeFeed = () => ({
+  type: PURGE_FEED,
 });
 
 const addStar = (starredPost) => ({
@@ -52,6 +57,7 @@ const deleteSave = (postId, userId) => ({
 });
 
 export const fetchFeed = (userId) => async (dispatch) => {
+  dispatch(purgeFeed());
   const res = await fetch(`/api/posts/${userId}/feed`);
   const feed = res.data.posts;
 
@@ -71,24 +77,28 @@ export const fetchProfileFeed = (userId) => async (dispatch) => {
 };
 
 export const fetchLikesFeed = (userId) => async (dispatch) => {
+  dispatch(purgeFeed());
   const res = await fetch(`/api/posts/${userId}/likes`);
   const feed = res.data.posts;
   dispatch(loadFeed(feed));
 };
 
 export const fetchMediaFeed = (userId) => async (dispatch) => {
+  dispatch(purgeFeed());
   const res = await fetch(`/api/posts/${userId}/media`);
   const feed = res.data.posts;
   dispatch(loadFeed(feed));
 };
 
 export const fetchSavedFeed = (userId) => async (dispatch) => {
+  dispatch(purgeFeed());
   const res = await fetch(`/api/posts/${userId}/saved`);
   const feed = res.data.posts;
   dispatch(loadFeed(feed));
 };
 
 export const fetchPlayersAllFeed = (playerId) => async (dispatch) => {
+  dispatch(purgeFeed());
   const res = await fetch(`/api/posts/players/${playerId}/all`);
   const feed = res.data.posts;
   dispatch(loadFeed(feed));
@@ -97,18 +107,21 @@ export const fetchPlayersAllFeed = (playerId) => async (dispatch) => {
 export const fetchPlayersFollowingFeed = (playerId, userId) => async (
   dispatch
 ) => {
+  dispatch(purgeFeed());
   const res = await fetch(`/api/posts/players/${playerId}/following/${userId}`);
   const feed = res.data.posts;
   dispatch(loadFeed(feed));
 };
 
 export const fetchExploreAllFeed = () => async (dispatch) => {
+  dispatch(purgeFeed());
   const res = await fetch(`/api/posts/`);
   const feed = res.data.posts;
   dispatch(loadFeed(feed));
 };
 
 export const fetchExplorePlayersFeed = (userId) => async (dispatch) => {
+  dispatch(purgeFeed());
   const res = await fetch(`/api/posts/explore/${userId}`);
   const feed = res.data.posts;
   dispatch(loadFeed(feed));
@@ -211,6 +224,9 @@ export const createPostWithImage = (
 function reducer(state = {}, action) {
   let newState;
   switch (action.type) {
+    case PURGE_FEED:
+      newState = {};
+      return newState;
     case LOAD_FEED:
       const feed = {};
       let feedArr = action.payload.feed;
