@@ -37,67 +37,79 @@ function SignupForm() {
     if (file) setImage(file);
   };
 
+  // return (
+  //   <div className="signup-form">
+  //     <h1>Sign Up</h1>
+  //     <form onSubmit={handleSubmit}>
+  //       <ul>
+  //         {errors.map((error, idx) => (
+  //           <li key={idx}>{error}</li>
+  //         ))}
+  //       </ul>
+  //       <label>
+  //         Email
+  //         <input
+  //           type="text"
+  //           value={email}
+  //           onChange={(e) => setEmail(e.target.value)}
+  //           required
+  //         />
+  //       </label>
+  //       <label>
+  //         Username
+  //         <input
+  //           type="text"
+  //           value={username}
+  //           onChange={(e) => setUsername(e.target.value)}
+  //           required
+  //         />
+  //       </label>
+  //       <label>
+  //         Display Name
+  //         <input
+  //           type="text"
+  //           value={displayName}
+  //           onChange={(e) => setDisplayName(e.target.value)}
+  //           required
+  //         />
+  //       </label>
+  //       <label>
+  //         <input type="file" onChange={updateFile} />
+  //       </label>
+  //       <label>
+  //         Password
+  //         <input
+  //           type="password"
+  //           value={password}
+  //           onChange={(e) => setPassword(e.target.value)}
+  //           required
+  //         />
+  //       </label>
+  //       <label>
+  //         Confirm Password
+  //         <input
+  //           type="password"
+  //           value={confirmPassword}
+  //           onChange={(e) => setConfirmPassword(e.target.value)}
+  //           required
+  //         />
+  //       </label>
+  //       <button type="submit">Sign Up</button>
+  //     </form>
+  //   </div>
+  // );
   return (
-    <>
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Username
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Display Name
-          <input
-            type="text"
-            value={displayName}
-            onChange={(e) => setDisplayName(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          <input type="file" onChange={updateFile} />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Confirm Password
-          <input
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Sign Up</button>
-      </form>
-    </>
-  );
+    <div className="signup-form">
+      <div className="signup-form-header">
+        <div className="signup-form-logo">Logo</div>
+        <div className="signup-form-button">Sign up</div>
+      </div>
+      <div className="signup-form-text">Create your account</div>
+      <div className="signup-form-inputs">
+        
+      </div>
+    </div>
+  )
 }
 
 export default SignupForm;
