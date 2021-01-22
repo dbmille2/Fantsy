@@ -5,7 +5,7 @@
   top: 0;
   display: flex;
   justify-content: space-around;
-  width: 500px;
+  width: 800px;
   padding: 10px;
   margin-left: -350px;
 }
@@ -16,7 +16,7 @@
   padding: 7px;
   display: flex;
   width: 210px;
-  height: 55px;
+  height: 58px;
   flex-direction: column;
   background-color: white;
   outline: none;
@@ -55,7 +55,7 @@
   cursor: text;
   display: flex;
   width: 210px;
-  height: 55px;
+  height: 58px;
   flex-direction: column;
   padding: 7px;
   background-color: white;
@@ -88,4 +88,26 @@
 
 .password-header.focused {
   color: rgb(29, 161, 242);
+}
+
+.login-button {
+  height: 36px;
+  width: 95px;
+  border: 1px solid rgb(29, 161, 242);
+  border-radius: 25px;
+  color: rgb(29, 161, 242);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: white;
+  transition-property: background-color;
+  transition-duration: 0.2s;
+  outline: none;
+  margin-top: 10px;
+}
+
+.login-button:hover {
+  background-color: rgb(232, 245, 254);
+  transition-property: background-color;
+  transition-duration: 0.2s;
 }

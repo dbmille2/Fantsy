@@ -12,7 +12,7 @@ function SignupFormPage() {
 
   const demoLogin = () => {
     dispatch(
-      sessionActions.login({ credential: "dbmille2", password: "password" })
+      sessionActions.login({ credential: "dmiller", password: "password" })
     );
   };
 
