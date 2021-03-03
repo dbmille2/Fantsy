@@ -1,4 +1,66 @@
 .signup-form {
+  margin-top: 4px;
   display: flex;
   flex-direction: column;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.signup-form-inputs {
+}
+
+.confirm-wrapper {
+  margin-top: 320px;
+}
+
+.password-signup-wrapper {
+  margin-top: 240px;
+}
+
+.display-name-wrapper {
+  margin-top: 80px;
+}
+
+.username-wrapper {
+  margin-top: 160px;
+}
+
+.email-input-wrapper {
+  cursor: text;
+  display: flex;
+  position: absolute;
+  width: 520px;
+  height: 58px;
+  flex-direction: column;
+  padding: 7px;
+  background-color: white;
+  outline: none;
+  border: 1px solid rgb(196, 207, 214);
+  border-radius: 4px;
+}
+
+.email-input-wrapper.focused {
+  border: 2px solid rgb(29, 161, 242);
+  margin: -1px;
+}
+
+.email-input {
+  margin-top: 2px;
+  width: 100%;
+  resize: none;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 20px;
+  margin-left: -1px;
+}
+
+.email-header {
+  font-size: 13px;
+  color: rgb(96, 116, 135);
+  pointer-events: none;
+}
+
+.email-header.focused {
+  color: rgb(29, 161, 242);
 }
