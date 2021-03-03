@@ -20,8 +20,6 @@ function SignupForm() {
   const [emailFocused, setEmailFocused] = useState(false);
   const [confirmPasswordFocused, setConfirmPasswordFocused] = useState(false);
 
-  
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
@@ -46,8 +44,11 @@ function SignupForm() {
     return [htmlElRef, setFocus];
   };
 
-  const [nameRef, setNameFocus] = useFocus();
-  const [passRef, setPassFocus] = useFocus();
+  const [emailRef, setEmailFocus] = useFocus();
+  const [displayNameRef, setDisplayNameFocus] = useFocus();
+  const [usernameRef, setUsernameFocus] = useFocus();
+  const [passwordRef, setPasswordFocus] = useFocus();
+  const [confirmPasswordRef, setConfirmPasswordFocus] = useFocus();
 
   if (sessionUser) return <Redirect to="/home" />;
 
@@ -126,33 +127,151 @@ function SignupForm() {
       </div>
       <div className="signup-form-text">Create your account</div>
       <div className="signup-form-inputs">
-        <div className="password-wrapper">
+        <div className="email-wrapper">
           <div
             onClick={() => {
-              setPasswordFocused(true);
-              setPassFocus();
+              setEmailFocused(true);
+              setEmailFocus();
             }}
             className={
-              passwordFocused
-                ? "password-input-wrapper focused"
-                : "password-input-wrapper"
+              emailFocused
+                ? "email-input-wrapper focused"
+                : "email-input-wrapper"
+            }
+          >
+            <span
+              className={emailFocused ? "email-header focused" : "email-header"}
+            >
+              Email
+            </span>
+            <input
+              type="email"
+              ref={emailRef}
+              onBlur={() => setEmailFocused(false)}
+              onFocus={() => setEmailFocused(true)}
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              className="email-input"
+            ></input>
+          </div>
+        </div>
+        <div className="display-name-wrapper">
+          <div
+            onClick={() => {
+              setDisplayNameFocused(true);
+              setDisplayNameFocus();
+            }}
+            className={
+              displayNameFocused
+                ? "email-input-wrapper focused"
+                : "email-input-wrapper"
             }
           >
             <span
               className={
-                passwordFocused ? "password-header focused" : "password-header"
+                displayNameFocused ? "email-header focused" : "email-header"
+              }
+            >
+              Display Name
+            </span>
+            <input
+              type="text"
+              ref={displayNameRef}
+              onBlur={() => setDisplayNameFocused(false)}
+              onFocus={() => setDisplayNameFocused(true)}
+              value={displayName}
+              onChange={(event) => setDisplayName(event.target.value)}
+              className="email-input"
+            ></input>
+          </div>
+        </div>
+        <div className="username-wrapper">
+          <div
+            onClick={() => {
+              setUsernameFocused(true);
+              setUsernameFocus();
+            }}
+            className={
+              usernameFocused
+                ? "email-input-wrapper focused"
+                : "email-input-wrapper"
+            }
+          >
+            <span
+              className={
+                usernameFocused ? "email-header focused" : "email-header"
+              }
+            >
+              Username
+            </span>
+            <input
+              type="text"
+              ref={usernameRef}
+              onBlur={() => setUsernameFocused(false)}
+              onFocus={() => setUsernameFocused(true)}
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
+              className="email-input"
+            ></input>
+          </div>
+        </div>
+        <div className="password-signup-wrapper">
+          <div
+            onClick={() => {
+              setPasswordFocused(true);
+              setPasswordFocus();
+            }}
+            className={
+              passwordFocused
+                ? "email-input-wrapper focused"
+                : "email-input-wrapper"
+            }
+          >
+            <span
+              className={
+                passwordFocused ? "email-header focused" : "email-header"
               }
             >
               Password
             </span>
             <input
               type="password"
-              ref={passRef}
+              ref={passwordRef}
               onBlur={() => setPasswordFocused(false)}
               onFocus={() => setPasswordFocused(true)}
               value={password}
               onChange={(event) => setPassword(event.target.value)}
-              className="password-input"
+              className="email-input"
+            ></input>
+          </div>
+        </div>
+        <div className="confirm-wrapper">
+          <div
+            onClick={() => {
+              setConfirmPasswordFocused(true);
+              setConfirmPasswordFocus();
+            }}
+            className={
+              confirmPasswordFocused
+                ? "email-input-wrapper focused"
+                : "email-input-wrapper"
+            }
+          >
+            <span
+              className={
+                confirmPasswordFocused ? "email-header focused" : "email-header"
+              }
+            >
+              Confirm Password
+            </span>
+            <input
+              type="password"
+              ref={confirmPasswordRef}
+              onBlur={() => setConfirmPasswordFocused(false)}
+              onFocus={() => setConfirmPasswordFocused(true)}
+              value={confirmPassword}
+              onChange={(event) => setConfirmPassword(event.target.value)}
+              className="email-input"
             ></input>
           </div>
         </div>
