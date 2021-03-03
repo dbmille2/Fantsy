@@ -5,9 +5,9 @@
   top: 0;
   display: flex;
   justify-content: space-around;
-  width: 800px;
+  width: 470px;
   padding: 10px;
-  margin-left: -350px;
+  margin-left: -340px;
 }
 
 .cred-wrapper {
@@ -92,6 +92,9 @@
 
 .login-button {
   height: 36px;
+  position: absolute;
+  top: 80px;
+  right: -87px;
   width: 95px;
   border: 1px solid rgb(29, 161, 242);
   border-radius: 25px;
@@ -103,7 +106,6 @@
   transition-property: background-color;
   transition-duration: 0.2s;
   outline: none;
-  margin-top: 10px;
 }
 
 .login-button:hover {

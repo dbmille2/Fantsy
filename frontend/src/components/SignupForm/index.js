@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
@@ -14,8 +14,13 @@ function SignupForm() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const [displayNameFocused, setDisplayNameFocused] = useState(false);
+  const [usernameFocused, setUsernameFocused] = useState(false);
+  const [passwordFocused, setPasswordFocused] = useState(false);
+  const [emailFocused, setEmailFocused] = useState(false);
+  const [confirmPasswordFocused, setConfirmPasswordFocused] = useState(false);
 
-  if (sessionUser) return <Redirect to="/home" />;
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,6 +36,20 @@ function SignupForm() {
       "Confirm Password field must be the same as the Password field",
     ]);
   };
+
+  const useFocus = () => {
+    const htmlElRef = useRef(null);
+    const setFocus = () => {
+      htmlElRef.current && htmlElRef.current.focus();
+    };
+
+    return [htmlElRef, setFocus];
+  };
+
+  const [nameRef, setNameFocus] = useFocus();
+  const [passRef, setPassFocus] = useFocus();
+
+  if (sessionUser) return <Redirect to="/home" />;
 
   const updateFile = (e) => {
     const file = e.target.files[0];
@@ -98,6 +117,7 @@ function SignupForm() {
   //     </form>
   //   </div>
   // );
+
   return (
     <div className="signup-form">
       <div className="signup-form-header">
@@ -106,10 +126,39 @@ function SignupForm() {
       </div>
       <div className="signup-form-text">Create your account</div>
       <div className="signup-form-inputs">
-        
+        <div className="password-wrapper">
+          <div
+            onClick={() => {
+              setPasswordFocused(true);
+              setPassFocus();
+            }}
+            className={
+              passwordFocused
+                ? "password-input-wrapper focused"
+                : "password-input-wrapper"
+            }
+          >
+            <span
+              className={
+                passwordFocused ? "password-header focused" : "password-header"
+              }
+            >
+              Password
+            </span>
+            <input
+              type="password"
+              ref={passRef}
+              onBlur={() => setPasswordFocused(false)}
+              onFocus={() => setPasswordFocused(true)}
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              className="password-input"
+            ></input>
+          </div>
+        </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default SignupForm;
