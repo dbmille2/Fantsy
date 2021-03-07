@@ -316,10 +316,7 @@ function PostInput({ modal, onClose }) {
             disabled={gifUrl ? true : false}
             onChange={modal ? updateFileModal : updateFile}
           ></input>
-          <div
-            className="gif-search-button-container"
-            onClick={() => console.log("clicked")}
-          >
+          <div className="gif-search-button-container">
             <button
               disabled={imgSrc ? true : false}
               onClick={() => setIsGifOpen(true)}

@@ -380,7 +380,6 @@ router.get(
     followingIds.forEach((follow) => {
       following[follow] = follow;
     });
-    console.log(following);
     const player = await Player.findOne({
       where: {
         id: playerId,
