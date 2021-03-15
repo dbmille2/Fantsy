@@ -12,7 +12,7 @@
   <h3 align="center">Fantsy</h3>
 
   <p align="center">
-    Fantsy is a social media platform with its core functionality inspired by [Twitter](https://twitter.com/).
+    Fantsy is a social media platform with its core functionality inspired by <a href="https://twitter.com/">Twitter</a>.
     <br />
     <a href="https://github.com/dbmille2/Fantsy"><strong>Explore the docs »</strong></a>
     <br />
@@ -124,20 +124,20 @@ In both _backend_ and _frontend_ directories, run:
 ## Usage
 
 ### Splash and Main Feed
-<img style="width: 40%;" src="images/splashpage.png" />
-<img style="width: 40%;" src="images/feed.png" />
+<img style="width: 400px;" src="images/splashpage.png" />
+<img style="width: 400px;" src="images/feed.png" />
 
 ### Team Selection and Post Modal
-<img style="width: 40%;" src="images/team.png" />
-<img style="width: 40%;" src="images/postmodal.png" />
+<img style="width: 400px;" src="images/team.png" />
+<img style="width: 400px;" src="images/postmodal.png" />
 
 ### Explore Feed and Player Feed
-<img style="width: 40%;" src="images/explore.png" />
-<img style="width: 40%;" src="images/playerfeed.png" />
+<img style="width: 400px;" src="images/explore.png" />
+<img style="width: 400px;" src="images/playerfeed.png" />
 
 ### Profile Page and Saved Posts
-<img style="width: 40%;" src="images/profilepage.png" />
-<img style="width: 40%;" src="images/savedß.png" />
+<img style="width: 400px;" src="images/profilepage.png" />
+<img style="width: 400px;" src="images/saved.png" />
 
 
 _For more examples, please refer to the [Documentation](https://github.com/dbmille2/fantsy)_
