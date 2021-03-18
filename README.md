@@ -142,7 +142,6 @@ In both _backend_ and _frontend_ directories, run:
 
 _For more examples, please refer to the [Documentation](https://github.com/dbmille2/fantsy)_
 
-<!-- ROADMAP -->
 
 ## Roadmap
 
