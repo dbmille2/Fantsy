@@ -118,9 +118,6 @@ In both _backend_ and _frontend_ directories, run:
   ```sh
   npm start
   ```
-
-<!-- USAGE EXAMPLES -->
-
 ## Usage
 
 ### Splash and Main Feed
@@ -146,8 +143,6 @@ _For more examples, please refer to the [Documentation](https://github.com/dbmil
 ## Roadmap
 
 See the [open issues](https://github.com/dbmille2/fantsy/issues) for a list of proposed features (and known issues).
-
-<!-- CONTACT -->
 
 ## Contact
 
