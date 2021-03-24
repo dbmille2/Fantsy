@@ -2,7 +2,6 @@
 [![Issues][issues-shield]][issues-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-<!-- PROJECT LOGO -->
 <br />
 <p align="center">
   <a href="https://github.com/dbmille2/Fantsy">
@@ -25,7 +24,6 @@
   </p>
 </p>
 
-<!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
   <ol>
@@ -48,7 +46,6 @@
   </ol>
 </details>
 
-<!-- ABOUT THE PROJECT -->
 
 ## About The Project
 
