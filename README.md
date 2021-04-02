@@ -61,8 +61,6 @@ Fantsy is a social media platform for sharing fantasy football news, stats, and 
 - [Express.js](https://expressjs.com/)
 - [Sequelize](https://sequelize.org/)
 
-<!-- GETTING STARTED -->
-
 ## Getting Started
 
 To get a local copy up and running follow these simple steps.
@@ -146,8 +144,6 @@ See the [open issues](https://github.com/dbmille2/fantsy/issues) for a list of p
 Daniel Miller - [EMAIL](mailto:dbmiller25@gmail.com)
 
 Project Link: [https://github.com/dbmille2/Fantsy](https://github.com/dbmille2/Fantsy)
-
-<!-- MARKDOWN LINKS & IMAGES -->
 
 [stars-shield]: https://img.shields.io/github/stars/dbmille2/fantsy.svg?style=for-the-badge
 [stars-url]: https://github.com/dbmille2/fantsy/stargazers
