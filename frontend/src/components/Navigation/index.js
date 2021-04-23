@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
-import LoginFormModal from "../LoginFormModal";
 import NewPost from "../NewPost";
 import PostModal from "../PostModal";
 import "./Navigation.css";
