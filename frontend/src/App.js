@@ -117,6 +117,7 @@ function App() {
                 <PlayerPositionNav />
                 <TeamContainer selection={"all"} subSelection={"QB"} />
               </Route>
+
               <Route path="/i/team/all/rb">
                 <NavHeader title="All Players - RB" subTitle={" "} />
                 <PlayerPositionNav />
