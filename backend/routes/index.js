@@ -10,8 +10,6 @@ router.get("/hello/world", function (req, res) {
   res.send("Hello World!");
 });
 
-// Static routes
-// Serve React build files in production
 if (process.env.NODE_ENV === "production") {
   const path = require("path");
   // Serve the frontend's index.html file at the root route
